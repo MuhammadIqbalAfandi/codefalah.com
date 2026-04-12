@@ -137,3 +137,21 @@
   resize: vertical;
   min-height: 100px;
 }
+
+
+.submitButton {
+  border: 1px solid color-mix(in srgb, var(--link-color) 60%, #000 10%);
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--link-color) 24%, transparent);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--link-color) 30%, transparent);
+  filter: brightness(1.02);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 12px color-mix(in srgb, var(--link-color) 22%, transparent);
+}

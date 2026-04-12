@@ -347,10 +347,26 @@
     text-align: center;
   }
 
+  .footerText,
   .footerCopyright {
+    font-size: 0.82rem;
+  }
+
+  .footerCopyright {
+    position: relative;
     border-left: none;
-    border-top: 1px solid var(--border-color);
+    border-top: none;
     padding-left: 0;
-    padding-top: 0.5rem;
+    padding-top: 0.6rem;
+  }
+
+  .footerCopyright::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 84px;
+    border-top: 1px solid var(--border-color);
   }
 }

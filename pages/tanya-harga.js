@@ -44,7 +44,7 @@ export default function TanyaHargaPage() {
             <label htmlFor="brief">Brief singkat</label>
             <textarea id="brief" name="brief" placeholder="Ceritakan target, deadline, dan kebutuhan Anda" />
           </div>
-          <button type="submit" className={styles.primaryCta}>
+          <button type="submit" className={`${styles.primaryCta} ${styles.submitButton}`}>
             Kirim permintaan
           </button>
         </form>
