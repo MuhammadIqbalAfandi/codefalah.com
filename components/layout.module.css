@@ -17,6 +17,13 @@
   padding: 0.25rem 0;
 }
 
+.navbarDetail {
+  padding: 0.7rem 0.85rem;
+  background: var(--surface-muted-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -187,6 +194,10 @@
     align-items: stretch;
     gap: 0.6rem;
     margin-top: 0.75rem;
+    padding: 0.65rem;
+    background: var(--surface-muted-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.9rem;
   }
 
   .menuOpen {
