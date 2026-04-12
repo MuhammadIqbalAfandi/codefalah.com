@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { featuredProducts } from '../lib/products';
 
 export const siteTitle = 'CodeFalah';
@@ -10,6 +10,7 @@ export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productMenuOpen, setProductMenuOpen] = useState(false);
+  const productMenuRef = useRef(null);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -18,6 +19,19 @@ export default function Layout({ children, home }) {
 
     document.documentElement.setAttribute('data-theme', initialTheme);
     setTheme(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (productMenuRef.current && !productMenuRef.current.contains(event.target)) {
+        setProductMenuOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
   }, []);
 
   function handleThemeToggle() {
@@ -74,20 +88,29 @@ export default function Layout({ children, home }) {
             >
               <div className={styles.navActions}>
                 <div
+                  ref={productMenuRef}
                   className={styles.productMenu}
-                  onMouseEnter={() => setProductMenuOpen(true)}
-                  onMouseLeave={() => setProductMenuOpen(false)}
                 >
                   <button
                     type="button"
                     className={`${styles.navLink} ${styles.productMenuToggle}`.trim()}
                     aria-expanded={productMenuOpen}
                     aria-haspopup="true"
+                    aria-controls="product-dropdown-menu"
                     onClick={() => setProductMenuOpen((prev) => !prev)}
                   >
                     Katalog Produk
+                    <span
+                      className={`${styles.dropdownIndicator} ${productMenuOpen ? styles.dropdownIndicatorOpen : ''}`}
+                      aria-hidden="true"
+                    >
+                      ▾
+                    </span>
                   </button>
-                  <div className={`${styles.productDropdown} ${productMenuOpen ? styles.productDropdownOpen : ''}`}>
+                  <div
+                    id="product-dropdown-menu"
+                    className={`${styles.productDropdown} ${productMenuOpen ? styles.productDropdownOpen : ''}`}
+                  >
                     {featuredProducts.map((product) => (
                       <Link
                         key={product.id}
@@ -98,11 +121,11 @@ export default function Layout({ children, home }) {
                           setProductMenuOpen(false);
                         }}
                       >
-                        <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
-                        <div>
+                        <div className={styles.productItemHeader}>
                           <strong className={styles.productItemTitle}>{product.name}</strong>
-                          <p className={styles.productItemDescription}>{product.description}</p>
+                          <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
                         </div>
+                        <p className={styles.productItemDescription}>{product.description}</p>
                       </Link>
                     ))}
                   </div>
