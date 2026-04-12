@@ -2,12 +2,14 @@ import Head from 'next/head';
 import styles from './layout.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { featuredProducts } from '../lib/products';
 
 export const siteTitle = 'CodeFalah';
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productMenuOpen, setProductMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -71,13 +73,40 @@ export default function Layout({ children, home }) {
               className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
             >
               <div className={styles.navActions}>
-                <Link
-                  href="/#product"
-                  className={styles.navLink}
-                  onClick={() => setMobileMenuOpen(false)}
+                <div
+                  className={styles.productMenu}
+                  onMouseEnter={() => setProductMenuOpen(true)}
+                  onMouseLeave={() => setProductMenuOpen(false)}
                 >
-                  Katalog Produk
-                </Link>
+                  <button
+                    type="button"
+                    className={`${styles.navLink} ${styles.productMenuToggle}`.trim()}
+                    aria-expanded={productMenuOpen}
+                    aria-haspopup="true"
+                    onClick={() => setProductMenuOpen((prev) => !prev)}
+                  >
+                    Katalog Produk
+                  </button>
+                  <div className={`${styles.productDropdown} ${productMenuOpen ? styles.productDropdownOpen : ''}`}>
+                    {featuredProducts.map((product) => (
+                      <Link
+                        key={product.id}
+                        href="/#product"
+                        className={styles.productItem}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setProductMenuOpen(false);
+                        }}
+                      >
+                        <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
+                        <div>
+                          <strong className={styles.productItemTitle}>{product.name}</strong>
+                          <p className={styles.productItemDescription}>{product.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <Link
                   href="/#promo"
                   className={styles.navLink}
