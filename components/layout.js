@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const name = 'Muhammad Iqbal Afandi';
 export const siteTitle = 'CodeFalah';
 
 export default function Layout({ children, home }) {
@@ -44,48 +42,36 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <button
-        type="button"
-        onClick={handleThemeToggle}
-        className={styles.themeToggle}
-        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      >
-        {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
-      </button>
       <header className={styles.header}>
-        {home ? (
-          <>
+        <nav className={styles.navbar} aria-label="Main navigation">
+          <Link href="/" className={styles.brand}>
             <Image
               priority
               src="/images/profile.png"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
+              height={40}
+              width={40}
+              alt="CodeFalah logo"
             />
-            <h1 className={`${utilStyles.heading2Xl} ${utilStyles.darkText}`}>
-              {name}
-            </h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.png"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
+            <span>CodeFalah</span>
+          </Link>
+
+          <div className={styles.navActions}>
+            <Link href="/" className={styles.navLink}>
+              Blog
             </Link>
-            <h2 className={`${utilStyles.headingLg} ${utilStyles.darkText}`}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
+            <Link href="/#mulai-jual" className={styles.navLink}>
+              Jual Produk Web
+            </Link>
+            <button
+              type="button"
+              onClick={handleThemeToggle}
+              className={styles.themeToggle}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+            </button>
+          </div>
+        </nav>
       </header>
       <main>{children}</main>
       {!home && (
