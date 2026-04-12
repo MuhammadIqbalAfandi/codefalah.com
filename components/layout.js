@@ -31,7 +31,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Saya menjual produk saya sendiri untuk membantu bisnis Anda berkembang di web."
         />
         <meta
           property="og:image"
@@ -74,6 +74,25 @@ export default function Layout({ children, home }) {
         </nav>
       </header>
       <main>{children}</main>
+      <footer className={styles.footer} aria-label="Site footer">
+        <div className={styles.footerWatermark} aria-hidden="true">
+          CODEFALAH
+        </div>
+        <div className={styles.footerContent}>
+          <div className={styles.footerBrand}>
+            <Image
+              src="/images/profile.png"
+              height={36}
+              width={36}
+              alt="CodeFalah footer logo"
+            />
+            <span>CodeFalah</span>
+          </div>
+          <p className={styles.footerText}>
+            Owner by Muhammad Iqbal Afandi, Desain by code
+          </p>
+        </div>
+      </footer>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">← Back to home</Link>
