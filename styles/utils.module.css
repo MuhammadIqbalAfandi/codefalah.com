@@ -54,3 +54,36 @@
 .darkText {
   color: var(--strong-text-color);
 }
+
+.postCategoryRow {
+  margin: 0.55rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.postCategory {
+  color: var(--link-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.tagList {
+  list-style: none;
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tagItem {
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-muted-color);
+  color: var(--muted-color);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+}
