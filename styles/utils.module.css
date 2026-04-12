@@ -99,9 +99,12 @@
   align-items: center;
   text-align: center;
   gap: 0.4rem;
-  padding: 1.6rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 2.2rem 1.4rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   background: var(--surface-muted-color);
   margin-bottom: 1.3rem;
 }
@@ -136,7 +139,7 @@
   border: 1px solid var(--border-color);
   border-radius: 0.9rem;
   padding: 0.85rem 0.9rem;
-  background: var(--surface-muted-color);
+  background: transparent;
 }
 
 .authorName {
