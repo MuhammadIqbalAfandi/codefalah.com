@@ -15,6 +15,14 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+  const brandPalette = [
+    { name: 'Navy Core', hex: '#102840' },
+    { name: 'Royal Blue', hex: '#0A67C7' },
+    { name: 'Sky Accent', hex: '#6EB4FF' },
+    { name: 'Soft Surface', hex: '#E9F3FF' },
+    { name: 'Background Tint', hex: '#F4F9FF' },
+  ];
+
   return (
     <Layout home>
       <Head>
@@ -29,6 +37,25 @@ export default function Home({ allPostsData }) {
           practice seputar JavaScript/TypeScript, Next.js, dan pengembangan
           aplikasi web end-to-end.
         </p>
+
+        <div className={homeStyles.paletteSection}>
+          <h3 className={homeStyles.paletteTitle}>Brand color palette</h3>
+          <ul className={homeStyles.paletteList}>
+            {brandPalette.map((color) => (
+              <li key={color.hex} className={homeStyles.paletteItem}>
+                <span
+                  className={homeStyles.paletteSwatch}
+                  style={{ backgroundColor: color.hex }}
+                  aria-hidden="true"
+                />
+                <div>
+                  <strong>{color.name}</strong>
+                  <span className={homeStyles.paletteHex}>{color.hex}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className={homeStyles.blogSection}>
