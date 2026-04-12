@@ -85,12 +85,15 @@ export default function Home({ allPostsData }) {
         </div>
 
         <div className={homeStyles.ctaRow}>
-          <a className={homeStyles.sellCta} href="mailto:hello@codefalah.com">
-            Tanya harga & demo →
-          </a>
-          <a className={homeStyles.sellGhostCta} href="#promo">
+          <Link className={homeStyles.sellCta} href="/tanya-harga">
+            Tanya harga →
+          </Link>
+          <Link className={homeStyles.sellGhostCta} href="/demo">
+            Lihat demo
+          </Link>
+          <Link className={homeStyles.sellGhostCta} href="/promo">
             Cek promo bulan ini
-          </a>
+          </Link>
         </div>
       </section>
 
