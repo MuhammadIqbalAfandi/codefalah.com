@@ -43,6 +43,10 @@ export default function Layout({ children, home }) {
       </Head>
       <header className={styles.header}>
         <nav className={styles.navbar} aria-label="Main navigation">
+          <Link href="/" className={styles.brand} aria-label="CodeFalah home">
+            <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
+            <span className={styles.brandName}>CodeFalah</span>
+          </Link>
           <div className={styles.navActions}>
             <Link href="/" className={styles.navLink}>
               Blog
@@ -62,6 +66,14 @@ export default function Layout({ children, home }) {
         </nav>
       </header>
       <main>{children}</main>
+      {!home && (
+        <div className={styles.backToHome}>
+          <Link href="/" className={styles.backToHomeLink}>
+            <span aria-hidden="true">←</span>
+            <span>Kembali ke halaman utama</span>
+          </Link>
+        </div>
+      )}
       <footer className={styles.footer} aria-label="Site footer">
         <div className={styles.footerWatermark} aria-hidden="true">
           CODEFALAH
@@ -72,11 +84,6 @@ export default function Layout({ children, home }) {
           </p>
         </div>
       </footer>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
     </div>
   );
 }
