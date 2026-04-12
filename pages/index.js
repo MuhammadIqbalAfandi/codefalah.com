@@ -19,8 +19,14 @@ export default function Home({ allPostsData }) {
   const [postLayout, setPostLayout] = useState('grid');
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState('Semua');
+  const [showAllCategories, setShowAllCategories] = useState(false);
   const postsPerPage = 4;
+  const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
+  const visibleCategories = showAllCategories
+    ? availableCategories
+    : availableCategories.slice(0, visibleCategoryLimit);
+  const hasHiddenCategories = availableCategories.length > visibleCategoryLimit;
   const filteredPosts =
     activeCategory === 'Semua'
       ? allPostsData
@@ -168,7 +174,7 @@ export default function Home({ allPostsData }) {
         </div>
 
         <nav className={homeStyles.categoryBreadcrumb} aria-label="Filter kategori artikel">
-          {availableCategories.map((category) => (
+          {visibleCategories.map((category) => (
             <button
               key={category}
               type="button"
@@ -184,6 +190,17 @@ export default function Home({ allPostsData }) {
               {category}
             </button>
           ))}
+          {hasHiddenCategories && (
+            <button
+              type="button"
+              className={homeStyles.categoryExpand}
+              onClick={() => setShowAllCategories((prev) => !prev)}
+              aria-expanded={showAllCategories}
+              aria-label={showAllCategories ? 'Sembunyikan kategori tambahan' : 'Tampilkan kategori tambahan'}
+            >
+              {showAllCategories ? '˅' : '>'}
+            </button>
+          )}
         </nav>
 
         <ul

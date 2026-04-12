@@ -288,6 +288,18 @@
   border-color: var(--surface-hover-border-color);
 }
 
+.categoryExpand {
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--strong-text-color);
+  font-size: 0.86rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.34rem 0.68rem;
+  cursor: pointer;
+  min-width: 2rem;
+}
+
 .postList {
   list-style: none;
   margin: 0;
