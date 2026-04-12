@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Date from '../components/date';
@@ -15,6 +16,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+  const [postLayout, setPostLayout] = useState('list');
+
   const brandPalette = [
     { name: 'Navy Core', hex: '#102840' },
     { name: 'Royal Blue', hex: '#0A67C7' },
@@ -60,13 +63,40 @@ export default function Home({ allPostsData }) {
 
       <section className={homeStyles.blogSection}>
         <div className={homeStyles.blogHeader}>
-          <h2 className={homeStyles.blogTitle}>Artikel Terbaru</h2>
-          <p className={homeStyles.blogSubTitle}>
-            Tampilan lebih clean agar konten lebih mudah dibaca dan dinavigasi.
-          </p>
+          <div>
+            <h2 className={homeStyles.blogTitle}>Artikel Terbaru</h2>
+            <p className={homeStyles.blogSubTitle}>
+              Tampilan lebih clean agar konten lebih mudah dibaca dan dinavigasi.
+            </p>
+          </div>
+
+          <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
+            <button
+              type="button"
+              className={`${homeStyles.layoutButton} ${
+                postLayout === 'list' ? homeStyles.layoutButtonActive : ''
+              }`}
+              onClick={() => setPostLayout('list')}
+            >
+              List
+            </button>
+            <button
+              type="button"
+              className={`${homeStyles.layoutButton} ${
+                postLayout === 'grid' ? homeStyles.layoutButtonActive : ''
+              }`}
+              onClick={() => setPostLayout('grid')}
+            >
+              Grid
+            </button>
+          </div>
         </div>
 
-        <ul className={homeStyles.postList}>
+        <ul
+          className={`${homeStyles.postList} ${
+            postLayout === 'grid' ? homeStyles.postListGrid : ''
+          }`}
+        >
           {allPostsData.map(({ id, date, title }) => (
             <li className={homeStyles.postCard} key={id}>
               <small className={homeStyles.postDate}>
