@@ -11,6 +11,7 @@ export default function Layout({ children, home }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productMenuOpen, setProductMenuOpen] = useState(false);
   const productMenuRef = useRef(null);
+  const dropdownCloseTimeoutRef = useRef(null);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -34,6 +35,12 @@ export default function Layout({ children, home }) {
     };
   }, []);
 
+  useEffect(() => () => {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+    }
+  }, []);
+
   function handleThemeToggle() {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', nextTheme);
@@ -43,6 +50,19 @@ export default function Layout({ children, home }) {
 
   function handleMobileMenuToggle() {
     setMobileMenuOpen((prev) => !prev);
+  }
+
+  function handleProductMenuMouseEnter() {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+    }
+    setProductMenuOpen(true);
+  }
+
+  function handleProductMenuMouseLeave() {
+    dropdownCloseTimeoutRef.current = setTimeout(() => {
+      setProductMenuOpen(false);
+    }, 180);
   }
 
   return (
@@ -90,8 +110,8 @@ export default function Layout({ children, home }) {
                 <div
                   ref={productMenuRef}
                   className={styles.productMenu}
-                  onMouseEnter={() => setProductMenuOpen(true)}
-                  onMouseLeave={() => setProductMenuOpen(false)}
+                  onMouseEnter={handleProductMenuMouseEnter}
+                  onMouseLeave={handleProductMenuMouseLeave}
                 >
                   <button
                     type="button"
