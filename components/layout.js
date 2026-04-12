@@ -7,6 +7,7 @@ export const siteTitle = 'CodeFalah';
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -22,6 +23,10 @@ export default function Layout({ children, home }) {
     document.documentElement.setAttribute('data-theme', nextTheme);
     window.localStorage.setItem('theme', nextTheme);
     setTheme(nextTheme);
+  }
+
+  function handleMobileMenuToggle() {
+    setMobileMenuOpen((prev) => !prev);
   }
 
   return (
@@ -47,22 +52,41 @@ export default function Layout({ children, home }) {
             <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
             <span className={styles.brandName}>CodeFalah</span>
           </Link>
-          <div className={styles.navActions}>
-            <Link href="/" className={styles.navLink}>
-              Blog
-            </Link>
-            <Link href="/#product" className={styles.navLink}>
-              Product
-            </Link>
-          </div>
           <button
             type="button"
-            onClick={handleThemeToggle}
-            className={styles.themeToggle}
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            onClick={handleMobileMenuToggle}
+            className={styles.mobileMenuToggle}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation-menu"
           >
-            {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+            {mobileMenuOpen ? '✕ Menu' : '☰ Menu'}
           </button>
+          <div
+            id="mobile-navigation-menu"
+            className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
+          >
+            <div className={styles.navActions}>
+              <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
+                Blog
+              </Link>
+              <Link
+                href="/#product"
+                className={styles.navLink}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Product
+              </Link>
+            </div>
+            <button
+              type="button"
+              onClick={handleThemeToggle}
+              className={styles.themeToggle}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+            </button>
+          </div>
         </nav>
       </header>
       <main>{children}</main>
