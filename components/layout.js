@@ -10,6 +10,7 @@ export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productMenuOpen, setProductMenuOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
   const productMenuRef = useRef(null);
   const dropdownCloseTimeoutRef = useRef(null);
 
@@ -195,6 +196,7 @@ export default function Layout({ children, home }) {
             <p className={styles.footerText}>
               Owner by Muhammad Iqbal Afandi, Desain by code
             </p>
+            <p className={styles.footerCopyright}>© {currentYear} CodeFalah. All rights reserved.</p>
           </div>
         </div>
       </footer>
