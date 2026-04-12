@@ -90,6 +90,8 @@ export default function Layout({ children, home }) {
                 <div
                   ref={productMenuRef}
                   className={styles.productMenu}
+                  onMouseEnter={() => setProductMenuOpen(true)}
+                  onMouseLeave={() => setProductMenuOpen(false)}
                 >
                   <button
                     type="button"
@@ -121,11 +123,11 @@ export default function Layout({ children, home }) {
                           setProductMenuOpen(false);
                         }}
                       >
-                        <div className={styles.productItemHeader}>
+                        <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
+                        <div className={styles.productItemContent}>
                           <strong className={styles.productItemTitle}>{product.name}</strong>
-                          <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
+                          <p className={styles.productItemDescription}>{product.description}</p>
                         </div>
-                        <p className={styles.productItemDescription}>{product.description}</p>
                       </Link>
                     ))}
                   </div>
