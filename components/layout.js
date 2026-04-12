@@ -59,8 +59,8 @@ export default function Layout({ children, home }) {
             <Link href="/" className={styles.navLink}>
               Blog
             </Link>
-            <Link href="/#mulai-jual" className={styles.navLink}>
-              Jual Produk Web
+            <Link href="/#product" className={styles.navLink}>
+              Product
             </Link>
             <button
               type="button"

@@ -113,31 +113,31 @@ export default function Home({ allPostsData }) {
         </ul>
       </section>
 
-      <section id="mulai-jual" className={homeStyles.sellSection}>
-        <span className={homeStyles.badge}>Mulai Jual Produk Web</span>
-        <h2 className={homeStyles.sellTitle}>Landing awal untuk menawarkan jasa web Anda</h2>
+      <section id="product" className={homeStyles.sellSection}>
+        <span className={homeStyles.badge}>Product</span>
+        <h2 className={homeStyles.sellTitle}>Katalog produk yang saya jual</h2>
         <p className={homeStyles.sellDescription}>
-          Gunakan bagian ini sebagai titik mulai untuk menjual produk atau jasa pembuatan website.
-          Anda bisa mengganti isi paket, harga, dan tombol CTA sesuai target klien.
+          Bagian ini saya gunakan untuk menampilkan semua produk digital yang saya buat
+          untuk dijual. Silakan lihat detail tiap produk sesuai kebutuhan Anda.
         </p>
 
         <div className={homeStyles.offerGrid}>
           <article className={homeStyles.offerCard}>
-            <h3>Starter Website</h3>
-            <p>Company profile sederhana untuk bisnis lokal dengan desain cepat tayang.</p>
+            <h3>Template Landing Page</h3>
+            <p>Template siap pakai untuk promosi bisnis dengan desain modern dan ringan.</p>
           </article>
           <article className={homeStyles.offerCard}>
-            <h3>Business Website</h3>
-            <p>Website profesional dengan optimasi SEO dasar dan integrasi formulir lead.</p>
+            <h3>Boilerplate Next.js</h3>
+            <p>Starter kit Next.js untuk mempercepat pembangunan website production-ready.</p>
           </article>
           <article className={homeStyles.offerCard}>
-            <h3>Custom Web App</h3>
-            <p>Aplikasi web sesuai kebutuhan bisnis untuk otomasi alur kerja khusus.</p>
+            <h3>UI Component Pack</h3>
+            <p>Kumpulan komponen UI reusable untuk dashboard, landing page, dan toko online.</p>
           </article>
         </div>
 
         <a className={homeStyles.sellCta} href="mailto:hello@codefalah.com">
-          Mulai jual sekarang →
+          Lihat semua produk →
         </a>
       </section>
     </Layout>
