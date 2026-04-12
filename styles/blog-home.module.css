@@ -321,7 +321,7 @@
 }
 
 .postCategory {
-  display: inline-flex;
+  display: block;
   margin-top: 0.5rem;
   color: var(--link-color);
   font-size: 0.78rem;
