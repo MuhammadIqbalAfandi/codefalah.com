@@ -48,7 +48,7 @@ export default function Layout({ children, home }) {
       </Head>
       <header className={styles.header}>
         <nav
-          className={`${styles.navbar} ${!home ? styles.navbarDetail : ''}`.trim()}
+          className={styles.navbar}
           aria-label="Main navigation"
         >
           <Link href="/" className={styles.brand} aria-label="CodeFalah home">
