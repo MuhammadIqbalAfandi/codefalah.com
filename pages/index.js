@@ -33,7 +33,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={homeStyles.hero}>
-        <span className={homeStyles.badge}>Welcome to CodeFalah Blog</span>
+        <span className={homeStyles.badge}>Welcome to Blog</span>
         <h2 className={homeStyles.heroTitle}>Insights seputar web development modern</h2>
         <p className={homeStyles.heroDescription}>
           Saya membagikan catatan singkat, pengalaman implementasi, dan best

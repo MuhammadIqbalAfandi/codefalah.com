@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from './layout.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -44,17 +43,6 @@ export default function Layout({ children, home }) {
       </Head>
       <header className={styles.header}>
         <nav className={styles.navbar} aria-label="Main navigation">
-          <Link href="/" className={styles.brand}>
-            <Image
-              priority
-              src="/images/profile.png"
-              height={40}
-              width={40}
-              alt="CodeFalah logo"
-            />
-            <span>CodeFalah</span>
-          </Link>
-
           <div className={styles.navActions}>
             <Link href="/" className={styles.navLink}>
               Blog
@@ -62,15 +50,15 @@ export default function Layout({ children, home }) {
             <Link href="/#product" className={styles.navLink}>
               Product
             </Link>
-            <button
-              type="button"
-              onClick={handleThemeToggle}
-              className={styles.themeToggle}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
-            </button>
           </div>
+          <button
+            type="button"
+            onClick={handleThemeToggle}
+            className={styles.themeToggle}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+          </button>
         </nav>
       </header>
       <main>{children}</main>
@@ -79,15 +67,6 @@ export default function Layout({ children, home }) {
           CODEFALAH
         </div>
         <div className={styles.footerContent}>
-          <div className={styles.footerBrand}>
-            <Image
-              src="/images/profile.png"
-              height={36}
-              width={36}
-              alt="CodeFalah footer logo"
-            />
-            <span>CodeFalah</span>
-          </div>
           <p className={styles.footerText}>
             Owner by Muhammad Iqbal Afandi, Desain by code
           </p>
