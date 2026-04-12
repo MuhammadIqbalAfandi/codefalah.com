@@ -87,3 +87,98 @@
   font-weight: 700;
   padding: 0.2rem 0.5rem;
 }
+
+.postArticleShell {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.postJumbotron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding: 1.6rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-muted-color);
+  margin-bottom: 1.3rem;
+}
+
+.postTitleCenter {
+  margin: 0.4rem 0;
+}
+
+.postContentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.postContentCenter {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.postSidebar {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.authorCard,
+.tocCard {
+  border: 1px solid var(--border-color);
+  border-radius: 0.9rem;
+  padding: 0.85rem 0.9rem;
+  background: var(--surface-muted-color);
+}
+
+.authorName {
+  margin: 0.2rem 0 0.35rem;
+  color: var(--strong-text-color);
+  font-weight: 700;
+}
+
+.tocList {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tocLink {
+  color: var(--muted-color);
+  text-decoration: none;
+  font-size: 0.93rem;
+}
+
+.tocLink:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.tocItemLevel2 {
+  margin-left: 0;
+}
+
+.tocItemLevel3 {
+  margin-left: 0.75rem;
+}
+
+@media (max-width: 920px) {
+  .postContentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .postSidebar {
+    position: static;
+  }
+}

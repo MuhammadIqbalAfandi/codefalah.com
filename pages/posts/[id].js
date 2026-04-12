@@ -24,35 +24,69 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
+  const tableOfContents = postData.tableOfContents || [];
+
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
       </Head>
 
-      <article>
-        <h1 className={`${utilStyles.headingXl} ${utilStyles.darkText}`}>
-          {postData.title}
-        </h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+      <article className={utilStyles.postArticleShell}>
+        <header className={utilStyles.postJumbotron}>
+          <div className={utilStyles.lightText}>
+            <Date dateString={postData.date} />
+          </div>
+          <h1 className={`${utilStyles.headingXl} ${utilStyles.darkText} ${utilStyles.postTitleCenter}`}>
+            {postData.title}
+          </h1>
+          <div className={utilStyles.postCategoryRow}>
+            <span className={utilStyles.postCategory}>{postData.category || 'Umum'}</span>
+          </div>
+          {(postData.tags || []).length > 0 && (
+            <ul className={utilStyles.tagList} aria-label="Tag artikel">
+              {postData.tags.map((tag) => (
+                <li key={tag} className={utilStyles.tagItem}>
+                  #{tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </header>
+
+        <div className={utilStyles.postContentGrid}>
+          <div className={utilStyles.postContentCenter}>
+            <div
+              className={utilStyles.darkText}
+              dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+            />
+          </div>
+
+          <aside className={utilStyles.postSidebar}>
+            <section className={utilStyles.authorCard} aria-label="Profil penulis">
+              <h2 className={utilStyles.headingMd}>Ditulis oleh</h2>
+              <p className={utilStyles.authorName}>{postData.author?.name}</p>
+              <p className={utilStyles.lightText}>{postData.author?.bio}</p>
+            </section>
+
+            <section className={utilStyles.tocCard} aria-label="Table of content">
+              <h2 className={utilStyles.headingMd}>Table of Content</h2>
+              {tableOfContents.length > 0 ? (
+                <ul className={utilStyles.tocList}>
+                  {tableOfContents.map((item) => (
+                    <li key={item.id} className={utilStyles[`tocItemLevel${item.level}`]}>
+                      <a href={`#${item.id}`} className={utilStyles.tocLink}>
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className={utilStyles.lightText}>Belum ada subjudul untuk ditampilkan.</p>
+              )}
+            </section>
+          </aside>
         </div>
-        <div className={utilStyles.postCategoryRow}>
-          <span className={utilStyles.postCategory}>{postData.category || 'Umum'}</span>
-        </div>
-        {(postData.tags || []).length > 0 && (
-          <ul className={utilStyles.tagList} aria-label="Tag artikel">
-            {postData.tags.map((tag) => (
-              <li key={tag} className={utilStyles.tagItem}>
-                #{tag}
-              </li>
-            ))}
-          </ul>
-        )}
-        <div
-          className={utilStyles.darkText}
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
       </article>
     </Layout>
   );
