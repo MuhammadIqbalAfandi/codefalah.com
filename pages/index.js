@@ -16,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-  const [postLayout, setPostLayout] = useState('list');
+  const [postLayout, setPostLayout] = useState('grid');
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 4;
   const totalPages = Math.ceil(allPostsData.length / postsPerPage);
