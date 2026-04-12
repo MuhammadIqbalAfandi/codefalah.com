@@ -1,3 +1,35 @@
+:root {
+  --text-color: #162f42;
+  --bg-color: #f8fbfd;
+  --link-color: #007acc;
+  --muted-color: #5f7486;
+  --strong-text-color: #1c374a;
+  --surface-color: #ffffff;
+  --surface-muted-color: #f5fbff;
+  --surface-hover-color: #f2f7fb;
+  --border-color: #e6eef5;
+  --surface-hover-border-color: #d5e4f2;
+  --badge-bg: #e7f1fb;
+  --badge-text: #1a5a96;
+  --shadow-color: rgba(14, 55, 86, 0.08);
+}
+
+html[data-theme='dark'] {
+  --text-color: #d9e7f2;
+  --bg-color: #0b1722;
+  --link-color: #6ebaff;
+  --muted-color: #9eb3c4;
+  --strong-text-color: #f4f9ff;
+  --surface-color: #132230;
+  --surface-muted-color: #112131;
+  --surface-hover-color: #1b2e3f;
+  --border-color: #2a3c4e;
+  --surface-hover-border-color: #496078;
+  --badge-bg: #1f3a52;
+  --badge-text: #9fd3ff;
+  --shadow-color: rgba(0, 0, 0, 0.35);
+}
+
 html,
 body {
   padding: 0;
@@ -6,8 +38,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  color: #162f42;
-  background: #f8fbfd;
+  color: var(--text-color);
+  background: var(--bg-color);
 }
 
 * {
@@ -15,7 +47,7 @@ body {
 }
 
 a {
-  color: #007acc;
+  color: var(--link-color);
   text-decoration: none;
 }
 

@@ -3,11 +3,30 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const name = 'Muhammad Iqbal Afandi';
 export const siteTitle = 'CodeFalah';
 
 export default function Layout({ children, home }) {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('theme');
+    const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = storedTheme ?? (preferredDark ? 'dark' : 'light');
+
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    setTheme(initialTheme);
+  }, []);
+
+  function handleThemeToggle() {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    window.localStorage.setItem('theme', nextTheme);
+    setTheme(nextTheme);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -25,6 +44,14 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <button
+        type="button"
+        onClick={handleThemeToggle}
+        className={styles.themeToggle}
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      >
+        {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+      </button>
       <header className={styles.header}>
         {home ? (
           <>
