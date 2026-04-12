@@ -48,9 +48,9 @@
 }
 
 .lightText {
-  color: #666;
+  color: var(--muted-color);
 }
 
 .darkText {
-  color: #1c374a;
+  color: var(--strong-text-color);
 }

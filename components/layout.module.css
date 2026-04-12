@@ -4,6 +4,26 @@
   margin: 2.5rem auto 4rem;
 }
 
+.themeToggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-color);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.themeToggle:hover {
+  background: var(--surface-hover-color);
+  border-color: var(--surface-hover-border-color);
+}
+
 .header {
   display: flex;
   flex-direction: column;
