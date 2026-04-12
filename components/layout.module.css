@@ -14,8 +14,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.1rem;
-  padding: 0.6rem 0.8rem;
-  background: var(--surface-color);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 
