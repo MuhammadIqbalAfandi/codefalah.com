@@ -47,7 +47,10 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        <nav className={styles.navbar} aria-label="Main navigation">
+        <nav
+          className={`${styles.navbar} ${!home ? styles.navbarDetail : ''}`.trim()}
+          aria-label="Main navigation"
+        >
           <Link href="/" className={styles.brand} aria-label="CodeFalah home">
             <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
             <span className={styles.brandName}>CodeFalah</span>
