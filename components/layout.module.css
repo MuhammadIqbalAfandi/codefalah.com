@@ -24,6 +24,7 @@
   justify-content: space-between;
   gap: 1.1rem;
   padding: 0.75rem 0;
+  position: relative;
 }
 
 
@@ -51,6 +52,93 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+}
+
+.productMenu {
+  position: static;
+}
+
+.productMenuToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dropdownIndicator {
+  display: inline-block;
+  font-size: 0.78rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdownIndicatorOpen {
+  transform: rotate(180deg);
+}
+
+.productDropdown {
+  position: absolute;
+  top: calc(100% + 0.15rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: min(760px, calc(100vw - 3rem));
+  border: 1px solid var(--border-color);
+  border-radius: 0.85rem;
+  background: var(--surface-color);
+  box-shadow: 0 16px 30px var(--shadow-color);
+  padding: 0.55rem;
+  display: none;
+  z-index: 20;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.productDropdownOpen {
+  display: grid;
+}
+
+.productItem {
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 0.55rem;
+  text-decoration: none;
+  padding: 0.6rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--border-color);
+}
+
+.productItem:hover {
+  background: var(--surface-muted-color);
+  border-color: var(--surface-hover-border-color);
+  text-decoration: none;
+}
+
+.productItemContent {
+  min-width: 0;
+}
+
+.productItemImage {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.productItemTitle {
+  display: block;
+  color: var(--strong-text-color);
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.productItemDescription {
+  margin: 0.15rem 0 0;
+  color: var(--muted-color);
+  font-size: 0.8rem;
+  line-height: 1.3;
 }
 
 .menuContent {
@@ -216,6 +304,21 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.45rem;
+  }
+
+  .productDropdown {
+    position: static;
+    transform: none;
+    min-width: 100%;
+    box-shadow: none;
+    margin-top: 0.45rem;
+    grid-template-columns: 1fr;
+  }
+
+  .productMenu,
+  .productMenuToggle {
+    width: 100%;
+    text-align: left;
   }
 
   .themeToggle {

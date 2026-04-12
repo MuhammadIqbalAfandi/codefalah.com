@@ -65,7 +65,10 @@ export default function Post({ postData }) {
           <aside className={utilStyles.postSidebar}>
             <section className={utilStyles.authorCard} aria-label="Profil penulis">
               <h2 className={utilStyles.headingMd}>Ditulis oleh</h2>
-              <p className={utilStyles.authorName}>{postData.author?.name}</p>
+              <div className={utilStyles.authorIdentity}>
+                <img src="/images/profile.png" alt="" aria-hidden="true" className={utilStyles.authorAvatar} />
+                <p className={utilStyles.authorName}>{postData.author?.name || 'CodeFalah Team'}</p>
+              </div>
               <p className={utilStyles.lightText}>{postData.author?.bio}</p>
             </section>
 

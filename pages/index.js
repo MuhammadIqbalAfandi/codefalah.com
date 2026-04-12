@@ -5,6 +5,7 @@ import Date from '../components/date';
 import Layout, { siteTitle } from '../components/layout';
 import homeStyles from '../styles/blog-home.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import { featuredProducts } from '../lib/products';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -20,6 +21,7 @@ export default function Home({ allPostsData }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [showAllCategories, setShowAllCategories] = useState(false);
+  const [sortOrder, setSortOrder] = useState('newest');
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
@@ -31,9 +33,14 @@ export default function Home({ allPostsData }) {
     activeCategory === 'Semua'
       ? allPostsData
       : allPostsData.filter((post) => (post.category || 'Umum') === activeCategory);
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    const firstDate = Number.isNaN(globalThis.Date.parse(a.date)) ? 0 : globalThis.Date.parse(a.date);
+    const secondDate = Number.isNaN(globalThis.Date.parse(b.date)) ? 0 : globalThis.Date.parse(b.date);
+    return sortOrder === 'newest' ? secondDate - firstDate : firstDate - secondDate;
+  });
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / postsPerPage));
   const safeCurrentPage = Math.min(currentPage, totalPages);
-  const paginatedPosts = filteredPosts.slice(
+  const paginatedPosts = sortedPosts.slice(
     (safeCurrentPage - 1) * postsPerPage,
     safeCurrentPage * postsPerPage,
   );
@@ -45,7 +52,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={homeStyles.hero}>
-        <span className={homeStyles.badge}>Welcome to Blog</span>
+        <span className={homeStyles.badge}>Welcome</span>
         <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
         <p className={homeStyles.heroDescription}>
           Fokus utama website ini adalah membantu Anda menemukan produk digital
@@ -69,18 +76,12 @@ export default function Home({ allPostsData }) {
         </p>
 
         <div className={homeStyles.offerGrid}>
-          <article className={homeStyles.offerCard}>
-            <h3>Template Landing Page</h3>
-            <p>Template siap pakai untuk promosi bisnis dengan desain modern dan ringan.</p>
-          </article>
-          <article className={homeStyles.offerCard}>
-            <h3>Boilerplate Next.js</h3>
-            <p>Starter kit Next.js untuk mempercepat pembangunan website production-ready.</p>
-          </article>
-          <article className={homeStyles.offerCard}>
-            <h3>UI Component Pack</h3>
-            <p>Kumpulan komponen UI reusable untuk dashboard, landing page, dan toko online.</p>
-          </article>
+          {featuredProducts.map((product) => (
+            <article key={product.id} className={homeStyles.offerCard}>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+            </article>
+          ))}
         </div>
 
         <div className={homeStyles.ctaRow}>
@@ -152,6 +153,21 @@ export default function Home({ allPostsData }) {
           </div>
 
           <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
+            <label htmlFor="article-sort" className={homeStyles.sortLabel}>
+              Sort by date
+            </label>
+            <select
+              id="article-sort"
+              className={homeStyles.sortSelect}
+              value={sortOrder}
+              onChange={(event) => {
+                setSortOrder(event.target.value);
+                setCurrentPage(1);
+              }}
+            >
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
             <button
               type="button"
               className={`${homeStyles.layoutButton} ${

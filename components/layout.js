@@ -1,13 +1,17 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { featuredProducts } from '../lib/products';
 
 export const siteTitle = 'CodeFalah';
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productMenuOpen, setProductMenuOpen] = useState(false);
+  const productMenuRef = useRef(null);
+  const dropdownCloseTimeoutRef = useRef(null);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -16,6 +20,25 @@ export default function Layout({ children, home }) {
 
     document.documentElement.setAttribute('data-theme', initialTheme);
     setTheme(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (productMenuRef.current && !productMenuRef.current.contains(event.target)) {
+        setProductMenuOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
+  useEffect(() => () => {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+    }
   }, []);
 
   function handleThemeToggle() {
@@ -27,6 +50,19 @@ export default function Layout({ children, home }) {
 
   function handleMobileMenuToggle() {
     setMobileMenuOpen((prev) => !prev);
+  }
+
+  function handleProductMenuMouseEnter() {
+    if (dropdownCloseTimeoutRef.current) {
+      clearTimeout(dropdownCloseTimeoutRef.current);
+    }
+    setProductMenuOpen(true);
+  }
+
+  function handleProductMenuMouseLeave() {
+    dropdownCloseTimeoutRef.current = setTimeout(() => {
+      setProductMenuOpen(false);
+    }, 180);
   }
 
   return (
@@ -71,13 +107,51 @@ export default function Layout({ children, home }) {
               className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
             >
               <div className={styles.navActions}>
-                <Link
-                  href="/#product"
-                  className={styles.navLink}
-                  onClick={() => setMobileMenuOpen(false)}
+                <div
+                  ref={productMenuRef}
+                  className={styles.productMenu}
+                  onMouseEnter={handleProductMenuMouseEnter}
+                  onMouseLeave={handleProductMenuMouseLeave}
                 >
-                  Katalog Produk
-                </Link>
+                  <button
+                    type="button"
+                    className={`${styles.navLink} ${styles.productMenuToggle}`.trim()}
+                    aria-expanded={productMenuOpen}
+                    aria-haspopup="true"
+                    aria-controls="product-dropdown-menu"
+                    onClick={() => setProductMenuOpen((prev) => !prev)}
+                  >
+                    Katalog Produk
+                    <span
+                      className={`${styles.dropdownIndicator} ${productMenuOpen ? styles.dropdownIndicatorOpen : ''}`}
+                      aria-hidden="true"
+                    >
+                      ▾
+                    </span>
+                  </button>
+                  <div
+                    id="product-dropdown-menu"
+                    className={`${styles.productDropdown} ${productMenuOpen ? styles.productDropdownOpen : ''}`}
+                  >
+                    {featuredProducts.map((product) => (
+                      <Link
+                        key={product.id}
+                        href="/#product"
+                        className={styles.productItem}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setProductMenuOpen(false);
+                        }}
+                      >
+                        <img src={product.image} alt="" aria-hidden="true" className={styles.productItemImage} />
+                        <div className={styles.productItemContent}>
+                          <strong className={styles.productItemTitle}>{product.name}</strong>
+                          <p className={styles.productItemDescription}>{product.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <Link
                   href="/#promo"
                   className={styles.navLink}
