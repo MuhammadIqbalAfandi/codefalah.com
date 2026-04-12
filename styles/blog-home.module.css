@@ -1,8 +1,5 @@
 .hero {
-  background: linear-gradient(145deg, var(--surface-muted-color) 0%, var(--surface-color) 100%);
-  border: 1px solid var(--border-color);
-  border-radius: 18px;
-  padding: 1.5rem;
+  padding: 0.5rem 0;
   margin-bottom: 2rem;
 }
 
@@ -56,10 +53,7 @@
 
 .sellSection {
   margin-top: 1.5rem;
-  background: linear-gradient(145deg, var(--surface-muted-color) 0%, var(--surface-color) 100%);
-  border: 1px solid var(--border-color);
-  border-radius: 18px;
-  padding: 1.4rem;
+  padding: 0.4rem 0;
 }
 
 .sellTitle {
@@ -81,10 +75,7 @@
 }
 
 .offerCard {
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 0.85rem 0.9rem;
+  padding: 0.2rem 0;
 }
 
 .offerCard h3 {
@@ -134,10 +125,7 @@
 
 .promoSection {
   margin-top: 1.2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  background: var(--surface-color);
-  padding: 1.2rem;
+  padding: 0.4rem 0;
 }
 
 .promoTitle {
@@ -154,10 +142,7 @@
 }
 
 .promoCard {
-  border: 1px dashed var(--surface-hover-border-color);
-  border-radius: 12px;
-  padding: 0.75rem 0.85rem;
-  background: var(--surface-muted-color);
+  padding: 0.2rem 0;
 }
 
 .promoCard h3 {
@@ -174,10 +159,7 @@
 
 .reviewSection {
   margin-top: 1.2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  background: linear-gradient(145deg, var(--surface-muted-color) 0%, var(--surface-color) 100%);
-  padding: 1.2rem;
+  padding: 0.4rem 0;
 }
 
 .reviewTitle {
@@ -194,10 +176,7 @@
 }
 
 .reviewCard {
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 0.85rem 0.9rem;
-  background: var(--surface-color);
+  padding: 0.2rem 0;
 }
 
 .reviewCard p {
