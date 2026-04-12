@@ -1,12 +1,21 @@
 .container {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 1.5rem;
-  margin: 1.5rem auto 2rem;
+  margin: 0;
 }
 
 .header {
+  width: 100%;
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--surface-color);
+}
+
+.headerInner,
+.pageContent,
+.footerInner {
+  width: min(1200px, 100% - 3rem);
+  margin: 0 auto;
 }
 
 .navbar {
@@ -14,8 +23,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.1rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
 }
 
 
@@ -125,9 +133,11 @@
 
 .footer {
   position: relative;
-  margin-top: 2.5rem;
+  width: 100%;
+  margin-top: 2.8rem;
   min-height: 160px;
   border-top: 1px solid var(--border-color);
+  background: var(--surface-color);
   overflow: hidden;
 }
 
@@ -137,7 +147,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(8rem, 14vw, 10rem);
+  font-size: clamp(8rem, 18vw, 14rem);
   font-weight: 800;
   letter-spacing: 0.3rem;
   color: var(--strong-text-color);
@@ -149,7 +159,7 @@
 .footerContent {
   position: relative;
   z-index: 1;
-  padding: 1.15rem 0;
+  padding: 1.45rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,8 +175,10 @@
 }
 
 @media (max-width: 740px) {
-  .container {
-    padding: 0 1rem;
+  .headerInner,
+  .pageContent,
+  .footerInner {
+    width: min(1200px, 100% - 2rem);
   }
 
   .navbar {
