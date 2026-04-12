@@ -142,7 +142,7 @@ export default function Home({ allPostsData }) {
         </div>
       </section>
 
-      <section className={homeStyles.blogSection}>
+      <section id="article" className={homeStyles.blogSection}>
         <div className={homeStyles.blogHeader}>
           <div>
             <h2 className={homeStyles.blogTitle}>Artikel Terbaru</h2>

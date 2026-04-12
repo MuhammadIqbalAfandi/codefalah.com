@@ -85,7 +85,7 @@ export default function Layout({ children, home }) {
                 >
                   Promo
                 </Link>
-                <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/#article" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
                   Artikel
                 </Link>
               </div>
