@@ -1,32 +1,32 @@
 :root {
-  --text-color: #162f42;
-  --bg-color: #f8fbfd;
-  --link-color: #007acc;
-  --muted-color: #5f7486;
-  --strong-text-color: #1c374a;
+  --text-color: #17314a;
+  --bg-color: #f4f9ff;
+  --link-color: #0a67c7;
+  --muted-color: #5d7286;
+  --strong-text-color: #102840;
   --surface-color: #ffffff;
-  --surface-muted-color: #f5fbff;
-  --surface-hover-color: #f2f7fb;
-  --border-color: #e6eef5;
-  --surface-hover-border-color: #d5e4f2;
-  --badge-bg: #e7f1fb;
-  --badge-text: #1a5a96;
-  --shadow-color: rgba(14, 55, 86, 0.08);
+  --surface-muted-color: #e9f3ff;
+  --surface-hover-color: #eef6ff;
+  --border-color: #d7e6f7;
+  --surface-hover-border-color: #b6d2ee;
+  --badge-bg: #d9ebff;
+  --badge-text: #0b5cb0;
+  --shadow-color: rgba(12, 65, 114, 0.12);
 }
 
 html[data-theme='dark'] {
-  --text-color: #d9e7f2;
-  --bg-color: #0b1722;
-  --link-color: #6ebaff;
-  --muted-color: #9eb3c4;
-  --strong-text-color: #f4f9ff;
-  --surface-color: #132230;
-  --surface-muted-color: #112131;
-  --surface-hover-color: #1b2e3f;
-  --border-color: #2a3c4e;
-  --surface-hover-border-color: #496078;
-  --badge-bg: #1f3a52;
-  --badge-text: #9fd3ff;
+  --text-color: #d7e9ff;
+  --bg-color: #081726;
+  --link-color: #6eb4ff;
+  --muted-color: #9cb7d2;
+  --strong-text-color: #f2f8ff;
+  --surface-color: #102438;
+  --surface-muted-color: #0d1f31;
+  --surface-hover-color: #173149;
+  --border-color: #23425f;
+  --surface-hover-border-color: #3b5f83;
+  --badge-bg: #1b3d5d;
+  --badge-text: #8ac1ff;
   --shadow-color: rgba(0, 0, 0, 0.35);
 }
 
