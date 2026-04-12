@@ -36,7 +36,7 @@ export default function Layout({ children, home }) {
               width={144}
               alt=""
             />
-            <h1 className={(utilStyles.heading2Xl, utilStyles.darkText)}>
+            <h1 className={`${utilStyles.heading2Xl} ${utilStyles.darkText}`}>
               {name}
             </h1>
           </>
@@ -52,7 +52,7 @@ export default function Layout({ children, home }) {
                 alt=""
               />
             </Link>
-            <h2 className={(utilStyles.headingLg, utilStyles.darkText)}>
+            <h2 className={`${utilStyles.headingLg} ${utilStyles.darkText}`}>
               <Link href="/" className={utilStyles.colorInherit}>
                 {name}
               </Link>

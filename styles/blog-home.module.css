@@ -1,0 +1,109 @@
+.hero {
+  background: linear-gradient(145deg, #f5fbff 0%, #ffffff 100%);
+  border: 1px solid #e6eef5;
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e7f1fb;
+  color: #1a5a96;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.heroTitle {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.25;
+  margin: 0;
+  color: #12283a;
+}
+
+.heroDescription {
+  margin: 0.75rem 0 0;
+  color: #4b6274;
+  font-size: 1rem;
+}
+
+.blogSection {
+  margin-top: 1.5rem;
+}
+
+.blogHeader {
+  margin-bottom: 1rem;
+}
+
+.blogTitle {
+  margin: 0;
+  color: #0f2233;
+  font-size: 1.5rem;
+}
+
+.blogSubTitle {
+  margin: 0.4rem 0 0;
+  color: #5f7486;
+  font-size: 0.95rem;
+}
+
+.postList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.postCard {
+  background-color: #ffffff;
+  border: 1px solid #e7edf3;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.postCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(14, 55, 86, 0.08);
+  border-color: #d5e4f2;
+}
+
+.postDate {
+  color: #748a9c;
+  font-size: 0.85rem;
+}
+
+.postTitle {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+.postTitle a {
+  color: #14334b;
+  text-decoration: none;
+}
+
+.postTitle a:hover {
+  text-decoration: underline;
+}
+
+.readMore {
+  color: #1c6bb0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 1.2rem;
+  }
+
+  .postCard {
+    padding: 0.9rem 1rem;
+  }
+}
