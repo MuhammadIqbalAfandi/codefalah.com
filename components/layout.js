@@ -47,75 +47,81 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        <nav
-          className={styles.navbar}
-          aria-label="Main navigation"
-        >
-          <Link href="/" className={styles.brand} aria-label="CodeFalah home">
-            <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
-            <span className={styles.brandName}>CodeFalah</span>
-          </Link>
-          <button
-            type="button"
-            onClick={handleMobileMenuToggle}
-            className={styles.mobileMenuToggle}
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation-menu"
+        <div className={styles.headerInner}>
+          <nav
+            className={styles.navbar}
+            aria-label="Main navigation"
           >
-            {mobileMenuOpen ? '✕ Menu' : '☰ Menu'}
-          </button>
-          <div
-            id="mobile-navigation-menu"
-            className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
-          >
-            <div className={styles.navActions}>
-              <Link
-                href="/#product"
-                className={styles.navLink}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Katalog Produk
-              </Link>
-              <Link
-                href="/#promo"
-                className={styles.navLink}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Promo
-              </Link>
-              <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-                Artikel
-              </Link>
-            </div>
+            <Link href="/" className={styles.brand} aria-label="CodeFalah home">
+              <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
+              <span className={styles.brandName}>CodeFalah</span>
+            </Link>
             <button
               type="button"
-              onClick={handleThemeToggle}
-              className={styles.themeToggle}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              onClick={handleMobileMenuToggle}
+              className={styles.mobileMenuToggle}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
             >
-              {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+              {mobileMenuOpen ? '✕ Menu' : '☰ Menu'}
             </button>
-          </div>
-        </nav>
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/" className={styles.backToHomeLink}>
-            <span aria-hidden="true">←</span>
-            <span>Kembali ke halaman utama</span>
-          </Link>
+            <div
+              id="mobile-navigation-menu"
+              className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
+            >
+              <div className={styles.navActions}>
+                <Link
+                  href="/#product"
+                  className={styles.navLink}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Katalog Produk
+                </Link>
+                <Link
+                  href="/#promo"
+                  className={styles.navLink}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Promo
+                </Link>
+                <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
+                  Artikel
+                </Link>
+              </div>
+              <button
+                type="button"
+                onClick={handleThemeToggle}
+                className={styles.themeToggle}
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+              </button>
+            </div>
+          </nav>
         </div>
-      )}
+      </header>
+      <div className={styles.pageContent}>
+        <main>{children}</main>
+        {!home && (
+          <div className={styles.backToHome}>
+            <Link href="/" className={styles.backToHomeLink}>
+              <span aria-hidden="true">←</span>
+              <span>Kembali ke halaman utama</span>
+            </Link>
+          </div>
+        )}
+      </div>
       <footer className={styles.footer} aria-label="Site footer">
         <div className={styles.footerWatermark} aria-hidden="true">
           CODEFALAH
         </div>
-        <div className={styles.footerContent}>
-          <p className={styles.footerText}>
-            Owner by Muhammad Iqbal Afandi, Desain by code
-          </p>
+        <div className={styles.footerInner}>
+          <div className={styles.footerContent}>
+            <p className={styles.footerText}>
+              Owner by Muhammad Iqbal Afandi, Desain by code
+            </p>
+          </div>
         </div>
       </footer>
     </div>
