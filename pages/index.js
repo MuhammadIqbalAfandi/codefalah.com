@@ -112,6 +112,34 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
+
+      <section id="mulai-jual" className={homeStyles.sellSection}>
+        <span className={homeStyles.badge}>Mulai Jual Produk Web</span>
+        <h2 className={homeStyles.sellTitle}>Landing awal untuk menawarkan jasa web Anda</h2>
+        <p className={homeStyles.sellDescription}>
+          Gunakan bagian ini sebagai titik mulai untuk menjual produk atau jasa pembuatan website.
+          Anda bisa mengganti isi paket, harga, dan tombol CTA sesuai target klien.
+        </p>
+
+        <div className={homeStyles.offerGrid}>
+          <article className={homeStyles.offerCard}>
+            <h3>Starter Website</h3>
+            <p>Company profile sederhana untuk bisnis lokal dengan desain cepat tayang.</p>
+          </article>
+          <article className={homeStyles.offerCard}>
+            <h3>Business Website</h3>
+            <p>Website profesional dengan optimasi SEO dasar dan integrasi formulir lead.</p>
+          </article>
+          <article className={homeStyles.offerCard}>
+            <h3>Custom Web App</h3>
+            <p>Aplikasi web sesuai kebutuhan bisnis untuk otomasi alur kerja khusus.</p>
+          </article>
+        </div>
+
+        <a className={homeStyles.sellCta} href="mailto:hello@codefalah.com">
+          Mulai jual sekarang →
+        </a>
+      </section>
     </Layout>
   );
 }
