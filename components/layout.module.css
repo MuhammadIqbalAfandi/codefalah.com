@@ -223,7 +223,9 @@
   }
 
   .footerWatermark {
-    font-size: clamp(3.2rem, 20vw, 5.5rem);
-    letter-spacing: 0.12rem;
+    font-size: clamp(2.1rem, 12vw, 3.6rem);
+    letter-spacing: 0.04rem;
+    padding-inline: 0.35rem;
+    text-align: center;
   }
 }
