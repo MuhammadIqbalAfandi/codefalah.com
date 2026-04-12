@@ -17,6 +17,13 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   const [postLayout, setPostLayout] = useState('list');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
+  const totalPages = Math.ceil(allPostsData.length / postsPerPage);
+  const paginatedPosts = allPostsData.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage,
+  );
 
   const brandPalette = [
     { name: 'Navy Core', hex: '#102840' },
@@ -97,7 +104,7 @@ export default function Home({ allPostsData }) {
             postLayout === 'grid' ? homeStyles.postListGrid : ''
           }`}
         >
-          {allPostsData.map(({ id, date, title }) => (
+          {paginatedPosts.map(({ id, date, title }) => (
             <li className={homeStyles.postCard} key={id}>
               <small className={homeStyles.postDate}>
                 <Date dateString={date} />
@@ -111,6 +118,45 @@ export default function Home({ allPostsData }) {
             </li>
           ))}
         </ul>
+
+        <div className={homeStyles.pagination} role="navigation" aria-label="Article pagination">
+          <button
+            type="button"
+            className={homeStyles.paginationButton}
+            onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+            disabled={currentPage === 1}
+          >
+            ← Sebelumnya
+          </button>
+
+          <div className={homeStyles.pageNumbers}>
+            {Array.from({ length: totalPages }, (_, index) => {
+              const page = index + 1;
+              return (
+                <button
+                  type="button"
+                  key={page}
+                  className={`${homeStyles.pageNumber} ${
+                    currentPage === page ? homeStyles.pageNumberActive : ''
+                  }`}
+                  onClick={() => setCurrentPage(page)}
+                  aria-current={currentPage === page ? 'page' : undefined}
+                >
+                  {page}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            className={homeStyles.paginationButton}
+            onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Berikutnya →
+          </button>
+        </div>
       </section>
 
       <section id="product" className={homeStyles.sellSection}>
