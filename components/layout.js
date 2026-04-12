@@ -70,15 +70,22 @@ export default function Layout({ children, home }) {
             className={`${styles.menuContent} ${mobileMenuOpen ? styles.menuOpen : ''}`.trim()}
           >
             <div className={styles.navActions}>
-              <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-                Blog
-              </Link>
               <Link
                 href="/#product"
                 className={styles.navLink}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Product
+                Katalog Produk
+              </Link>
+              <Link
+                href="/#promo"
+                className={styles.navLink}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Promo
+              </Link>
+              <Link href="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
+                Artikel
               </Link>
             </div>
             <button
