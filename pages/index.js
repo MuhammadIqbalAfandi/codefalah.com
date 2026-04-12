@@ -18,20 +18,19 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const [postLayout, setPostLayout] = useState('grid');
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState('Semua');
   const postsPerPage = 4;
-  const totalPages = Math.ceil(allPostsData.length / postsPerPage);
-  const paginatedPosts = allPostsData.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage,
+  const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
+  const filteredPosts =
+    activeCategory === 'Semua'
+      ? allPostsData
+      : allPostsData.filter((post) => (post.category || 'Umum') === activeCategory);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / postsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const paginatedPosts = filteredPosts.slice(
+    (safeCurrentPage - 1) * postsPerPage,
+    safeCurrentPage * postsPerPage,
   );
-
-  const brandPalette = [
-    { name: 'Navy Core', hex: '#102840' },
-    { name: 'Royal Blue', hex: '#0A67C7' },
-    { name: 'Sky Accent', hex: '#6EB4FF' },
-    { name: 'Soft Surface', hex: '#E9F3FF' },
-    { name: 'Background Tint', hex: '#F4F9FF' },
-  ];
 
   return (
     <Layout home>
@@ -51,9 +50,6 @@ export default function Home({ allPostsData }) {
         <div className={homeStyles.heroActions}>
           <a className={homeStyles.heroPrimaryCta} href="#product">
             Lihat katalog produk
-          </a>
-          <a className={homeStyles.heroSecondaryCta} href="#promo">
-            Lihat promo & bonus
           </a>
         </div>
       </section>
@@ -110,23 +106,34 @@ export default function Home({ allPostsData }) {
         </div>
       </section>
 
-      <section className={homeStyles.brandSection}>
-        <h3 className={homeStyles.brandTitle}>Brand color palette</h3>
-        <ul className={homeStyles.paletteList}>
-          {brandPalette.map((color) => (
-            <li key={color.hex} className={homeStyles.paletteItem}>
-              <span
-                className={homeStyles.paletteSwatch}
-                style={{ backgroundColor: color.hex }}
-                aria-hidden="true"
-              />
-              <div>
-                <strong>{color.name}</strong>
-                <span className={homeStyles.paletteHex}>{color.hex}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <section className={homeStyles.reviewSection} aria-labelledby="review-heading">
+        <span className={homeStyles.badge}>Review Pengguna</span>
+        <h2 id="review-heading" className={homeStyles.reviewTitle}>
+          Apa kata pengguna setelah membeli produk kami
+        </h2>
+        <div className={homeStyles.reviewGrid}>
+          <article className={homeStyles.reviewCard}>
+            <p>
+              “Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign
+              kami minggu pertama.”
+            </p>
+            <strong>Rina, Owner UMKM</strong>
+          </article>
+          <article className={homeStyles.reviewCard}>
+            <p>
+              “Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur
+              inti.”
+            </p>
+            <strong>Bagus, Product Engineer</strong>
+          </article>
+          <article className={homeStyles.reviewCard}>
+            <p>
+              “UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh
+              lebih cepat.”
+            </p>
+            <strong>Nadia, UI Designer</strong>
+          </article>
+        </div>
       </section>
 
       <section className={homeStyles.blogSection}>
@@ -160,19 +167,48 @@ export default function Home({ allPostsData }) {
           </div>
         </div>
 
+        <nav className={homeStyles.categoryBreadcrumb} aria-label="Filter kategori artikel">
+          {availableCategories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              className={`${homeStyles.categoryCrumb} ${
+                activeCategory === category ? homeStyles.categoryCrumbActive : ''
+              }`}
+              onClick={() => {
+                setActiveCategory(category);
+                setCurrentPage(1);
+              }}
+              aria-current={activeCategory === category ? 'page' : undefined}
+            >
+              {category}
+            </button>
+          ))}
+        </nav>
+
         <ul
           className={`${homeStyles.postList} ${
             postLayout === 'grid' ? homeStyles.postListGrid : ''
           }`}
         >
-          {paginatedPosts.map(({ id, date, title }) => (
+          {paginatedPosts.map(({ id, date, title, tags = [], category }) => (
             <li className={homeStyles.postCard} key={id}>
               <small className={homeStyles.postDate}>
                 <Date dateString={date} />
               </small>
+              <span className={homeStyles.postCategory}>{category || 'Umum'}</span>
               <h3 className={homeStyles.postTitle}>
                 <Link href={`/posts/${id}`}>{title}</Link>
               </h3>
+              {tags.length > 0 && (
+                <ul className={homeStyles.tagList} aria-label="Tag artikel">
+                  {tags.map((tag) => (
+                    <li key={tag} className={homeStyles.tagItem}>
+                      #{tag}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <Link className={homeStyles.readMore} href={`/posts/${id}`}>
                 Baca artikel →
               </Link>
@@ -185,7 +221,7 @@ export default function Home({ allPostsData }) {
             type="button"
             className={homeStyles.paginationButton}
             onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
-            disabled={currentPage === 1}
+            disabled={safeCurrentPage === 1}
           >
             ← Sebelumnya
           </button>
@@ -198,10 +234,10 @@ export default function Home({ allPostsData }) {
                   type="button"
                   key={page}
                   className={`${homeStyles.pageNumber} ${
-                    currentPage === page ? homeStyles.pageNumberActive : ''
+                    safeCurrentPage === page ? homeStyles.pageNumberActive : ''
                   }`}
                   onClick={() => setCurrentPage(page)}
-                  aria-current={currentPage === page ? 'page' : undefined}
+                  aria-current={safeCurrentPage === page ? 'page' : undefined}
                 >
                   {page}
                 </button>
@@ -213,7 +249,7 @@ export default function Home({ allPostsData }) {
             type="button"
             className={homeStyles.paginationButton}
             onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-            disabled={currentPage === totalPages}
+            disabled={safeCurrentPage === totalPages}
           >
             Berikutnya →
           </button>

@@ -8,6 +8,13 @@ export const siteTitle = 'CodeFalah';
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const brandPalette = [
+    'Navy Core #102840',
+    'Royal Blue #0A67C7',
+    'Sky Accent #6EB4FF',
+    'Soft Surface #E9F3FF',
+    'Background Tint #F4F9FF',
+  ];
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem('theme');
@@ -116,6 +123,14 @@ export default function Layout({ children, home }) {
           <p className={styles.footerText}>
             Owner by Muhammad Iqbal Afandi, Desain by code
           </p>
+          <div className={styles.footerPalette}>
+            <p className={styles.footerPaletteTitle}>Brand color palette</p>
+            <ul className={styles.footerPaletteList}>
+              {brandPalette.map((color) => (
+                <li key={color}>{color}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </footer>
     </div>

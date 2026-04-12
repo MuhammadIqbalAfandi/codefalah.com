@@ -37,6 +37,18 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
+        <div className={utilStyles.postMetaRow}>
+          <span className={utilStyles.postCategory}>{postData.category || 'Umum'}</span>
+          {(postData.tags || []).length > 0 && (
+            <ul className={utilStyles.tagList} aria-label="Tag artikel">
+              {postData.tags.map((tag) => (
+                <li key={tag} className={utilStyles.tagItem}>
+                  #{tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
         <div
           className={utilStyles.darkText}
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}

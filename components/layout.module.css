@@ -156,9 +156,9 @@
   z-index: 1;
   padding: 1.15rem 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 0.9rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
 }
 
@@ -167,6 +167,26 @@
   color: var(--muted-color);
   font-size: 0.92rem;
   text-align: center;
+}
+
+.footerPalette {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footerPaletteTitle {
+  margin: 0;
+  color: var(--strong-text-color);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.footerPaletteList {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted-color);
+  font-size: 0.84rem;
 }
 
 @media (max-width: 740px) {
