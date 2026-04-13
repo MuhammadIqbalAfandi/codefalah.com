@@ -304,7 +304,7 @@ export default function Home({ allPostsData }) {
 
           <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
             <label htmlFor="article-sort" className={homeStyles.sortLabel}>
-              Urutkan berdasarkan tanggal
+              Urutkan
             </label>
             <select
               id="article-sort"
@@ -325,7 +325,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('list')}
             >
-              Daftar
+              List
             </button>
             <button
               type="button"
@@ -334,7 +334,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('grid')}
             >
-              Kotak
+              Grid
             </button>
           </div>
         </div>
