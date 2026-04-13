@@ -107,7 +107,10 @@ export default function Layout({ children, home }) {
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-menu"
             >
-              {mobileMenuOpen ? '✕ Tutup' : '☰ Buka menu'}
+              <span className={styles.mobileMenuToggleIcon} aria-hidden="true">
+                {mobileMenuOpen ? '✕' : '☰'}
+              </span>
+              <span>{mobileMenuOpen ? 'Tutup' : 'Menu'}</span>
             </button>
             <div
               id="mobile-navigation-menu"
