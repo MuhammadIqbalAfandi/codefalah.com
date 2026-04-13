@@ -54,6 +54,9 @@ export default function Layout({ children, home }) {
   }
 
   function handleProductMenuMouseEnter() {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches) {
+      return;
+    }
     if (dropdownCloseTimeoutRef.current) {
       clearTimeout(dropdownCloseTimeoutRef.current);
     }
@@ -61,6 +64,9 @@ export default function Layout({ children, home }) {
   }
 
   function handleProductMenuMouseLeave() {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches) {
+      return;
+    }
     dropdownCloseTimeoutRef.current = setTimeout(() => {
       setProductMenuOpen(false);
     }, 180);
@@ -120,7 +126,12 @@ export default function Layout({ children, home }) {
                     aria-expanded={productMenuOpen}
                     aria-haspopup="true"
                     aria-controls="product-dropdown-menu"
-                    onClick={() => setProductMenuOpen((prev) => !prev)}
+                    onClick={() => {
+                      if (dropdownCloseTimeoutRef.current) {
+                        clearTimeout(dropdownCloseTimeoutRef.current);
+                      }
+                      setProductMenuOpen((prev) => !prev);
+                    }}
                   >
                     Katalog Produk
                     <span

@@ -112,7 +112,26 @@ export default function Home({ allPostsData }) {
     carousel.scrollLeft = reviewScrollLeft.current - delta;
   };
 
+  const snapToClosestReview = () => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel) return;
+    const cards = Array.from(carousel.querySelectorAll('article'));
+    if (cards.length === 0) return;
+    const closestCard = cards.reduce((closest, card) =>
+      Math.abs(card.offsetLeft - carousel.scrollLeft) < Math.abs(closest.offsetLeft - carousel.scrollLeft)
+        ? card
+        : closest,
+    cards[0]);
+    carousel.scrollTo({
+      left: closestCard.offsetLeft,
+      behavior: 'smooth',
+    });
+  };
+
   const stopReviewDrag = () => {
+    if (isDraggingReview.current) {
+      snapToClosestReview();
+    }
     isDraggingReview.current = false;
   };
 
@@ -198,7 +217,11 @@ export default function Home({ allPostsData }) {
 
         <div className={homeStyles.offerGrid}>
           {featuredSaasServices.map((service) => (
-            <article key={service.id} className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured}`}>
+            <Link
+              key={service.id}
+              href={`/products/${service.id}`}
+              className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured} ${homeStyles.saasCardLink}`}
+            >
               <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
               <div className={homeStyles.saasBadgeRow}>
                 <span className={homeStyles.saasFlag}>{service.badge}</span>
@@ -206,7 +229,7 @@ export default function Home({ allPostsData }) {
               <h3>{service.name}</h3>
               <p>{service.description}</p>
               <small>{service.billing}</small>
-            </article>
+            </Link>
           ))}
 
           <article className={homeStyles.saasRoadmapCard}>
@@ -217,12 +240,6 @@ export default function Home({ allPostsData }) {
               layanan SaaS berikutnya sedang dipersiapkan.
             </p>
           </article>
-        </div>
-
-        <div className={homeStyles.ctaRow}>
-          <Link className={homeStyles.sellCta} href="/products/saas-undangan-online">
-            Lihat produk SaaS undangan online
-          </Link>
         </div>
       </section>
 

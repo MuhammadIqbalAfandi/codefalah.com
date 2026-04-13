@@ -244,6 +244,7 @@
   gap: 0.7rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   cursor: grab;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -390,6 +391,21 @@
   margin-top: 0.55rem;
   color: var(--muted-color);
   font-size: 0.78rem;
+}
+
+.saasCardLink {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.saasCardLink:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--link-color) 68%, var(--border-color));
+  box-shadow:
+    0 14px 28px color-mix(in srgb, var(--link-color) 24%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--link-color) 24%, transparent);
 }
 
 .sellSection,
