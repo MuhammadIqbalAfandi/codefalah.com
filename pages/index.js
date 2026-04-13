@@ -5,7 +5,7 @@ import Date from '../components/date';
 import Layout, { siteTitle } from '../components/layout';
 import homeStyles from '../styles/blog-home.module.css';
 import { getSortedPostsData } from '../lib/posts';
-import { featuredProducts } from '../lib/products';
+import { featuredProducts, featuredSaasServices, saasFutureFlagLabel } from '../lib/products';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -64,6 +64,26 @@ export default function Home({ allPostsData }) {
           <a className={homeStyles.heroPrimaryCta} href="#product">
             Lihat katalog produk
           </a>
+          <a className={homeStyles.heroSecondaryCta} href="#saas">
+            Lihat layanan SaaS
+          </a>
+        </div>
+
+        <div className={homeStyles.businessModelGuide} aria-label="Panduan memilih produk atau layanan SaaS">
+          <article className={homeStyles.businessModelCard}>
+            <h3>Produk digital (sekali beli)</h3>
+            <p>
+              Cocok jika Anda ingin aset digital siap pakai yang bisa dipasang mandiri dengan biaya
+              sekali bayar.
+            </p>
+          </article>
+          <article className={homeStyles.businessModelCard}>
+            <h3>Layanan SaaS (berlangganan)</h3>
+            <p>
+              Cocok jika Anda ingin platform yang selalu aktif, terus dikembangkan, dan dibantu
+              operasionalnya.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -93,6 +113,47 @@ export default function Home({ allPostsData }) {
           </Link>
           <Link className={homeStyles.sellGhostCta} href="/promo">
             Cek promo bulan ini
+          </Link>
+        </div>
+      </section>
+
+      <section id="saas" className={homeStyles.saasSection}>
+        <span className={homeStyles.badge}>Layanan SaaS</span>
+        <h2 className={homeStyles.saasTitle}>Perkenalan software SaaS kami: undangan online</h2>
+        <p className={homeStyles.saasDescription}>
+          Saat ini layanan SaaS yang tersedia adalah produk undangan online. Ke depan, model SaaS
+          ini disiapkan untuk berkembang ke layanan lain sesuai kebutuhan pasar.
+        </p>
+
+        <div className={homeStyles.offerGrid}>
+          {featuredSaasServices.map((service) => (
+            <article key={service.id} className={homeStyles.saasCard}>
+              <div className={homeStyles.saasBadgeRow}>
+                <span className={homeStyles.saasFlag}>{service.badge}</span>
+                {service.isSaas && <span className={homeStyles.saasModelFlag}>Flag: SaaS</span>}
+              </div>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <small>{service.billing}</small>
+            </article>
+          ))}
+
+          <article className={homeStyles.saasRoadmapCard}>
+            <span className={homeStyles.saasFutureFlag}>{saasFutureFlagLabel}</span>
+            <h3>SaaS lain segera hadir</h3>
+            <p>
+              Saat ini fokus pada undangan online terlebih dahulu. Flag ini menandakan roadmap
+              layanan SaaS berikutnya sedang dipersiapkan.
+            </p>
+          </article>
+        </div>
+
+        <div className={homeStyles.ctaRow}>
+          <Link className={homeStyles.sellCta} href="/demo">
+            Coba demo SaaS
+          </Link>
+          <Link className={homeStyles.sellGhostCta} href="/tanya-harga">
+            Konsultasi kebutuhan SaaS
           </Link>
         </div>
       </section>
