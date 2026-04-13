@@ -191,6 +191,10 @@
   cursor: pointer;
 }
 
+.mobileMenuToggleIcon {
+  margin-right: 0.45rem;
+}
+
 .themeToggle:hover {
   background: var(--surface-hover-color);
   border-color: var(--surface-hover-border-color);
