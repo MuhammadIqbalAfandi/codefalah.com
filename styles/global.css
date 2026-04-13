@@ -1,35 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --text-color: #1f2937;
-  --bg-color: #f8fafc;
-  --link-color: #2563eb;
-  --muted-color: #6b7280;
-  --strong-text-color: #111827;
-  --surface-color: #ffffff;
-  --surface-muted-color: #f1f5f9;
-  --surface-hover-color: #eef2ff;
-  --border-color: #dbe3ee;
-  --surface-hover-border-color: #b8c6db;
-  --badge-bg: #e7eefc;
-  --badge-text: #1d4ed8;
-  --shadow-color: rgba(15, 23, 42, 0.08);
+  --text-color: #10223a;
+  --bg-color: #edf3ff;
+  --link-color: #0071e3;
+  --muted-color: #4f647e;
+  --strong-text-color: #09111f;
+  --surface-color: rgba(255, 255, 255, 0.56);
+  --surface-muted-color: rgba(255, 255, 255, 0.4);
+  --surface-hover-color: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.52);
+  --surface-hover-border-color: rgba(255, 255, 255, 0.75);
+  --badge-bg: rgba(0, 113, 227, 0.12);
+  --badge-text: #005ab5;
+  --shadow-color: rgba(8, 35, 72, 0.16);
 }
 
 html[data-theme='dark'] {
-  --text-color: #d7e9ff;
-  --bg-color: #081726;
-  --link-color: #6eb4ff;
-  --muted-color: #9cb7d2;
-  --strong-text-color: #f2f8ff;
-  --surface-color: #102438;
-  --surface-muted-color: #0d1f31;
-  --surface-hover-color: #173149;
-  --border-color: #23425f;
-  --surface-hover-border-color: #3b5f83;
-  --badge-bg: #1b3d5d;
-  --badge-text: #8ac1ff;
-  --shadow-color: rgba(0, 0, 0, 0.35);
+  --text-color: #dbe7ff;
+  --bg-color: #050b18;
+  --link-color: #6fb7ff;
+  --muted-color: #a9bfd9;
+  --strong-text-color: #f5f8ff;
+  --surface-color: rgba(18, 27, 45, 0.58);
+  --surface-muted-color: rgba(16, 24, 40, 0.44);
+  --surface-hover-color: rgba(29, 42, 66, 0.72);
+  --border-color: rgba(164, 193, 229, 0.24);
+  --surface-hover-border-color: rgba(164, 193, 229, 0.42);
+  --badge-bg: rgba(111, 183, 255, 0.16);
+  --badge-text: #b9dcff;
+  --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
 html,
@@ -41,7 +41,12 @@ body {
   line-height: 1.6;
   font-size: 17px;
   color: var(--text-color);
-  background: var(--bg-color);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(0, 113, 227, 0.16), transparent 46%),
+    radial-gradient(circle at 86% 0%, rgba(95, 205, 255, 0.25), transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.6), transparent 40%),
+    var(--bg-color);
+  background-attachment: fixed;
 }
 
 * {
