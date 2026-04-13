@@ -245,7 +245,6 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  cursor: grab;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -257,10 +256,6 @@
   border-radius: 12px;
   padding: 0.85rem 0.9rem;
   background: var(--surface-muted-color);
-}
-
-.reviewCarousel:active {
-  cursor: grabbing;
 }
 
 .reviewCarousel::-webkit-scrollbar {
@@ -275,15 +270,41 @@
 }
 
 .reviewIndicator {
+  appearance: none;
   width: 0.45rem;
   height: 0.45rem;
+  border: none;
+  padding: 0;
   border-radius: 999px;
   background: color-mix(in srgb, var(--muted-color) 40%, transparent);
+  cursor: pointer;
 }
 
 .reviewIndicatorActive {
   width: 1.1rem;
   background: var(--link-color);
+}
+
+.reviewNav {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.reviewNavButton {
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--strong-text-color);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reviewNavButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 @media (max-width: 1024px) {
@@ -406,6 +427,7 @@
   box-shadow:
     0 14px 28px color-mix(in srgb, var(--link-color) 24%, transparent),
     0 0 0 1px color-mix(in srgb, var(--link-color) 24%, transparent);
+  text-decoration: none;
 }
 
 .sellSection,

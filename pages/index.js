@@ -24,9 +24,6 @@ export default function Home({ allPostsData }) {
   const [sortOrder, setSortOrder] = useState('newest');
   const [activeReviewIndex, setActiveReviewIndex] = useState(0);
   const reviewCarouselRef = useRef(null);
-  const isDraggingReview = useRef(false);
-  const reviewDragStartX = useRef(0);
-  const reviewScrollLeft = useRef(0);
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
@@ -97,42 +94,26 @@ export default function Home({ allPostsData }) {
     setActiveReviewIndex(currentIndex);
   };
 
-  const startReviewDrag = (clientX) => {
-    const carousel = reviewCarouselRef.current;
-    if (!carousel) return;
-    isDraggingReview.current = true;
-    reviewDragStartX.current = clientX;
-    reviewScrollLeft.current = carousel.scrollLeft;
-  };
-
-  const moveReviewDrag = (clientX) => {
-    const carousel = reviewCarouselRef.current;
-    if (!carousel || !isDraggingReview.current) return;
-    const delta = clientX - reviewDragStartX.current;
-    carousel.scrollLeft = reviewScrollLeft.current - delta;
-  };
-
-  const snapToClosestReview = () => {
+  const goToReview = (index) => {
     const carousel = reviewCarouselRef.current;
     if (!carousel) return;
     const cards = Array.from(carousel.querySelectorAll('article'));
     if (cards.length === 0) return;
-    const closestCard = cards.reduce((closest, card) =>
-      Math.abs(card.offsetLeft - carousel.scrollLeft) < Math.abs(closest.offsetLeft - carousel.scrollLeft)
-        ? card
-        : closest,
-    cards[0]);
+    const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
+    const targetCard = cards[safeIndex];
     carousel.scrollTo({
-      left: closestCard.offsetLeft,
+      left: targetCard.offsetLeft,
       behavior: 'smooth',
     });
+    setActiveReviewIndex(safeIndex);
   };
 
-  const stopReviewDrag = () => {
-    if (isDraggingReview.current) {
-      snapToClosestReview();
-    }
-    isDraggingReview.current = false;
+  const showPreviousReview = () => {
+    goToReview(activeReviewIndex - 1);
+  };
+
+  const showNextReview = () => {
+    goToReview(activeReviewIndex + 1);
   };
 
   return (
@@ -270,13 +251,6 @@ export default function Home({ allPostsData }) {
         <div
           ref={reviewCarouselRef}
           className={homeStyles.reviewCarousel}
-          onMouseDown={(event) => startReviewDrag(event.clientX)}
-          onMouseMove={(event) => moveReviewDrag(event.clientX)}
-          onMouseUp={stopReviewDrag}
-          onMouseLeave={stopReviewDrag}
-          onTouchStart={(event) => startReviewDrag(event.touches[0].clientX)}
-          onTouchMove={(event) => moveReviewDrag(event.touches[0].clientX)}
-          onTouchEnd={stopReviewDrag}
           onScroll={updateActiveReview}
         >
           {reviews.map((review) => (
@@ -288,14 +262,34 @@ export default function Home({ allPostsData }) {
         </div>
         <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel review">
           {reviews.map((review, index) => (
-            <span
+            <button
+              type="button"
               key={review.name}
               className={`${homeStyles.reviewIndicator} ${
                 activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
               }`}
-              aria-hidden="true"
+              aria-label={`Lihat review ${index + 1}`}
+              onClick={() => goToReview(index)}
             />
           ))}
+        </div>
+        <div className={homeStyles.reviewNav}>
+          <button
+            type="button"
+            className={homeStyles.reviewNavButton}
+            onClick={showPreviousReview}
+            disabled={activeReviewIndex === 0}
+          >
+            ← Prev
+          </button>
+          <button
+            type="button"
+            className={homeStyles.reviewNavButton}
+            onClick={showNextReview}
+            disabled={activeReviewIndex === reviews.length - 1}
+          >
+            Next →
+          </button>
         </div>
       </section>
 
