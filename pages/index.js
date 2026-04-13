@@ -22,6 +22,7 @@ export default function Home({ allPostsData }) {
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [sortOrder, setSortOrder] = useState('newest');
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
   const reviewCarouselRef = useRef(null);
   const isDraggingReview = useRef(false);
   const reviewDragStartX = useRef(0);
@@ -48,6 +49,53 @@ export default function Home({ allPostsData }) {
     (safeCurrentPage - 1) * postsPerPage,
     safeCurrentPage * postsPerPage,
   );
+  const reviews = [
+    {
+      quote:
+        '“Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign kami minggu pertama.”',
+      name: 'Rina, Owner UMKM',
+    },
+    {
+      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur inti.”',
+      name: 'Bagus, Product Engineer',
+    },
+    {
+      quote:
+        '“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”',
+      name: 'Nadia, UI Designer',
+    },
+    {
+      quote:
+        '“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”',
+      name: 'Fajar, Wedding Organizer',
+    },
+    {
+      quote:
+        '“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”',
+      name: 'Lia, Marketing Lead',
+    },
+    {
+      quote:
+        '“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”',
+      name: 'Doni, Business Owner',
+    },
+  ];
+
+  const updateActiveReview = () => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel) return;
+    const cards = Array.from(carousel.querySelectorAll('article'));
+    if (cards.length === 0) return;
+    const currentIndex = cards.reduce(
+      (closestIndex, card, index) =>
+        Math.abs(card.offsetLeft - carousel.scrollLeft) <
+        Math.abs(cards[closestIndex].offsetLeft - carousel.scrollLeft)
+          ? index
+          : closestIndex,
+      0,
+    );
+    setActiveReviewIndex(currentIndex);
+  };
 
   const startReviewDrag = (clientX) => {
     const carousel = reviewCarouselRef.current;
@@ -212,28 +260,25 @@ export default function Home({ allPostsData }) {
           onTouchStart={(event) => startReviewDrag(event.touches[0].clientX)}
           onTouchMove={(event) => moveReviewDrag(event.touches[0].clientX)}
           onTouchEnd={stopReviewDrag}
+          onScroll={updateActiveReview}
         >
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign
-              kami minggu pertama.”
-            </p>
-            <strong>Rina, Owner UMKM</strong>
-          </article>
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur
-              inti.”
-            </p>
-            <strong>Bagus, Product Engineer</strong>
-          </article>
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh
-              lebih cepat.”
-            </p>
-            <strong>Nadia, UI Designer</strong>
-          </article>
+          {reviews.map((review) => (
+            <article className={homeStyles.reviewCard} key={review.name}>
+              <p>{review.quote}</p>
+              <strong>{review.name}</strong>
+            </article>
+          ))}
+        </div>
+        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel review">
+          {reviews.map((review, index) => (
+            <span
+              key={review.name}
+              className={`${homeStyles.reviewIndicator} ${
+                activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
+              }`}
+              aria-hidden="true"
+            />
+          ))}
         </div>
       </section>
 

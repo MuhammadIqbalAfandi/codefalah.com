@@ -261,6 +261,25 @@
   cursor: grabbing;
 }
 
+.reviewIndicators {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.reviewIndicator {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted-color) 40%, transparent);
+}
+
+.reviewIndicatorActive {
+  width: 1.1rem;
+  background: var(--link-color);
+}
+
 .saasSection {
   margin-top: 1.2rem;
   border: 1px solid var(--border-color);
