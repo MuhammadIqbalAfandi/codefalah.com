@@ -54,6 +54,9 @@ export default function Layout({ children, home }) {
   }
 
   function handleProductMenuMouseEnter() {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches) {
+      return;
+    }
     if (dropdownCloseTimeoutRef.current) {
       clearTimeout(dropdownCloseTimeoutRef.current);
     }
@@ -61,6 +64,9 @@ export default function Layout({ children, home }) {
   }
 
   function handleProductMenuMouseLeave() {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 740px)').matches) {
+      return;
+    }
     dropdownCloseTimeoutRef.current = setTimeout(() => {
       setProductMenuOpen(false);
     }, 180);
@@ -87,9 +93,9 @@ export default function Layout({ children, home }) {
         <div className={styles.headerInner}>
           <nav
             className={styles.navbar}
-            aria-label="Main navigation"
+            aria-label="Navigasi utama"
           >
-            <Link href="/" className={styles.brand} aria-label="CodeFalah home">
+            <Link href="/" className={styles.brand} aria-label="Beranda CodeFalah">
               <img src="/favicon.ico" alt="" className={styles.brandLogo} aria-hidden="true" />
               <span className={styles.brandName}>CodeFalah</span>
             </Link>
@@ -97,11 +103,11 @@ export default function Layout({ children, home }) {
               type="button"
               onClick={handleMobileMenuToggle}
               className={styles.mobileMenuToggle}
-              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-menu"
             >
-              {mobileMenuOpen ? '✕ Menu' : '☰ Menu'}
+              {mobileMenuOpen ? '✕ Tutup' : '☰ Buka menu'}
             </button>
             <div
               id="mobile-navigation-menu"
@@ -120,7 +126,12 @@ export default function Layout({ children, home }) {
                     aria-expanded={productMenuOpen}
                     aria-haspopup="true"
                     aria-controls="product-dropdown-menu"
-                    onClick={() => setProductMenuOpen((prev) => !prev)}
+                    onClick={() => {
+                      if (dropdownCloseTimeoutRef.current) {
+                        clearTimeout(dropdownCloseTimeoutRef.current);
+                      }
+                      setProductMenuOpen((prev) => !prev);
+                    }}
                   >
                     Katalog Produk
                     <span
@@ -170,9 +181,9 @@ export default function Layout({ children, home }) {
                 type="button"
                 onClick={handleThemeToggle}
                 className={styles.themeToggle}
-                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                aria-label={`Ganti ke mode ${theme === 'dark' ? 'terang' : 'gelap'}`}
               >
-                {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
+                {theme === 'dark' ? '☀️ Mode terang' : '🌙 Mode gelap'}
               </button>
             </div>
           </nav>
@@ -189,16 +200,16 @@ export default function Layout({ children, home }) {
           </div>
         )}
       </div>
-      <footer className={styles.footer} aria-label="Site footer">
+      <footer className={styles.footer} aria-label="Footer situs">
         <div className={styles.footerWatermark} aria-hidden="true">
           CODEFALAH
         </div>
         <div className={styles.footerInner}>
           <div className={styles.footerContent}>
             <p className={styles.footerText}>
-              Owner by Muhammad Iqbal Afandi, Desain by code
+              Dimiliki oleh Muhammad Iqbal Afandi, didesain dengan kode
             </p>
-            <p className={styles.footerCopyright}>© {currentYear} CodeFalah. All rights reserved.</p>
+            <p className={styles.footerCopyright}>© {currentYear} CodeFalah. Seluruh hak cipta dilindungi.</p>
           </div>
         </div>
       </footer>

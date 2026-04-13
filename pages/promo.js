@@ -6,7 +6,7 @@ import styles from '../styles/marketing-pages.module.css';
 const promoItems = [
   {
     title: 'Diskon Launching 20%',
-    description: 'Promo terbatas untuk pembelian landing page template dan setup awal campaign.',
+    description: 'Promo terbatas untuk pembelian template landing page dan penyiapan awal kampanye.',
   },
   {
     title: 'Bundling Produk',
@@ -14,7 +14,7 @@ const promoItems = [
   },
   {
     title: 'Konsultasi Gratis',
-    description: 'Free sesi konsultasi 30 menit untuk bahas kebutuhan growth bisnis Anda.',
+    description: 'Sesi konsultasi gratis 30 menit untuk bahas kebutuhan pertumbuhan bisnis Anda.',
   },
 ];
 

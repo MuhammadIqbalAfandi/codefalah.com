@@ -24,9 +24,6 @@ export default function Home({ allPostsData }) {
   const [sortOrder, setSortOrder] = useState('newest');
   const [activeReviewIndex, setActiveReviewIndex] = useState(0);
   const reviewCarouselRef = useRef(null);
-  const isDraggingReview = useRef(false);
-  const reviewDragStartX = useRef(0);
-  const reviewScrollLeft = useRef(0);
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
@@ -52,32 +49,32 @@ export default function Home({ allPostsData }) {
   const reviews = [
     {
       quote:
-        '“Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign kami minggu pertama.”',
-      name: 'Rina, Owner UMKM',
+        '“Template landing page-nya langsung bisa dipakai dan menaikkan konversi kampanye kami di minggu pertama.”',
+      name: 'Rina, Pemilik UMKM',
     },
     {
-      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur inti.”',
-      name: 'Bagus, Product Engineer',
+      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu penyiapan dan fokus ke fitur inti.”',
+      name: 'Bagus, Engineer Produk',
     },
     {
       quote:
         '“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”',
-      name: 'Nadia, UI Designer',
+      name: 'Nadia, Desainer UI',
     },
     {
       quote:
         '“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”',
-      name: 'Fajar, Wedding Organizer',
+      name: 'Fajar, Penyelenggara Pernikahan',
     },
     {
       quote:
         '“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”',
-      name: 'Lia, Marketing Lead',
+      name: 'Lia, Pimpinan Pemasaran',
     },
     {
       quote:
         '“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”',
-      name: 'Doni, Business Owner',
+      name: 'Doni, Pemilik Bisnis',
     },
   ];
 
@@ -97,23 +94,26 @@ export default function Home({ allPostsData }) {
     setActiveReviewIndex(currentIndex);
   };
 
-  const startReviewDrag = (clientX) => {
+  const goToReview = (index) => {
     const carousel = reviewCarouselRef.current;
     if (!carousel) return;
-    isDraggingReview.current = true;
-    reviewDragStartX.current = clientX;
-    reviewScrollLeft.current = carousel.scrollLeft;
+    const cards = Array.from(carousel.querySelectorAll('article'));
+    if (cards.length === 0) return;
+    const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
+    const targetCard = cards[safeIndex];
+    carousel.scrollTo({
+      left: targetCard.offsetLeft,
+      behavior: 'smooth',
+    });
+    setActiveReviewIndex(safeIndex);
   };
 
-  const moveReviewDrag = (clientX) => {
-    const carousel = reviewCarouselRef.current;
-    if (!carousel || !isDraggingReview.current) return;
-    const delta = clientX - reviewDragStartX.current;
-    carousel.scrollLeft = reviewScrollLeft.current - delta;
+  const showPreviousReview = () => {
+    goToReview(activeReviewIndex - 1);
   };
 
-  const stopReviewDrag = () => {
-    isDraggingReview.current = false;
+  const showNextReview = () => {
+    goToReview(activeReviewIndex + 1);
   };
 
   return (
@@ -123,7 +123,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={homeStyles.hero}>
-        <span className={homeStyles.badge}>Welcome</span>
+        <span className={homeStyles.badge}>Selamat Datang</span>
         <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
         <p className={homeStyles.heroDescription}>
           Fokus utama website ini adalah membantu Anda menemukan produk digital
@@ -198,7 +198,11 @@ export default function Home({ allPostsData }) {
 
         <div className={homeStyles.offerGrid}>
           {featuredSaasServices.map((service) => (
-            <article key={service.id} className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured}`}>
+            <Link
+              key={service.id}
+              href={`/products/${service.id}`}
+              className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured} ${homeStyles.saasCardLink}`}
+            >
               <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
               <div className={homeStyles.saasBadgeRow}>
                 <span className={homeStyles.saasFlag}>{service.badge}</span>
@@ -206,7 +210,7 @@ export default function Home({ allPostsData }) {
               <h3>{service.name}</h3>
               <p>{service.description}</p>
               <small>{service.billing}</small>
-            </article>
+            </Link>
           ))}
 
           <article className={homeStyles.saasRoadmapCard}>
@@ -218,20 +222,14 @@ export default function Home({ allPostsData }) {
             </p>
           </article>
         </div>
-
-        <div className={homeStyles.ctaRow}>
-          <Link className={homeStyles.sellCta} href="/products/saas-undangan-online">
-            Lihat produk SaaS undangan online
-          </Link>
-        </div>
       </section>
 
       <section id="promo" className={homeStyles.promoSection}>
-        <span className={homeStyles.badge}>Promo & Value</span>
+        <span className={homeStyles.badge}>Promo & Nilai</span>
         <h2 className={homeStyles.promoTitle}>Alasan pengunjung tertarik membeli</h2>
         <div className={homeStyles.promoGrid}>
           <article className={homeStyles.promoCard}>
-            <h3>Bonus setup awal</h3>
+            <h3>Bonus penyiapan awal</h3>
             <p>Dapatkan panduan implementasi agar produk langsung bisa digunakan.</p>
           </article>
           <article className={homeStyles.promoCard}>
@@ -239,27 +237,20 @@ export default function Home({ allPostsData }) {
             <p>Tampilan tetap optimal di mobile, tablet, maupun desktop.</p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Support after-sales</h3>
+            <h3>Dukungan purna jual</h3>
             <p>Anda tetap mendapat bantuan setelah pembelian agar deploy lebih lancar.</p>
           </article>
         </div>
       </section>
 
       <section className={homeStyles.reviewSection} aria-labelledby="review-heading">
-        <span className={homeStyles.badge}>Review Pengguna</span>
+        <span className={homeStyles.badge}>Ulasan Pengguna</span>
         <h2 id="review-heading" className={homeStyles.reviewTitle}>
           Apa kata pengguna setelah membeli produk kami
         </h2>
         <div
           ref={reviewCarouselRef}
           className={homeStyles.reviewCarousel}
-          onMouseDown={(event) => startReviewDrag(event.clientX)}
-          onMouseMove={(event) => moveReviewDrag(event.clientX)}
-          onMouseUp={stopReviewDrag}
-          onMouseLeave={stopReviewDrag}
-          onTouchStart={(event) => startReviewDrag(event.touches[0].clientX)}
-          onTouchMove={(event) => moveReviewDrag(event.touches[0].clientX)}
-          onTouchEnd={stopReviewDrag}
           onScroll={updateActiveReview}
         >
           {reviews.map((review) => (
@@ -269,16 +260,36 @@ export default function Home({ allPostsData }) {
             </article>
           ))}
         </div>
-        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel review">
+        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel ulasan">
           {reviews.map((review, index) => (
-            <span
+            <button
+              type="button"
               key={review.name}
               className={`${homeStyles.reviewIndicator} ${
                 activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
               }`}
-              aria-hidden="true"
+              aria-label={`Lihat ulasan ${index + 1}`}
+              onClick={() => goToReview(index)}
             />
           ))}
+        </div>
+        <div className={homeStyles.reviewNav}>
+          <button
+            type="button"
+            className={homeStyles.reviewNavButton}
+            onClick={showPreviousReview}
+            disabled={activeReviewIndex === 0}
+          >
+            ← Sebelumnya
+          </button>
+          <button
+            type="button"
+            className={homeStyles.reviewNavButton}
+            onClick={showNextReview}
+            disabled={activeReviewIndex === reviews.length - 1}
+          >
+            Berikutnya →
+          </button>
         </div>
       </section>
 
@@ -293,7 +304,7 @@ export default function Home({ allPostsData }) {
 
           <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
             <label htmlFor="article-sort" className={homeStyles.sortLabel}>
-              Sort by date
+              Urutkan berdasarkan tanggal
             </label>
             <select
               id="article-sort"
@@ -304,8 +315,8 @@ export default function Home({ allPostsData }) {
                 setCurrentPage(1);
               }}
             >
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
+              <option value="newest">Terbaru</option>
+              <option value="oldest">Terlama</option>
             </select>
             <button
               type="button"
@@ -314,7 +325,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('list')}
             >
-              List
+              Daftar
             </button>
             <button
               type="button"
@@ -323,7 +334,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('grid')}
             >
-              Grid
+              Kotak
             </button>
           </div>
         </div>
@@ -388,7 +399,7 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
 
-        <div className={homeStyles.pagination} role="navigation" aria-label="Article pagination">
+        <div className={homeStyles.pagination} role="navigation" aria-label="Paginasi artikel">
           <button
             type="button"
             className={homeStyles.paginationButton}

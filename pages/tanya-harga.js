@@ -35,9 +35,9 @@ export default function TanyaHargaPage() {
               <option value="" disabled>
                 Pilih kebutuhan
               </option>
-              <option value="landing-page">Landing page campaign</option>
-              <option value="boilerplate">Boilerplate website</option>
-              <option value="ui-kit">UI component pack</option>
+              <option value="landing-page">Landing page kampanye</option>
+              <option value="boilerplate">Boilerplate situs web</option>
+              <option value="ui-kit">Paket komponen UI</option>
             </select>
           </div>
           <div className={styles.field}>
