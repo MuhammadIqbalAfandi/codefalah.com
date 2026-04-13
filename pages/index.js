@@ -49,32 +49,32 @@ export default function Home({ allPostsData }) {
   const reviews = [
     {
       quote:
-        '“Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign kami minggu pertama.”',
-      name: 'Rina, Owner UMKM',
+        '“Template landing page-nya langsung bisa dipakai dan menaikkan konversi kampanye kami di minggu pertama.”',
+      name: 'Rina, Pemilik UMKM',
     },
     {
-      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur inti.”',
-      name: 'Bagus, Product Engineer',
+      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu penyiapan dan fokus ke fitur inti.”',
+      name: 'Bagus, Engineer Produk',
     },
     {
       quote:
         '“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”',
-      name: 'Nadia, UI Designer',
+      name: 'Nadia, Desainer UI',
     },
     {
       quote:
         '“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”',
-      name: 'Fajar, Wedding Organizer',
+      name: 'Fajar, Penyelenggara Pernikahan',
     },
     {
       quote:
         '“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”',
-      name: 'Lia, Marketing Lead',
+      name: 'Lia, Pimpinan Pemasaran',
     },
     {
       quote:
         '“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”',
-      name: 'Doni, Business Owner',
+      name: 'Doni, Pemilik Bisnis',
     },
   ];
 
@@ -123,7 +123,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={homeStyles.hero}>
-        <span className={homeStyles.badge}>Welcome</span>
+        <span className={homeStyles.badge}>Selamat Datang</span>
         <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
         <p className={homeStyles.heroDescription}>
           Fokus utama website ini adalah membantu Anda menemukan produk digital
@@ -225,11 +225,11 @@ export default function Home({ allPostsData }) {
       </section>
 
       <section id="promo" className={homeStyles.promoSection}>
-        <span className={homeStyles.badge}>Promo & Value</span>
+        <span className={homeStyles.badge}>Promo & Nilai</span>
         <h2 className={homeStyles.promoTitle}>Alasan pengunjung tertarik membeli</h2>
         <div className={homeStyles.promoGrid}>
           <article className={homeStyles.promoCard}>
-            <h3>Bonus setup awal</h3>
+            <h3>Bonus penyiapan awal</h3>
             <p>Dapatkan panduan implementasi agar produk langsung bisa digunakan.</p>
           </article>
           <article className={homeStyles.promoCard}>
@@ -237,14 +237,14 @@ export default function Home({ allPostsData }) {
             <p>Tampilan tetap optimal di mobile, tablet, maupun desktop.</p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Support after-sales</h3>
+            <h3>Dukungan purna jual</h3>
             <p>Anda tetap mendapat bantuan setelah pembelian agar deploy lebih lancar.</p>
           </article>
         </div>
       </section>
 
       <section className={homeStyles.reviewSection} aria-labelledby="review-heading">
-        <span className={homeStyles.badge}>Review Pengguna</span>
+        <span className={homeStyles.badge}>Ulasan Pengguna</span>
         <h2 id="review-heading" className={homeStyles.reviewTitle}>
           Apa kata pengguna setelah membeli produk kami
         </h2>
@@ -260,7 +260,7 @@ export default function Home({ allPostsData }) {
             </article>
           ))}
         </div>
-        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel review">
+        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel ulasan">
           {reviews.map((review, index) => (
             <button
               type="button"
@@ -268,7 +268,7 @@ export default function Home({ allPostsData }) {
               className={`${homeStyles.reviewIndicator} ${
                 activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
               }`}
-              aria-label={`Lihat review ${index + 1}`}
+              aria-label={`Lihat ulasan ${index + 1}`}
               onClick={() => goToReview(index)}
             />
           ))}
@@ -280,7 +280,7 @@ export default function Home({ allPostsData }) {
             onClick={showPreviousReview}
             disabled={activeReviewIndex === 0}
           >
-            ← Prev
+            ← Sebelumnya
           </button>
           <button
             type="button"
@@ -288,7 +288,7 @@ export default function Home({ allPostsData }) {
             onClick={showNextReview}
             disabled={activeReviewIndex === reviews.length - 1}
           >
-            Next →
+            Berikutnya →
           </button>
         </div>
       </section>
@@ -304,7 +304,7 @@ export default function Home({ allPostsData }) {
 
           <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
             <label htmlFor="article-sort" className={homeStyles.sortLabel}>
-              Sort by date
+              Urutkan berdasarkan tanggal
             </label>
             <select
               id="article-sort"
@@ -315,8 +315,8 @@ export default function Home({ allPostsData }) {
                 setCurrentPage(1);
               }}
             >
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
+              <option value="newest">Terbaru</option>
+              <option value="oldest">Terlama</option>
             </select>
             <button
               type="button"
@@ -325,7 +325,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('list')}
             >
-              List
+              Daftar
             </button>
             <button
               type="button"
@@ -334,7 +334,7 @@ export default function Home({ allPostsData }) {
               }`}
               onClick={() => setPostLayout('grid')}
             >
-              Grid
+              Kotak
             </button>
           </div>
         </div>
@@ -399,7 +399,7 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
 
-        <div className={homeStyles.pagination} role="navigation" aria-label="Article pagination">
+        <div className={homeStyles.pagination} role="navigation" aria-label="Paginasi artikel">
           <button
             type="button"
             className={homeStyles.paginationButton}

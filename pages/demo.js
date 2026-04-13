@@ -5,12 +5,12 @@ import styles from '../styles/marketing-pages.module.css';
 
 const demoBenefits = [
   {
-    title: 'Live walkthrough',
-    description: 'Kami tampilkan alur produk dari setup sampai siap publish untuk bisnis Anda.',
+    title: 'Tur langsung produk',
+    description: 'Kami tampilkan alur produk dari penyiapan sampai siap terbit untuk bisnis Anda.',
   },
   {
-    title: 'Use case bisnis',
-    description: 'Demo menyesuaikan skenario real agar Anda langsung melihat potensi hasilnya.',
+    title: 'Skenario penggunaan bisnis',
+    description: 'Demo menyesuaikan skenario nyata agar Anda langsung melihat potensi hasilnya.',
   },
   {
     title: 'Roadmap implementasi',
@@ -29,7 +29,7 @@ export default function DemoPage() {
         <span className={styles.badge}>Demo</span>
         <h1 className={styles.title}>Lihat demo produk sebelum memutuskan pembelian</h1>
         <p className={styles.description}>
-          Jadwalkan sesi demo singkat agar tim Anda bisa mengevaluasi fitur, alur kerja, dan value
+          Jadwalkan sesi demo singkat agar tim Anda bisa mengevaluasi fitur, alur kerja, dan nilai
           produk secara langsung.
         </p>
       </section>
@@ -47,7 +47,7 @@ export default function DemoPage() {
 
         <div className={styles.ctaRow}>
           <Link className={styles.primaryCta} href="/tanya-harga">
-            Booking demo
+            Jadwalkan demo
           </Link>
           <Link className={styles.secondaryCta} href="/promo">
             Cek promo aktif
