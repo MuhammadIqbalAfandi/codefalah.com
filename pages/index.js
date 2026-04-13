@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Date from '../components/date';
@@ -22,6 +22,10 @@ export default function Home({ allPostsData }) {
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [sortOrder, setSortOrder] = useState('newest');
+  const reviewCarouselRef = useRef(null);
+  const isDraggingReview = useRef(false);
+  const reviewDragStartX = useRef(0);
+  const reviewScrollLeft = useRef(0);
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
@@ -44,6 +48,25 @@ export default function Home({ allPostsData }) {
     (safeCurrentPage - 1) * postsPerPage,
     safeCurrentPage * postsPerPage,
   );
+
+  const startReviewDrag = (clientX) => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel) return;
+    isDraggingReview.current = true;
+    reviewDragStartX.current = clientX;
+    reviewScrollLeft.current = carousel.scrollLeft;
+  };
+
+  const moveReviewDrag = (clientX) => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel || !isDraggingReview.current) return;
+    const delta = clientX - reviewDragStartX.current;
+    carousel.scrollLeft = reviewScrollLeft.current - delta;
+  };
+
+  const stopReviewDrag = () => {
+    isDraggingReview.current = false;
+  };
 
   return (
     <Layout home>
@@ -119,7 +142,7 @@ export default function Home({ allPostsData }) {
 
       <section id="saas" className={homeStyles.saasSection}>
         <span className={homeStyles.badge}>Layanan SaaS</span>
-        <h2 className={homeStyles.saasTitle}>Perkenalan software SaaS kami: undangan online</h2>
+        <h2 className={homeStyles.saasTitle}>Perkenalan produk SaaS untuk kebutuhan bisnis</h2>
         <p className={homeStyles.saasDescription}>
           Saat ini layanan SaaS yang tersedia adalah produk undangan online. Ke depan, model SaaS
           ini disiapkan untuk berkembang ke layanan lain sesuai kebutuhan pasar.
@@ -131,7 +154,6 @@ export default function Home({ allPostsData }) {
               <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
               <div className={homeStyles.saasBadgeRow}>
                 <span className={homeStyles.saasFlag}>{service.badge}</span>
-                {service.isSaas && <span className={homeStyles.saasModelFlag}>Flag: SaaS</span>}
               </div>
               <h3>{service.name}</h3>
               <p>{service.description}</p>
@@ -180,7 +202,17 @@ export default function Home({ allPostsData }) {
         <h2 id="review-heading" className={homeStyles.reviewTitle}>
           Apa kata pengguna setelah membeli produk kami
         </h2>
-        <div className={homeStyles.reviewGrid}>
+        <div
+          ref={reviewCarouselRef}
+          className={homeStyles.reviewCarousel}
+          onMouseDown={(event) => startReviewDrag(event.clientX)}
+          onMouseMove={(event) => moveReviewDrag(event.clientX)}
+          onMouseUp={stopReviewDrag}
+          onMouseLeave={stopReviewDrag}
+          onTouchStart={(event) => startReviewDrag(event.touches[0].clientX)}
+          onTouchMove={(event) => moveReviewDrag(event.touches[0].clientX)}
+          onTouchEnd={stopReviewDrag}
+        >
           <article className={homeStyles.reviewCard}>
             <p>
               “Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign

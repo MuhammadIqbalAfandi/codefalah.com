@@ -236,18 +236,29 @@
   font-size: 1.35rem;
 }
 
-.reviewGrid {
+.reviewCarousel {
   margin-top: 0.9rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(220px, 1fr);
   gap: 0.7rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  cursor: grab;
 }
 
 .reviewCard {
+  scroll-snap-align: start;
+  min-width: 0;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 0.85rem 0.9rem;
   background: var(--surface-muted-color);
+}
+
+.reviewCarousel:active {
+  cursor: grabbing;
 }
 
 .saasSection {
@@ -306,7 +317,6 @@
 }
 
 .saasFlag,
-.saasModelFlag,
 .saasFutureFlag {
   display: inline-block;
   font-size: 0.72rem;
@@ -318,11 +328,6 @@
 .saasFlag {
   background: color-mix(in srgb, var(--link-color) 14%, transparent);
   color: var(--link-color);
-}
-
-.saasModelFlag {
-  background: var(--badge-bg);
-  color: var(--badge-text);
 }
 
 .saasFutureFlag {
