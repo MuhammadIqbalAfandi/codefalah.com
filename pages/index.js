@@ -127,7 +127,8 @@ export default function Home({ allPostsData }) {
 
         <div className={homeStyles.offerGrid}>
           {featuredSaasServices.map((service) => (
-            <article key={service.id} className={homeStyles.saasCard}>
+            <article key={service.id} className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured}`}>
+              <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
               <div className={homeStyles.saasBadgeRow}>
                 <span className={homeStyles.saasFlag}>{service.badge}</span>
                 {service.isSaas && <span className={homeStyles.saasModelFlag}>Flag: SaaS</span>}
@@ -149,11 +150,8 @@ export default function Home({ allPostsData }) {
         </div>
 
         <div className={homeStyles.ctaRow}>
-          <Link className={homeStyles.sellCta} href="/demo">
-            Coba demo SaaS
-          </Link>
-          <Link className={homeStyles.sellGhostCta} href="/tanya-harga">
-            Konsultasi kebutuhan SaaS
+          <Link className={homeStyles.sellCta} href="/products/saas-undangan-online">
+            Lihat produk SaaS undangan online
           </Link>
         </div>
       </section>

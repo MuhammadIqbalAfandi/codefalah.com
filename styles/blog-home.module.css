@@ -277,6 +277,27 @@
   background: var(--surface-muted-color);
 }
 
+.saasCardFeatured {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--link-color) 40%, var(--border-color));
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 16%, transparent), transparent 58%),
+    var(--surface-muted-color);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--link-color) 18%, transparent);
+}
+
+.saasSpotlight {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background-color: var(--link-color);
+  color: #fff;
+}
+
 .saasBadgeRow {
   display: flex;
   align-items: center;
