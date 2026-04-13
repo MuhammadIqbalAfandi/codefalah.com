@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Date from '../components/date';
 import Layout, { siteTitle } from '../components/layout';
 import homeStyles from '../styles/blog-home.module.css';
 import { getSortedPostsData } from '../lib/posts';
-import { featuredProducts } from '../lib/products';
+import { featuredProducts, featuredSaasServices, saasFutureFlagLabel } from '../lib/products';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -22,6 +22,11 @@ export default function Home({ allPostsData }) {
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [showAllCategories, setShowAllCategories] = useState(false);
   const [sortOrder, setSortOrder] = useState('newest');
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
+  const reviewCarouselRef = useRef(null);
+  const isDraggingReview = useRef(false);
+  const reviewDragStartX = useRef(0);
+  const reviewScrollLeft = useRef(0);
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
   const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
@@ -44,6 +49,72 @@ export default function Home({ allPostsData }) {
     (safeCurrentPage - 1) * postsPerPage,
     safeCurrentPage * postsPerPage,
   );
+  const reviews = [
+    {
+      quote:
+        '“Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign kami minggu pertama.”',
+      name: 'Rina, Owner UMKM',
+    },
+    {
+      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur inti.”',
+      name: 'Bagus, Product Engineer',
+    },
+    {
+      quote:
+        '“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”',
+      name: 'Nadia, UI Designer',
+    },
+    {
+      quote:
+        '“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”',
+      name: 'Fajar, Wedding Organizer',
+    },
+    {
+      quote:
+        '“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”',
+      name: 'Lia, Marketing Lead',
+    },
+    {
+      quote:
+        '“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”',
+      name: 'Doni, Business Owner',
+    },
+  ];
+
+  const updateActiveReview = () => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel) return;
+    const cards = Array.from(carousel.querySelectorAll('article'));
+    if (cards.length === 0) return;
+    const currentIndex = cards.reduce(
+      (closestIndex, card, index) =>
+        Math.abs(card.offsetLeft - carousel.scrollLeft) <
+        Math.abs(cards[closestIndex].offsetLeft - carousel.scrollLeft)
+          ? index
+          : closestIndex,
+      0,
+    );
+    setActiveReviewIndex(currentIndex);
+  };
+
+  const startReviewDrag = (clientX) => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel) return;
+    isDraggingReview.current = true;
+    reviewDragStartX.current = clientX;
+    reviewScrollLeft.current = carousel.scrollLeft;
+  };
+
+  const moveReviewDrag = (clientX) => {
+    const carousel = reviewCarouselRef.current;
+    if (!carousel || !isDraggingReview.current) return;
+    const delta = clientX - reviewDragStartX.current;
+    carousel.scrollLeft = reviewScrollLeft.current - delta;
+  };
+
+  const stopReviewDrag = () => {
+    isDraggingReview.current = false;
+  };
 
   return (
     <Layout home>
@@ -64,6 +135,26 @@ export default function Home({ allPostsData }) {
           <a className={homeStyles.heroPrimaryCta} href="#product">
             Lihat katalog produk
           </a>
+          <a className={homeStyles.heroSecondaryCta} href="#saas">
+            Lihat layanan SaaS
+          </a>
+        </div>
+
+        <div className={homeStyles.businessModelGuide} aria-label="Panduan memilih produk atau layanan SaaS">
+          <article className={homeStyles.businessModelCard}>
+            <h3>Produk digital (sekali beli)</h3>
+            <p>
+              Cocok jika Anda ingin aset digital siap pakai yang bisa dipasang mandiri dengan biaya
+              sekali bayar.
+            </p>
+          </article>
+          <article className={homeStyles.businessModelCard}>
+            <h3>Layanan SaaS (berlangganan)</h3>
+            <p>
+              Cocok jika Anda ingin platform yang selalu aktif, terus dikembangkan, dan dibantu
+              operasionalnya.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -97,6 +188,44 @@ export default function Home({ allPostsData }) {
         </div>
       </section>
 
+      <section id="saas" className={homeStyles.saasSection}>
+        <span className={homeStyles.badge}>Layanan SaaS</span>
+        <h2 className={homeStyles.saasTitle}>Perkenalan produk SaaS untuk kebutuhan bisnis</h2>
+        <p className={homeStyles.saasDescription}>
+          Saat ini layanan SaaS yang tersedia adalah produk undangan online. Ke depan, model SaaS
+          ini disiapkan untuk berkembang ke layanan lain sesuai kebutuhan pasar.
+        </p>
+
+        <div className={homeStyles.offerGrid}>
+          {featuredSaasServices.map((service) => (
+            <article key={service.id} className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured}`}>
+              <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
+              <div className={homeStyles.saasBadgeRow}>
+                <span className={homeStyles.saasFlag}>{service.badge}</span>
+              </div>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <small>{service.billing}</small>
+            </article>
+          ))}
+
+          <article className={homeStyles.saasRoadmapCard}>
+            <span className={homeStyles.saasFutureFlag}>{saasFutureFlagLabel}</span>
+            <h3>SaaS lain segera hadir</h3>
+            <p>
+              Saat ini fokus pada undangan online terlebih dahulu. Flag ini menandakan roadmap
+              layanan SaaS berikutnya sedang dipersiapkan.
+            </p>
+          </article>
+        </div>
+
+        <div className={homeStyles.ctaRow}>
+          <Link className={homeStyles.sellCta} href="/products/saas-undangan-online">
+            Lihat produk SaaS undangan online
+          </Link>
+        </div>
+      </section>
+
       <section id="promo" className={homeStyles.promoSection}>
         <span className={homeStyles.badge}>Promo & Value</span>
         <h2 className={homeStyles.promoTitle}>Alasan pengunjung tertarik membeli</h2>
@@ -121,28 +250,35 @@ export default function Home({ allPostsData }) {
         <h2 id="review-heading" className={homeStyles.reviewTitle}>
           Apa kata pengguna setelah membeli produk kami
         </h2>
-        <div className={homeStyles.reviewGrid}>
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “Template landing page-nya langsung bisa dipakai dan menaikkan conversion campaign
-              kami minggu pertama.”
-            </p>
-            <strong>Rina, Owner UMKM</strong>
-          </article>
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “Boilerplate Next.js sangat rapi, tim jadi hemat waktu setup dan fokus ke fitur
-              inti.”
-            </p>
-            <strong>Bagus, Product Engineer</strong>
-          </article>
-          <article className={homeStyles.reviewCard}>
-            <p>
-              “UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh
-              lebih cepat.”
-            </p>
-            <strong>Nadia, UI Designer</strong>
-          </article>
+        <div
+          ref={reviewCarouselRef}
+          className={homeStyles.reviewCarousel}
+          onMouseDown={(event) => startReviewDrag(event.clientX)}
+          onMouseMove={(event) => moveReviewDrag(event.clientX)}
+          onMouseUp={stopReviewDrag}
+          onMouseLeave={stopReviewDrag}
+          onTouchStart={(event) => startReviewDrag(event.touches[0].clientX)}
+          onTouchMove={(event) => moveReviewDrag(event.touches[0].clientX)}
+          onTouchEnd={stopReviewDrag}
+          onScroll={updateActiveReview}
+        >
+          {reviews.map((review) => (
+            <article className={homeStyles.reviewCard} key={review.name}>
+              <p>{review.quote}</p>
+              <strong>{review.name}</strong>
+            </article>
+          ))}
+        </div>
+        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel review">
+          {reviews.map((review, index) => (
+            <span
+              key={review.name}
+              className={`${homeStyles.reviewIndicator} ${
+                activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
+              }`}
+              aria-hidden="true"
+            />
+          ))}
         </div>
       </section>
 

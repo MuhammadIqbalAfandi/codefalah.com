@@ -57,6 +57,43 @@
   background-color: var(--link-color);
 }
 
+.heroSecondaryCta {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.5rem 0.95rem;
+  color: var(--strong-text-color);
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.businessModelGuide {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.7rem;
+}
+
+.businessModelCard {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  background: var(--surface-color);
+}
+
+.businessModelCard h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--strong-text-color);
+}
+
+.businessModelCard p {
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted-color);
+}
+
 .blogSection {
   margin-top: 1.5rem;
 }
@@ -199,21 +236,164 @@
   font-size: 1.35rem;
 }
 
-.reviewGrid {
+.reviewCarousel {
   margin-top: 0.9rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 1.4rem) / 3);
   gap: 0.7rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .reviewCard {
+  scroll-snap-align: start;
+  min-width: 0;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 0.85rem 0.9rem;
   background: var(--surface-muted-color);
 }
 
+.reviewCarousel:active {
+  cursor: grabbing;
+}
+
+.reviewCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.reviewIndicators {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.reviewIndicator {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted-color) 40%, transparent);
+}
+
+.reviewIndicatorActive {
+  width: 1.1rem;
+  background: var(--link-color);
+}
+
+@media (max-width: 1024px) {
+  .reviewCarousel {
+    grid-auto-columns: calc((100% - 0.7rem) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviewCarousel {
+    grid-auto-columns: 100%;
+  }
+}
+
+.saasSection {
+  margin-top: 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 1.4rem;
+  background: var(--surface-color);
+}
+
+.saasTitle {
+  margin: 0.65rem 0 0;
+  color: var(--strong-text-color);
+  font-size: 1.5rem;
+}
+
+.saasDescription {
+  margin: 0.7rem 0 0;
+  color: var(--muted-color);
+}
+
+.saasCard,
+.saasRoadmapCard {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.85rem 0.9rem;
+  background: var(--surface-muted-color);
+}
+
+.saasCardFeatured {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--link-color) 40%, var(--border-color));
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 16%, transparent), transparent 58%),
+    var(--surface-muted-color);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--link-color) 18%, transparent);
+}
+
+.saasSpotlight {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background-color: var(--link-color);
+  color: #fff;
+}
+
+.saasBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.saasFlag,
+.saasFutureFlag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+}
+
+.saasFlag {
+  background: color-mix(in srgb, var(--link-color) 14%, transparent);
+  color: var(--link-color);
+}
+
+.saasFutureFlag {
+  background: color-mix(in srgb, #f59e0b 20%, transparent);
+  color: #b45309;
+}
+
+.saasCard h3,
+.saasRoadmapCard h3 {
+  margin: 0.6rem 0 0;
+  color: var(--strong-text-color);
+  font-size: 1rem;
+}
+
+.saasCard p,
+.saasRoadmapCard p {
+  margin: 0.5rem 0 0;
+  color: var(--muted-color);
+  font-size: 0.9rem;
+}
+
+.saasCard small {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: var(--muted-color);
+  font-size: 0.78rem;
+}
+
 .sellSection,
+.saasSection,
 .promoSection,
 .reviewSection,
 .postCard {
@@ -486,6 +666,7 @@
   }
 
   .heroPrimaryCta,
+  .heroSecondaryCta,
   .sellCta,
   .sellGhostCta {
     text-align: center;
