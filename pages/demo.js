@@ -23,6 +23,10 @@ export default function DemoPage() {
     <Layout>
       <Head>
         <title>Demo Produk | {siteTitle}</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
       </Head>
 
       <section className={styles.hero}>
@@ -37,8 +41,12 @@ export default function DemoPage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Yang Anda dapatkan saat demo</h2>
         <div className={styles.grid}>
-          {demoBenefits.map((item) => (
-            <article className={styles.card} key={item.title}>
+          {demoBenefits.map((item, index) => (
+            <article
+              className={`${styles.card} animate__animated animate__fadeInUp`}
+              style={{ animationDelay: `${index * 120}ms`, animationFillMode: 'both' }}
+              key={item.title}
+            >
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
