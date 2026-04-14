@@ -1,11 +1,15 @@
-import { useRef, useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Date from '../components/date';
-import Layout, { siteTitle } from '../components/layout';
-import homeStyles from '../styles/blog-home.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import { featuredProducts, featuredSaasServices, saasFutureFlagLabel } from '../lib/products';
+import { useRef, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import Date from "../components/date";
+import Layout, { siteTitle } from "../components/layout";
+import homeStyles from "../styles/blog-home.module.css";
+import { getSortedPostsData } from "../lib/posts";
+import {
+  featuredProducts,
+  featuredSaasServices,
+  saasFutureFlagLabel,
+} from "../lib/products";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -17,30 +21,44 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-  const [postLayout, setPostLayout] = useState('grid');
+  const [postLayout, setPostLayout] = useState("grid");
   const [currentPage, setCurrentPage] = useState(1);
-  const [activeCategory, setActiveCategory] = useState('Semua');
+  const [activeCategory, setActiveCategory] = useState("Semua");
   const [showAllCategories, setShowAllCategories] = useState(false);
-  const [sortOrder, setSortOrder] = useState('newest');
+  const [sortOrder, setSortOrder] = useState("newest");
   const [activeReviewIndex, setActiveReviewIndex] = useState(0);
   const reviewCarouselRef = useRef(null);
   const postsPerPage = 4;
   const visibleCategoryLimit = 4;
-  const availableCategories = ['Semua', ...new Set(allPostsData.map((post) => post.category || 'Umum'))];
+  const availableCategories = [
+    "Semua",
+    ...new Set(allPostsData.map((post) => post.category || "Umum")),
+  ];
   const visibleCategories = showAllCategories
     ? availableCategories
     : availableCategories.slice(0, visibleCategoryLimit);
   const hasHiddenCategories = availableCategories.length > visibleCategoryLimit;
   const filteredPosts =
-    activeCategory === 'Semua'
+    activeCategory === "Semua"
       ? allPostsData
-      : allPostsData.filter((post) => (post.category || 'Umum') === activeCategory);
+      : allPostsData.filter(
+          (post) => (post.category || "Umum") === activeCategory,
+        );
   const sortedPosts = [...filteredPosts].sort((a, b) => {
-    const firstDate = Number.isNaN(globalThis.Date.parse(a.date)) ? 0 : globalThis.Date.parse(a.date);
-    const secondDate = Number.isNaN(globalThis.Date.parse(b.date)) ? 0 : globalThis.Date.parse(b.date);
-    return sortOrder === 'newest' ? secondDate - firstDate : firstDate - secondDate;
+    const firstDate = Number.isNaN(globalThis.Date.parse(a.date))
+      ? 0
+      : globalThis.Date.parse(a.date);
+    const secondDate = Number.isNaN(globalThis.Date.parse(b.date))
+      ? 0
+      : globalThis.Date.parse(b.date);
+    return sortOrder === "newest"
+      ? secondDate - firstDate
+      : firstDate - secondDate;
   });
-  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / postsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredPosts.length / postsPerPage),
+  );
   const safeCurrentPage = Math.min(currentPage, totalPages);
   const paginatedPosts = sortedPosts.slice(
     (safeCurrentPage - 1) * postsPerPage,
@@ -49,39 +67,40 @@ export default function Home({ allPostsData }) {
   const reviews = [
     {
       quote:
-        '“Template landing page-nya langsung bisa dipakai dan menaikkan konversi kampanye kami di minggu pertama.”',
-      name: 'Rina, Pemilik UMKM',
-    },
-    {
-      quote: '“Boilerplate Next.js sangat rapi, tim jadi hemat waktu penyiapan dan fokus ke fitur inti.”',
-      name: 'Bagus, Engineer Produk',
+        "“Template landing page-nya langsung bisa dipakai dan menaikkan konversi kampanye kami di minggu pertama.”",
+      name: "Rina, Pemilik UMKM",
     },
     {
       quote:
-        '“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”',
-      name: 'Nadia, Desainer UI',
+        "“Boilerplate Next.js sangat rapi, tim jadi hemat waktu penyiapan dan fokus ke fitur inti.”",
+      name: "Bagus, Engineer Produk",
     },
     {
       quote:
-        '“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”',
-      name: 'Fajar, Penyelenggara Pernikahan',
+        "“UI component pack-nya konsisten, mudah dikustom, dan bikin proses desain-dev jauh lebih cepat.”",
+      name: "Nadia, Desainer UI",
     },
     {
       quote:
-        '“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”',
-      name: 'Lia, Pimpinan Pemasaran',
+        "“Fitur SaaS undangan online-nya bikin proses sebar undangan jadi praktis dan tamu jauh lebih mudah RSVP.”",
+      name: "Fajar, Penyelenggara Pernikahan",
     },
     {
       quote:
-        '“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”',
-      name: 'Doni, Pemilik Bisnis',
+        "“Customer support responsif, migrasi data ke layanan baru berjalan mulus tanpa ganggu operasional.”",
+      name: "Lia, Pimpinan Pemasaran",
+    },
+    {
+      quote:
+        "“Pakai layanan ini menghemat waktu tim kami karena update fitur rutin sudah dikelola dari sisi platform.”",
+      name: "Doni, Pemilik Bisnis",
     },
   ];
 
   const updateActiveReview = () => {
     const carousel = reviewCarouselRef.current;
     if (!carousel) return;
-    const cards = Array.from(carousel.querySelectorAll('article'));
+    const cards = Array.from(carousel.querySelectorAll("article"));
     if (cards.length === 0) return;
     const currentIndex = cards.reduce(
       (closestIndex, card, index) =>
@@ -97,13 +116,13 @@ export default function Home({ allPostsData }) {
   const goToReview = (index) => {
     const carousel = reviewCarouselRef.current;
     if (!carousel) return;
-    const cards = Array.from(carousel.querySelectorAll('article'));
+    const cards = Array.from(carousel.querySelectorAll("article"));
     if (cards.length === 0) return;
     const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
     const targetCard = cards[safeIndex];
     carousel.scrollTo({
       left: targetCard.offsetLeft,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
     setActiveReviewIndex(safeIndex);
   };
@@ -124,11 +143,13 @@ export default function Home({ allPostsData }) {
 
       <section className={homeStyles.hero}>
         <span className={homeStyles.badge}>Selamat Datang</span>
-        <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
+        <h2 className={homeStyles.heroTitle}>
+          Solusi produk digital untuk bantu bisnis Anda tumbuh
+        </h2>
         <p className={homeStyles.heroDescription}>
-          Fokus utama website ini adalah membantu Anda menemukan produk digital
-          yang siap pakai untuk promosi, pengembangan, dan optimasi website bisnis.
-          Artikel tetap tersedia sebagai referensi tambahan.
+          Produk digital siap pakai untuk membantu bisnis Anda tumbuh lebih
+          cepat dan bermakna. Wujudkan ide, bangun brand, dan capai dengan cara
+          yang lebih sederhana.
         </p>
 
         <div className={homeStyles.heroActions}>
@@ -140,19 +161,25 @@ export default function Home({ allPostsData }) {
           </a>
         </div>
 
-        <div className={homeStyles.businessModelGuide} aria-label="Panduan memilih produk atau layanan SaaS">
+        <div
+          className={homeStyles.businessModelGuide}
+          aria-label="Panduan memilih produk atau layanan SaaS"
+        >
           <article className={homeStyles.businessModelCard}>
-            <h3>Produk digital (sekali beli)</h3>
+            <h3>Produk digital (Sekali Beli)</h3>
             <p>
-              Cocok jika Anda ingin aset digital siap pakai yang bisa dipasang mandiri dengan biaya
-              sekali bayar.
+              Cocok untuk Anda yang ingin memiliki aset digital siap pakai, bisa
+              digunakan kapan saja dengan sekali pembayaran. Praktis, hemat, dan
+              tetap powerful untuk mendukung kebutuhan bisnis Anda.
             </p>
           </article>
           <article className={homeStyles.businessModelCard}>
-            <h3>Layanan SaaS (berlangganan)</h3>
+            <h3>Layanan SaaS (Berlangganan)</h3>
             <p>
-              Cocok jika Anda ingin platform yang selalu aktif, terus dikembangkan, dan dibantu
-              operasionalnya.
+              Cocok untuk Anda yang membutuhkan platform yang selalu aktif,
+              terus dikembangkan, dan siap membantu operasional bisnis secara
+              berkelanjutan. Lebih fleksibel, minim teknis, dan fokus pada
+              pertumbuhan.
             </p>
           </article>
         </div>
@@ -160,10 +187,13 @@ export default function Home({ allPostsData }) {
 
       <section id="product" className={homeStyles.sellSection}>
         <span className={homeStyles.badge}>Katalog Utama</span>
-        <h2 className={homeStyles.sellTitle}>Katalog produk digital siap jual & siap pakai</h2>
+        <h2 className={homeStyles.sellTitle}>
+          Katalog produk digital siap jual & siap pakai
+        </h2>
         <p className={homeStyles.sellDescription}>
-          Pilih produk yang paling sesuai untuk kebutuhan bisnis Anda. Semua
-          produk dirancang agar implementasi cepat, tampilan modern, dan mudah dikembangkan.
+          Katalog produk digital siap jual dan siap pakai. Pilih solusi yang
+          paling sesuai dengan kebutuhan bisnis Anda — dirancang untuk
+          implementasi cepat, tampilan modern, dan mudah dikembangkan.
         </p>
 
         <div className={homeStyles.offerGrid}>
@@ -190,10 +220,13 @@ export default function Home({ allPostsData }) {
 
       <section id="saas" className={homeStyles.saasSection}>
         <span className={homeStyles.badge}>Layanan SaaS</span>
-        <h2 className={homeStyles.saasTitle}>Perkenalan produk SaaS untuk kebutuhan bisnis</h2>
+        <h2 className={homeStyles.saasTitle}>
+          Perkenalan produk SaaS untuk kebutuhan bisnis
+        </h2>
         <p className={homeStyles.saasDescription}>
-          Saat ini layanan SaaS yang tersedia adalah produk undangan online. Ke depan, model SaaS
-          ini disiapkan untuk berkembang ke layanan lain sesuai kebutuhan pasar.
+          Platform SaaS yang dirancang untuk tumbuh bersama bisnis Anda. Diawali
+          dari layanan undangan online, dengan visi menghadirkan berbagai solusi
+          digital yang relevan di masa depan.
         </p>
 
         <div className={homeStyles.offerGrid}>
@@ -203,10 +236,8 @@ export default function Home({ allPostsData }) {
               href={`/products/${service.id}`}
               className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured} ${homeStyles.saasCardLink}`}
             >
-              <span className={homeStyles.saasSpotlight}>Layanan SaaS Saat Ini</span>
-              <div className={homeStyles.saasBadgeRow}>
-                <span className={homeStyles.saasFlag}>{service.badge}</span>
-              </div>
+              <span className={homeStyles.saasSpotlight}>SaaS Unggulan</span>
+              <div className={homeStyles.saasBadgeRow}></div>
               <h3>{service.name}</h3>
               <p>{service.description}</p>
               <small>{service.billing}</small>
@@ -214,11 +245,13 @@ export default function Home({ allPostsData }) {
           ))}
 
           <article className={homeStyles.saasRoadmapCard}>
-            <span className={homeStyles.saasFutureFlag}>{saasFutureFlagLabel}</span>
-            <h3>SaaS lain segera hadir</h3>
+            <span className={homeStyles.saasFutureFlag}>
+              {saasFutureFlagLabel}
+            </span>
             <p>
-              Saat ini fokus pada undangan online terlebih dahulu. Flag ini menandakan roadmap
-              layanan SaaS berikutnya sedang dipersiapkan.
+              Saat ini kami fokus menyempurnakan layanan undangan online.
+              Layanan SaaS lainnya sedang disiapkan untuk mendukung kebutuhan
+              bisnis yang lebih luas.
             </p>
           </article>
         </div>
@@ -226,11 +259,15 @@ export default function Home({ allPostsData }) {
 
       <section id="promo" className={homeStyles.promoSection}>
         <span className={homeStyles.badge}>Promo & Nilai</span>
-        <h2 className={homeStyles.promoTitle}>Alasan pengunjung tertarik membeli</h2>
+        <h2 className={homeStyles.promoTitle}>
+          Alasan pengunjung tertarik membeli
+        </h2>
         <div className={homeStyles.promoGrid}>
           <article className={homeStyles.promoCard}>
             <h3>Bonus penyiapan awal</h3>
-            <p>Dapatkan panduan implementasi agar produk langsung bisa digunakan.</p>
+            <p>
+              Dapatkan panduan implementasi agar produk langsung bisa digunakan.
+            </p>
           </article>
           <article className={homeStyles.promoCard}>
             <h3>Desain responsif</h3>
@@ -238,12 +275,18 @@ export default function Home({ allPostsData }) {
           </article>
           <article className={homeStyles.promoCard}>
             <h3>Dukungan purna jual</h3>
-            <p>Anda tetap mendapat bantuan setelah pembelian agar deploy lebih lancar.</p>
+            <p>
+              Anda tetap mendapat bantuan setelah pembelian agar deploy lebih
+              lancar.
+            </p>
           </article>
         </div>
       </section>
 
-      <section className={homeStyles.reviewSection} aria-labelledby="review-heading">
+      <section
+        className={homeStyles.reviewSection}
+        aria-labelledby="review-heading"
+      >
         <span className={homeStyles.badge}>Ulasan Pengguna</span>
         <h2 id="review-heading" className={homeStyles.reviewTitle}>
           Apa kata pengguna setelah membeli produk kami
@@ -260,13 +303,18 @@ export default function Home({ allPostsData }) {
             </article>
           ))}
         </div>
-        <div className={homeStyles.reviewIndicators} aria-label="Indikator carousel ulasan">
+        <div
+          className={homeStyles.reviewIndicators}
+          aria-label="Indikator carousel ulasan"
+        >
           {reviews.map((review, index) => (
             <button
               type="button"
               key={review.name}
               className={`${homeStyles.reviewIndicator} ${
-                activeReviewIndex === index ? homeStyles.reviewIndicatorActive : ''
+                activeReviewIndex === index
+                  ? homeStyles.reviewIndicatorActive
+                  : ""
               }`}
               aria-label={`Lihat ulasan ${index + 1}`}
               onClick={() => goToReview(index)}
@@ -298,11 +346,16 @@ export default function Home({ allPostsData }) {
           <div>
             <h2 className={homeStyles.blogTitle}>Artikel Terbaru</h2>
             <p className={homeStyles.blogSubTitle}>
-              Edukasi tambahan untuk pengunjung yang ingin belajar sebelum membeli.
+              Edukasi tambahan untuk pengunjung yang ingin belajar sebelum
+              membeli.
             </p>
           </div>
 
-          <div className={homeStyles.layoutSwitcher} role="group" aria-label="Pilih tampilan artikel">
+          <div
+            className={homeStyles.layoutSwitcher}
+            role="group"
+            aria-label="Pilih tampilan artikel"
+          >
             <label htmlFor="article-sort" className={homeStyles.sortLabel}>
               Urutkan
             </label>
@@ -321,37 +374,42 @@ export default function Home({ allPostsData }) {
             <button
               type="button"
               className={`${homeStyles.layoutButton} ${
-                postLayout === 'list' ? homeStyles.layoutButtonActive : ''
+                postLayout === "list" ? homeStyles.layoutButtonActive : ""
               }`}
-              onClick={() => setPostLayout('list')}
+              onClick={() => setPostLayout("list")}
             >
               List
             </button>
             <button
               type="button"
               className={`${homeStyles.layoutButton} ${
-                postLayout === 'grid' ? homeStyles.layoutButtonActive : ''
+                postLayout === "grid" ? homeStyles.layoutButtonActive : ""
               }`}
-              onClick={() => setPostLayout('grid')}
+              onClick={() => setPostLayout("grid")}
             >
               Grid
             </button>
           </div>
         </div>
 
-        <nav className={homeStyles.categoryBreadcrumb} aria-label="Filter kategori artikel">
+        <nav
+          className={homeStyles.categoryBreadcrumb}
+          aria-label="Filter kategori artikel"
+        >
           {visibleCategories.map((category) => (
             <button
               key={category}
               type="button"
               className={`${homeStyles.categoryCrumb} ${
-                activeCategory === category ? homeStyles.categoryCrumbActive : ''
+                activeCategory === category
+                  ? homeStyles.categoryCrumbActive
+                  : ""
               }`}
               onClick={() => {
                 setActiveCategory(category);
                 setCurrentPage(1);
               }}
-              aria-current={activeCategory === category ? 'page' : undefined}
+              aria-current={activeCategory === category ? "page" : undefined}
             >
               {category}
             </button>
@@ -362,16 +420,20 @@ export default function Home({ allPostsData }) {
               className={homeStyles.categoryExpand}
               onClick={() => setShowAllCategories((prev) => !prev)}
               aria-expanded={showAllCategories}
-              aria-label={showAllCategories ? 'Sembunyikan kategori tambahan' : 'Tampilkan kategori tambahan'}
+              aria-label={
+                showAllCategories
+                  ? "Sembunyikan kategori tambahan"
+                  : "Tampilkan kategori tambahan"
+              }
             >
-              {showAllCategories ? '˅' : '>'}
+              {showAllCategories ? "˅" : ">"}
             </button>
           )}
         </nav>
 
         <ul
           className={`${homeStyles.postList} ${
-            postLayout === 'grid' ? homeStyles.postListGrid : ''
+            postLayout === "grid" ? homeStyles.postListGrid : ""
           }`}
         >
           {paginatedPosts.map(({ id, date, title, tags = [], category }) => (
@@ -379,7 +441,9 @@ export default function Home({ allPostsData }) {
               <small className={homeStyles.postDate}>
                 <Date dateString={date} />
               </small>
-              <span className={homeStyles.postCategory}>{category || 'Umum'}</span>
+              <span className={homeStyles.postCategory}>
+                {category || "Umum"}
+              </span>
               <h3 className={homeStyles.postTitle}>
                 <Link href={`/posts/${id}`}>{title}</Link>
               </h3>
@@ -399,7 +463,11 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
 
-        <div className={homeStyles.pagination} role="navigation" aria-label="Paginasi artikel">
+        <div
+          className={homeStyles.pagination}
+          role="navigation"
+          aria-label="Paginasi artikel"
+        >
           <button
             type="button"
             className={homeStyles.paginationButton}
@@ -417,10 +485,10 @@ export default function Home({ allPostsData }) {
                   type="button"
                   key={page}
                   className={`${homeStyles.pageNumber} ${
-                    safeCurrentPage === page ? homeStyles.pageNumberActive : ''
+                    safeCurrentPage === page ? homeStyles.pageNumberActive : ""
                   }`}
                   onClick={() => setCurrentPage(page)}
-                  aria-current={safeCurrentPage === page ? 'page' : undefined}
+                  aria-current={safeCurrentPage === page ? "page" : undefined}
                 >
                   {page}
                 </button>

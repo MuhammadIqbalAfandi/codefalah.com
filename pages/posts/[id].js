@@ -64,16 +64,18 @@ export default function Post({ postData }) {
 
           <aside className={utilStyles.postSidebar}>
             <section className={utilStyles.authorCard} aria-label="Profil penulis">
-              <h2 className={utilStyles.headingMd}>Ditulis oleh</h2>
+              <p className={utilStyles.sidebarEyebrow}>Penulis</p>
+              <h2 className={utilStyles.sidebarTitle}>Ditulis oleh</h2>
               <div className={utilStyles.authorIdentity}>
                 <img src="/images/profile.png" alt="" aria-hidden="true" className={utilStyles.authorAvatar} />
                 <p className={utilStyles.authorName}>{postData.author?.name || 'CodeFalah Team'}</p>
               </div>
-              <p className={utilStyles.lightText}>{postData.author?.bio}</p>
+              <p className={utilStyles.sidebarBody}>{postData.author?.bio}</p>
             </section>
 
             <section className={utilStyles.tocCard} aria-label="Table of content">
-              <h2 className={utilStyles.headingMd}>Table of Content</h2>
+              <p className={utilStyles.sidebarEyebrow}>Navigasi</p>
+              <h2 className={utilStyles.sidebarTitle}>Daftar isi</h2>
               {tableOfContents.length > 0 ? (
                 <ul className={utilStyles.tocList}>
                   {tableOfContents.map((item) => (
@@ -85,7 +87,7 @@ export default function Post({ postData }) {
                   ))}
                 </ul>
               ) : (
-                <p className={utilStyles.lightText}>Belum ada subjudul untuk ditampilkan.</p>
+                <p className={utilStyles.sidebarBody}>Belum ada subjudul untuk ditampilkan.</p>
               )}
             </section>
           </aside>
