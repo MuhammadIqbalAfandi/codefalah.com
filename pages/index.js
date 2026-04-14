@@ -124,11 +124,11 @@ export default function Home({ allPostsData }) {
 
       <section className={homeStyles.hero}>
         <span className={homeStyles.badge}>Selamat Datang</span>
-        <h2 className={homeStyles.heroTitle}>CodeFalah membantu Anda membuat dan menjual produk digital lebih mudah</h2>
+        <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
         <p className={homeStyles.heroDescription}>
-          Kami percaya setiap orang punya potensi untuk sukses, tetapi sering terhambat oleh
-          keterbatasan teknis, waktu, dan kompleksitas tools. Karena itu, CodeFalah menghadirkan
-          solusi yang praktis agar Anda bisa fokus menghasilkan, bukan pusing teknis.
+          CodeFalah membantu individu, UMKM, hingga perusahaan menjalankan kebutuhan digital
+          dengan lebih cepat. Kami menyederhanakan proses teknis dan tools yang kompleks agar tim
+          Anda bisa fokus pada pertumbuhan bisnis dan hasil.
         </p>
 
         <div className={homeStyles.heroActions}>
@@ -144,8 +144,8 @@ export default function Home({ allPostsData }) {
           <article className={homeStyles.businessModelCard}>
             <h3>Software SaaS (berlangganan)</h3>
             <p>
-              Untuk Anda yang ingin solusi praktis, selalu update, dan minim ribet teknis.
-              Contohnya platform undangan digital online.
+              Untuk bisnis yang butuh software selalu update dan siap pakai tanpa repot maintenance.
+              Contoh: company profile, HR system, dan e-recruitment.
             </p>
           </article>
           <article className={homeStyles.businessModelCard}>
