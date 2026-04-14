@@ -1,777 +1,272 @@
-.blogSection {
-  --type-scale-12: 0.75rem;
-  --type-scale-14: 0.875rem;
-  --type-scale-16: 1rem;
-  --type-scale-20: 1.25rem;
-  --type-scale-24: 1.5rem;
-}
-
-.cardTitle {
-  margin: 0;
-  color: var(--strong-text-color);
-  font-size: var(--type-scale-20);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.cardSubtitle {
-  margin: 0;
-  color: var(--strong-text-color);
-  font-size: var(--type-scale-16);
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.cardDescription {
-  margin: 0.5rem 0 0;
-  color: var(--muted-color);
-  font-size: var(--type-scale-16);
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.cardMeta {
-  display: inline-block;
-  margin: 0;
-  color: color-mix(in srgb, var(--muted-color) 90%, transparent);
-  font-size: var(--type-scale-12);
-  font-weight: 500;
-  line-height: 1.4;
-}
-
 .hero {
+  --title-size: clamp(1.5rem, 3vw, 2rem);
+  --subtitle-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  --body-size: 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  border-radius: 16px;
   background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 22%, transparent), transparent 48%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 22%, transparent), transparent 50%),
     var(--surface-color);
-  backdrop-filter: blur(22px) saturate(150%);
-  -webkit-backdrop-filter: blur(22px) saturate(150%);
-  box-shadow: 0 18px 38px var(--shadow-color);
+  box-shadow: 0 16px 36px var(--shadow-color);
 }
 
 .badge {
   display: inline-block;
-  background-color: var(--badge-bg);
+  margin-bottom: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--badge-bg);
   color: var(--badge-text);
-  padding: 0.3rem 0.65rem;
-  border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+}
+
+.heroTitle,
+.sectionTitle,
+.cardTitle,
+.columnTitle {
+  color: var(--strong-text-color);
+  font-weight: 700;
 }
 
 .heroTitle {
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  line-height: 1.25;
   margin: 0;
-  color: var(--strong-text-color);
+  font-size: var(--title-size);
+  line-height: 1.2;
+}
+
+.heroDescription,
+.sectionLead,
+.cardDescription,
+.columnLead,
+.mockupCaption {
+  color: var(--muted-color);
+  font-weight: 400;
+  font-size: var(--body-size);
+  line-height: 1.6;
 }
 
 .heroDescription {
-  margin: 0.75rem 0 0;
-  color: var(--muted-color);
-  font-size: 1rem;
+  margin: 0.9rem 0 0;
 }
 
-.heroActions {
-  margin-top: 1rem;
+.microCopy {
+  margin: 0.8rem 0 0;
+  color: var(--link-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.heroActions,
+.sectionActions {
+  margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.65rem;
 }
 
-.heroPrimaryCta {
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 14px;
+.heroPrimaryCta,
+.heroSecondaryCta,
+.inlineCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
   font-weight: 700;
-  padding: 0.5rem 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .heroPrimaryCta {
+  padding: 0.62rem 1rem;
   color: #fff;
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
+  box-shadow: 0 10px 24px color-mix(in srgb, #0071e3 38%, transparent);
 }
 
 .heroSecondaryCta {
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 14px;
-  font-weight: 700;
-  padding: 0.5rem 0.95rem;
+  padding: 0.62rem 1rem;
   color: var(--strong-text-color);
   border: 1px solid var(--border-color);
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
-}
-
-.businessModelGuide {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.7rem;
-}
-
-.businessModelCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.8rem 0.9rem;
   background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
-.businessModelCard h3 {
-  font-size: var(--type-scale-16);
+.heroPrimaryCta:hover,
+.heroSecondaryCta:hover,
+.inlineCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px var(--shadow-color);
 }
 
-.businessModelCard p {
-  font-size: var(--type-scale-14);
+.mockupWrap {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
-.blogSection {
-  margin-top: 1.5rem;
-}
-
-.sellSection {
-  margin-top: 1.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.4rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.sellTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
-}
-
-.sellDescription {
-  margin: 0.7rem 0 0;
+.mockupLabel {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--muted-color);
 }
 
-.offerGrid {
+.phoneMockup {
+  height: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 0.8rem;
+  background: var(--surface-muted-color);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 30%, transparent);
+}
+
+.phoneHeader {
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--strong-text-color);
+}
+
+.mockupImage {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  object-fit: cover;
+}
+
+.mockupCaption {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+}
+
+.section,
+.finalCta {
+  margin-top: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--surface-color);
+  box-shadow: 0 14px 30px var(--shadow-color);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.24;
+}
+
+.sectionLead {
+  margin: 0.85rem 0 0;
+  font-size: 1rem;
+}
+
+.cardGrid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 0.75rem;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.offerCard {
+.infoCard {
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 0.85rem 0.9rem;
+  padding: 1rem;
   background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.offerCard:hover {
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+.infoCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 24px var(--shadow-color);
   border-color: var(--surface-hover-border-color);
 }
 
-.offerCard h3 {
-  font-size: var(--type-scale-16);
-}
-
-.offerCard p {
-  font-size: var(--type-scale-14);
-}
-
-.sellCta {
-  display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
-  border-radius: 14px;
-  padding: 0.5rem 0.95rem;
-  font-weight: 700;
-}
-
-.sellCta:hover {
-  opacity: 0.92;
-}
-
-.ctaRow {
-  margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.sellGhostCta {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--strong-text-color);
-  border: 1px solid var(--border-color);
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
-  border-radius: 14px;
-  padding: 0.5rem 0.95rem;
-  font-weight: 700;
-}
-
-.promoSection {
-  margin-top: 1.2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.2rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.promoTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.35rem;
-}
-
-.promoGrid {
-  margin-top: 0.9rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.7rem;
-}
-
-.promoCard {
-  border: 1px dashed var(--surface-hover-border-color);
-  border-radius: 14px;
-  padding: 0.75rem 0.85rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-}
-
-.promoCard h3 {
-  font-size: var(--type-scale-16);
-}
-
-.promoCard p {
-  font-size: var(--type-scale-14);
-}
-
-.reviewSection {
-  margin-top: 1.2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.2rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.reviewTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.35rem;
-}
-
-.reviewCarousel {
-  margin-top: 0.9rem;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 1.4rem) / 3);
-  gap: 0.7rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.reviewCard {
-  scroll-snap-align: start;
-  min-width: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.85rem 0.9rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-}
-
-.reviewCarousel::-webkit-scrollbar {
-  display: none;
-}
-
-.reviewIndicators {
-  margin-top: 0.7rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.35rem;
-}
-
-.reviewIndicator {
-  appearance: none;
-  width: 0.45rem;
-  height: 0.45rem;
-  border: none;
-  padding: 0;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--muted-color) 40%, transparent);
-  cursor: pointer;
-}
-
-.reviewIndicatorActive {
-  width: 1.1rem;
-  background: var(--link-color);
-}
-
-.reviewNav {
-  margin-top: 0.7rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.55rem;
-}
-
-.reviewNavButton {
-  border: 1px solid var(--border-color);
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  border-radius: 14px;
-  padding: 0.4rem 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.reviewNavButton:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-@media (max-width: 1024px) {
-  .reviewCarousel {
-    grid-auto-columns: calc((100% - 0.7rem) / 2);
-  }
-}
-
-@media (max-width: 640px) {
-  .reviewCarousel {
-    grid-auto-columns: 100%;
-  }
-}
-
-.saasSection {
-  margin-top: 1.2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.4rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.saasTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
-}
-
-.saasDescription {
-  margin: 0.7rem 0 0;
-  color: var(--muted-color);
-}
-
-.saasCard,
-.saasRoadmapCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.85rem 0.9rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-}
-
-.saasCardFeatured {
-  border-color: color-mix(in srgb, var(--link-color) 45%, var(--border-color));
-  background: color-mix(in srgb, var(--surface-muted-color) 60%, var(--surface-color));
-}
-
-.saasSpotlight {
-  display: inline-block;
-  margin-bottom: 0.45rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
-  color: #fff;
-}
-
-.saasBadgeRow {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-
-.saasFlag,
-.saasFutureFlag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  border-radius: 8px;
-  padding: 0.2rem 0.5rem;
-}
-
-.saasFlag {
-  background: color-mix(in srgb, var(--link-color) 14%, transparent);
-  color: var(--link-color);
-}
-
-.saasFutureFlag {
-  background: color-mix(in srgb, #f59e0b 20%, transparent);
-  color: #b45309;
-}
-
-.saasCard h3,
-.saasRoadmapCard h3 {
-  margin-top: 0.5rem;
-  font-size: var(--type-scale-20);
-}
-
-.saasCard p,
-.saasRoadmapCard p {
-  font-size: var(--type-scale-16);
-}
-
-.saasCard small {
-  display: inline-block;
-  margin-top: 0.55rem;
-  font-size: var(--type-scale-12);
-}
-
-.saasCardLink {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.saasCardLink:hover {
-  border-color: color-mix(in srgb, var(--link-color) 68%, var(--border-color));
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  text-decoration: none;
-}
-
-.sellSection,
-.saasSection,
-.promoSection,
-.reviewSection,
-.postCard {
-  box-shadow: 0 14px 28px var(--shadow-color);
-}
-
-.reviewCard p {
-  margin: 0;
-  font-size: var(--type-scale-16);
-}
-
-.reviewCard strong {
-  display: inline-block;
-  margin-top: 0.5rem;
-}
-
-.blogHeader {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.layoutSwitcher {
+.cardIcon {
   display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.45rem;
   align-items: center;
-  background-color: var(--surface-muted-color);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.2rem 0.3rem;
-  gap: 0.2rem;
+  justify-content: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--link-color) 16%, transparent);
 }
 
-.sortLabel {
-  font-size: 0.78rem;
-  color: var(--muted-color);
-  margin: 0 0.2rem 0 0.35rem;
-  font-weight: 600;
-}
-
-.sortSelect {
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.32rem 0.6rem;
-}
-
-.layoutButton {
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--muted-color);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.layoutButtonActive {
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
-  color: var(--strong-text-color);
-  border-color: var(--border-color);
-}
-
-.blogTitle {
+.cardTitle {
   margin: 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
+  font-size: var(--subtitle-size);
+  line-height: 1.35;
 }
 
-.blogSubTitle {
-  margin: 0.4rem 0 0;
+.cardDescription {
+  margin: 0.55rem 0 0;
+}
+
+.bulletList {
+  margin: 0.6rem 0 0;
+  padding-left: 1rem;
   color: var(--muted-color);
   font-size: 0.95rem;
 }
 
-.categoryBreadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem;
-  margin-bottom: 0.95rem;
-}
-
-.categoryCrumb {
-  border: 1px solid var(--border-color);
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--muted-color);
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 0.34rem 0.72rem;
-  cursor: pointer;
-  max-width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.categoryCrumbActive {
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-  color: var(--strong-text-color);
-  border-color: var(--surface-hover-border-color);
-}
-
-.categoryExpand {
-  border: 1px solid var(--border-color);
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.86rem;
-  font-weight: 700;
-  border-radius: 8px;
-  padding: 0.34rem 0.68rem;
-  cursor: pointer;
-  min-width: 2rem;
-}
-
-.postList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.9rem;
-  grid-template-columns: 1fr;
-}
-
-.postListGrid {
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-}
-
-.postCard {
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.postCard:hover {
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-  border-color: var(--surface-hover-border-color);
-}
-
-.postDate {
-  margin-bottom: 0.25rem;
-}
-
-.postCategory {
-  display: block;
-  margin-top: 0.25rem;
+.inlineCta {
+  margin-top: 0.8rem;
   color: var(--link-color);
-  font-size: var(--type-scale-14);
-  font-weight: 700;
-  line-height: 1.4;
+  font-size: 0.95rem;
 }
 
-.postCard .cardTitle {
-  margin: 0.5rem 0 0.75rem;
-}
-
-.postCard .cardTitle a {
-  color: var(--strong-text-color);
-  text-decoration: none;
-}
-
-.postCard .cardTitle a:hover {
-  text-decoration: underline;
-}
-
-.readMore {
-  color: var(--link-color);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.tagList {
-  list-style: none;
-  margin: 0 0 0.6rem;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.tagItem {
-  border: 1px solid var(--border-color);
-  background-color: var(--surface-muted-color);
-  color: var(--muted-color);
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 0.2rem 0.5rem;
-}
-
-.pagination {
+.productColumns {
   margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
 }
 
-.paginationButton {
-  border: 1px solid var(--border-color);
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.88rem;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
+.columnTitle {
+  margin: 0;
+  font-size: 1.35rem;
 }
 
-.paginationButton:hover:not(:disabled),
-.pageNumber:hover:not(.pageNumberActive),
-.categoryCrumb:hover,
-.categoryExpand:hover,
-.sellGhostCta:hover {
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-  border-color: var(--surface-hover-border-color);
+.columnLead {
+  margin: 0.55rem 0 0;
+  font-size: 1rem;
 }
 
-.paginationButton:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.finalCta {
+  text-align: center;
 }
 
-.pageNumbers {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+.articleAnchor {
+  height: 1px;
 }
 
-.pageNumber {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--muted-color);
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.pageNumberActive {
-  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
-  color: #fff;
-  border-color: var(--link-color);
+@media (max-width: 900px) {
+  .hero,
+  .productColumns {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
-  .blogSection {
-    --type-scale-20: 1.125rem;
-    --type-scale-24: 1.25rem;
+  .hero,
+  .section,
+  .finalCta {
+    padding: 1.1rem;
   }
 
-  .hero {
-    padding: 1.2rem;
-  }
-
-  .heroActions {
+  .heroActions,
+  .sectionActions {
     flex-direction: column;
   }
 
   .heroPrimaryCta,
-  .heroSecondaryCta,
-  .sellCta,
-  .sellGhostCta {
-    text-align: center;
+  .heroSecondaryCta {
     width: 100%;
-  }
-
-  .postCard {
-    padding: 0.9rem 1rem;
-  }
-
-  .layoutSwitcher {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .pagination {
-    justify-content: center;
   }
 }
