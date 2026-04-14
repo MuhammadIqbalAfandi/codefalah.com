@@ -1,3 +1,44 @@
+.blogSection {
+  --type-scale-12: 0.75rem;
+  --type-scale-14: 0.875rem;
+  --type-scale-16: 1rem;
+  --type-scale-20: 1.25rem;
+  --type-scale-24: 1.5rem;
+}
+
+.cardTitle {
+  margin: 0;
+  color: var(--strong-text-color);
+  font-size: var(--type-scale-20);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cardSubtitle {
+  margin: 0;
+  color: var(--strong-text-color);
+  font-size: var(--type-scale-16);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cardDescription {
+  margin: 0.5rem 0 0;
+  color: var(--muted-color);
+  font-size: var(--type-scale-16);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.cardMeta {
+  display: inline-block;
+  margin: 0;
+  color: color-mix(in srgb, var(--muted-color) 90%, transparent);
+  font-size: var(--type-scale-12);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 .hero {
   border: 1px solid var(--border-color);
   border-radius: 22px;
@@ -84,15 +125,11 @@
 }
 
 .businessModelCard h3 {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--strong-text-color);
+  font-size: var(--type-scale-16);
 }
 
 .businessModelCard p {
-  margin: 0.45rem 0 0;
-  font-size: 0.9rem;
-  color: var(--muted-color);
+  font-size: var(--type-scale-14);
 }
 
 .blogSection {
@@ -144,15 +181,11 @@
 }
 
 .offerCard h3 {
-  margin: 0;
-  color: var(--strong-text-color);
-  font-size: 1rem;
+  font-size: var(--type-scale-16);
 }
 
 .offerCard p {
-  margin: 0.5rem 0 0;
-  color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--type-scale-14);
 }
 
 .sellCta {
@@ -221,15 +254,11 @@
 }
 
 .promoCard h3 {
-  margin: 0;
-  color: var(--strong-text-color);
-  font-size: 1rem;
+  font-size: var(--type-scale-16);
 }
 
 .promoCard p {
-  margin: 0.45rem 0 0;
-  color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--type-scale-14);
 }
 
 .reviewSection {
@@ -408,23 +437,19 @@
 
 .saasCard h3,
 .saasRoadmapCard h3 {
-  margin: 0.6rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-size: var(--type-scale-20);
 }
 
 .saasCard p,
 .saasRoadmapCard p {
-  margin: 0.5rem 0 0;
-  color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--type-scale-16);
 }
 
 .saasCard small {
   display: inline-block;
   margin-top: 0.55rem;
-  color: var(--muted-color);
-  font-size: 0.78rem;
+  font-size: var(--type-scale-12);
 }
 
 .saasCardLink {
@@ -452,14 +477,12 @@
 
 .reviewCard p {
   margin: 0;
-  color: var(--muted-color);
-  font-size: 0.92rem;
+  font-size: var(--type-scale-16);
 }
 
 .reviewCard strong {
   display: inline-block;
-  margin-top: 0.7rem;
-  color: var(--strong-text-color);
+  margin-top: 0.5rem;
 }
 
 .blogHeader {
@@ -605,30 +628,28 @@
 }
 
 .postDate {
-  color: var(--muted-color);
-  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
 }
 
 .postCategory {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   color: var(--link-color);
-  font-size: 0.78rem;
+  font-size: var(--type-scale-14);
   font-weight: 700;
-}
-
-.postTitle {
-  margin: 0.35rem 0 0.55rem;
-  font-size: 1.08rem;
   line-height: 1.4;
 }
 
-.postTitle a {
+.postCard .cardTitle {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.postCard .cardTitle a {
   color: var(--strong-text-color);
   text-decoration: none;
 }
 
-.postTitle a:hover {
+.postCard .cardTitle a:hover {
   text-decoration: underline;
 }
 
@@ -720,6 +741,11 @@
 }
 
 @media (max-width: 640px) {
+  .blogSection {
+    --type-scale-20: 1.125rem;
+    --type-scale-24: 1.25rem;
+  }
+
   .hero {
     padding: 1.2rem;
   }

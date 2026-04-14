@@ -166,16 +166,16 @@ export default function Home({ allPostsData }) {
           aria-label="Panduan memilih produk atau layanan SaaS"
         >
           <article className={homeStyles.businessModelCard}>
-            <h3>Produk digital (Sekali Beli)</h3>
-            <p>
+            <h3 className={homeStyles.cardTitle}>Produk digital (Sekali Beli)</h3>
+            <p className={homeStyles.cardDescription}>
               Cocok untuk Anda yang ingin memiliki aset digital siap pakai, bisa
               digunakan kapan saja dengan sekali pembayaran. Praktis, hemat, dan
               tetap powerful untuk mendukung kebutuhan bisnis Anda.
             </p>
           </article>
           <article className={homeStyles.businessModelCard}>
-            <h3>Layanan SaaS (Berlangganan)</h3>
-            <p>
+            <h3 className={homeStyles.cardTitle}>Layanan SaaS (Berlangganan)</h3>
+            <p className={homeStyles.cardDescription}>
               Cocok untuk Anda yang membutuhkan platform yang selalu aktif,
               terus dikembangkan, dan siap membantu operasional bisnis secara
               berkelanjutan. Lebih fleksibel, minim teknis, dan fokus pada
@@ -199,8 +199,8 @@ export default function Home({ allPostsData }) {
         <div className={homeStyles.offerGrid}>
           {featuredProducts.map((product) => (
             <article key={product.id} className={homeStyles.offerCard}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
+              <h3 className={homeStyles.cardTitle}>{product.name}</h3>
+              <p className={homeStyles.cardDescription}>{product.description}</p>
             </article>
           ))}
         </div>
@@ -238,9 +238,9 @@ export default function Home({ allPostsData }) {
             >
               <span className={homeStyles.saasSpotlight}>SaaS Unggulan</span>
               <div className={homeStyles.saasBadgeRow}></div>
-              <h3>{service.name}</h3>
-              <p>{service.description}</p>
-              <small>{service.billing}</small>
+              <h3 className={homeStyles.cardTitle}>{service.name}</h3>
+              <p className={homeStyles.cardDescription}>{service.description}</p>
+              <small className={homeStyles.cardMeta}>{service.billing}</small>
             </Link>
           ))}
 
@@ -248,7 +248,7 @@ export default function Home({ allPostsData }) {
             <span className={homeStyles.saasFutureFlag}>
               {saasFutureFlagLabel}
             </span>
-            <p>
+            <p className={homeStyles.cardDescription}>
               Saat ini kami fokus menyempurnakan layanan undangan online.
               Layanan SaaS lainnya sedang disiapkan untuk mendukung kebutuhan
               bisnis yang lebih luas.
@@ -264,18 +264,20 @@ export default function Home({ allPostsData }) {
         </h2>
         <div className={homeStyles.promoGrid}>
           <article className={homeStyles.promoCard}>
-            <h3>Bonus penyiapan awal</h3>
-            <p>
+            <h3 className={homeStyles.cardTitle}>Bonus penyiapan awal</h3>
+            <p className={homeStyles.cardDescription}>
               Dapatkan panduan implementasi agar produk langsung bisa digunakan.
             </p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Desain responsif</h3>
-            <p>Tampilan tetap optimal di mobile, tablet, maupun desktop.</p>
+            <h3 className={homeStyles.cardTitle}>Desain responsif</h3>
+            <p className={homeStyles.cardDescription}>
+              Tampilan tetap optimal di mobile, tablet, maupun desktop.
+            </p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Dukungan purna jual</h3>
-            <p>
+            <h3 className={homeStyles.cardTitle}>Dukungan purna jual</h3>
+            <p className={homeStyles.cardDescription}>
               Anda tetap mendapat bantuan setelah pembelian agar deploy lebih
               lancar.
             </p>
@@ -298,8 +300,8 @@ export default function Home({ allPostsData }) {
         >
           {reviews.map((review) => (
             <article className={homeStyles.reviewCard} key={review.name}>
-              <p>{review.quote}</p>
-              <strong>{review.name}</strong>
+              <p className={homeStyles.cardDescription}>{review.quote}</p>
+              <strong className={homeStyles.cardSubtitle}>{review.name}</strong>
             </article>
           ))}
         </div>
@@ -438,13 +440,13 @@ export default function Home({ allPostsData }) {
         >
           {paginatedPosts.map(({ id, date, title, tags = [], category }) => (
             <li className={homeStyles.postCard} key={id}>
-              <small className={homeStyles.postDate}>
+              <small className={homeStyles.cardMeta}>
                 <Date dateString={date} />
               </small>
               <span className={homeStyles.postCategory}>
                 {category || "Umum"}
               </span>
-              <h3 className={homeStyles.postTitle}>
+              <h3 className={homeStyles.cardTitle}>
                 <Link href={`/posts/${id}`}>{title}</Link>
               </h3>
               {tags.length > 0 && (
