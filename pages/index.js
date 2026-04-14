@@ -96,6 +96,23 @@ export default function Home({ allPostsData }) {
       name: "Doni, Pemilik Bisnis",
     },
   ];
+  const quickValueProps = [
+    {
+      icon: "⚡",
+      title: "Go-live super cepat",
+      description: "Template siap pakai agar bisnis Anda bisa jalan dalam hitungan jam.",
+    },
+    {
+      icon: "🎯",
+      title: "Fokus hasil bisnis",
+      description: "Setiap produk dirancang untuk menaikkan konversi, bukan sekadar tampil keren.",
+    },
+    {
+      icon: "🛠️",
+      title: "Mudah dikustom",
+      description: "Struktur rapi sehingga tim Anda gampang menyesuaikan sesuai kebutuhan brand.",
+    },
+  ];
 
   const updateActiveReview = () => {
     const carousel = reviewCarouselRef.current;
@@ -151,6 +168,19 @@ export default function Home({ allPostsData }) {
           cepat dan bermakna. Wujudkan ide, bangun brand, dan capai dengan cara
           yang lebih sederhana.
         </p>
+        <div className={homeStyles.quickValueGrid} aria-label="Keunggulan utama produk">
+          {quickValueProps.map((item) => (
+            <article className={homeStyles.quickValueCard} key={item.title}>
+              <span className={homeStyles.quickValueIcon} aria-hidden="true">
+                {item.icon}
+              </span>
+              <div>
+                <h3 className={homeStyles.quickValueTitle}>{item.title}</h3>
+                <p className={homeStyles.quickValueDescription}>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
 
         <div className={homeStyles.heroActions}>
           <a className={homeStyles.heroPrimaryCta} href="#product">

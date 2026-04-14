@@ -76,6 +76,51 @@
   font-size: 1rem;
 }
 
+.quickValueGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.65rem;
+}
+
+.quickValueCard {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 0.75rem 0.8rem;
+  background: var(--surface-color);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.quickValueIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: color-mix(in srgb, var(--link-color) 18%, transparent);
+  flex-shrink: 0;
+}
+
+.quickValueTitle {
+  margin: 0;
+  color: var(--strong-text-color);
+  font-size: var(--type-scale-16);
+  line-height: 1.3;
+}
+
+.quickValueDescription {
+  margin: 0.35rem 0 0;
+  color: var(--muted-color);
+  font-size: var(--type-scale-14);
+  line-height: 1.45;
+}
+
 .heroActions {
   margin-top: 1rem;
   display: flex;
