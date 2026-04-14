@@ -186,7 +186,18 @@ export default function Layout({ children, home }) {
                 className={styles.themeToggle}
                 aria-label={`Ganti ke mode ${theme === 'dark' ? 'terang' : 'gelap'}`}
               >
-                {theme === 'dark' ? '☀️ Mode terang' : '🌙 Mode gelap'}
+                <span className={styles.themeToggleIcon} aria-hidden="true">
+                  {theme === 'dark' ? (
+                    <svg viewBox="0 0 24 24" className={styles.themeToggleSvg} focusable="false">
+                      <circle cx="12" cy="12" r="4.5" />
+                      <path d="M12 2.75v2.5M12 18.75v2.5M21.25 12h-2.5M5.25 12h-2.5M18.54 5.46l-1.77 1.77M7.23 16.77l-1.77 1.77M18.54 18.54l-1.77-1.77M7.23 7.23 5.46 5.46" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className={styles.themeToggleSvg} focusable="false">
+                      <path d="M19 15.2A7.2 7.2 0 0 1 8.8 5a8.5 8.5 0 1 0 10.2 10.2Z" />
+                    </svg>
+                  )}
+                </span>
               </button>
             </div>
           </nav>
