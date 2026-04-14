@@ -124,11 +124,11 @@ export default function Home({ allPostsData }) {
 
       <section className={homeStyles.hero}>
         <span className={homeStyles.badge}>Selamat Datang</span>
-        <h2 className={homeStyles.heroTitle}>Solusi produk digital untuk bantu bisnis Anda tumbuh</h2>
+        <h2 className={homeStyles.heroTitle}>CodeFalah membantu Anda membuat dan menjual produk digital lebih mudah</h2>
         <p className={homeStyles.heroDescription}>
-          Fokus utama website ini adalah membantu Anda menemukan produk digital
-          yang siap pakai untuk promosi, pengembangan, dan optimasi website bisnis.
-          Artikel tetap tersedia sebagai referensi tambahan.
+          Kami percaya setiap orang punya potensi untuk sukses, tetapi sering terhambat oleh
+          keterbatasan teknis, waktu, dan kompleksitas tools. Karena itu, CodeFalah menghadirkan
+          solusi yang praktis agar Anda bisa fokus menghasilkan, bukan pusing teknis.
         </p>
 
         <div className={homeStyles.heroActions}>
@@ -140,19 +140,19 @@ export default function Home({ allPostsData }) {
           </a>
         </div>
 
-        <div className={homeStyles.businessModelGuide} aria-label="Panduan memilih produk atau layanan SaaS">
+        <div className={homeStyles.businessModelGuide} aria-label="Panduan model solusi CodeFalah">
           <article className={homeStyles.businessModelCard}>
-            <h3>Produk digital (sekali beli)</h3>
+            <h3>Software SaaS (berlangganan)</h3>
             <p>
-              Cocok jika Anda ingin aset digital siap pakai yang bisa dipasang mandiri dengan biaya
-              sekali bayar.
+              Untuk Anda yang ingin solusi praktis, selalu update, dan minim ribet teknis.
+              Contohnya platform undangan digital online.
             </p>
           </article>
           <article className={homeStyles.businessModelCard}>
-            <h3>Layanan SaaS (berlangganan)</h3>
+            <h3>Produk digital (sekali bayar)</h3>
             <p>
-              Cocok jika Anda ingin platform yang selalu aktif, terus dikembangkan, dan dibantu
-              operasionalnya.
+              Untuk Anda yang ingin kontrol penuh, bisa dipakai selamanya, bahkan dijual ulang.
+              Contohnya template, source code, dan script siap pakai.
             </p>
           </article>
         </div>
@@ -160,10 +160,10 @@ export default function Home({ allPostsData }) {
 
       <section id="product" className={homeStyles.sellSection}>
         <span className={homeStyles.badge}>Katalog Utama</span>
-        <h2 className={homeStyles.sellTitle}>Katalog produk digital siap jual & siap pakai</h2>
+        <h2 className={homeStyles.sellTitle}>Produk digital siap pakai untuk percepat eksekusi</h2>
         <p className={homeStyles.sellDescription}>
-          Pilih produk yang paling sesuai untuk kebutuhan bisnis Anda. Semua
-          produk dirancang agar implementasi cepat, tampilan modern, dan mudah dikembangkan.
+          Pilih template, source code, atau script yang bisa langsung digunakan untuk
+          launching lebih cepat, hemat waktu produksi, dan tetap fleksibel untuk dikembangkan.
         </p>
 
         <div className={homeStyles.offerGrid}>
@@ -190,10 +190,10 @@ export default function Home({ allPostsData }) {
 
       <section id="saas" className={homeStyles.saasSection}>
         <span className={homeStyles.badge}>Layanan SaaS</span>
-        <h2 className={homeStyles.saasTitle}>Perkenalan produk SaaS untuk kebutuhan bisnis</h2>
+        <h2 className={homeStyles.saasTitle}>SaaS untuk operasional yang praktis dan berkelanjutan</h2>
         <p className={homeStyles.saasDescription}>
-          Saat ini layanan SaaS yang tersedia adalah produk undangan online. Ke depan, model SaaS
-          ini disiapkan untuk berkembang ke layanan lain sesuai kebutuhan pasar.
+          Cocok untuk Anda yang ingin langsung jalan tanpa setup teknis rumit.
+          Saat ini tersedia SaaS undangan online, dengan roadmap layanan lain yang terus dikembangkan.
         </p>
 
         <div className={homeStyles.offerGrid}>
@@ -217,8 +217,8 @@ export default function Home({ allPostsData }) {
             <span className={homeStyles.saasFutureFlag}>{saasFutureFlagLabel}</span>
             <h3>SaaS lain segera hadir</h3>
             <p>
-              Saat ini fokus pada undangan online terlebih dahulu. Flag ini menandakan roadmap
-              layanan SaaS berikutnya sedang dipersiapkan.
+              Kami membangun layanan SaaS baru secara bertahap agar setiap produk tetap fokus,
+              stabil, dan benar-benar relevan dengan kebutuhan pengguna.
             </p>
           </article>
         </div>
@@ -226,19 +226,19 @@ export default function Home({ allPostsData }) {
 
       <section id="promo" className={homeStyles.promoSection}>
         <span className={homeStyles.badge}>Promo & Nilai</span>
-        <h2 className={homeStyles.promoTitle}>Alasan pengunjung tertarik membeli</h2>
+        <h2 className={homeStyles.promoTitle}>Kenapa produk CodeFalah mudah dipahami dan dipakai</h2>
         <div className={homeStyles.promoGrid}>
           <article className={homeStyles.promoCard}>
-            <h3>Bonus penyiapan awal</h3>
-            <p>Dapatkan panduan implementasi agar produk langsung bisa digunakan.</p>
+            <h3>Implementasi cepat</h3>
+            <p>Struktur produk dibuat ringkas agar Anda bisa mulai lebih cepat tanpa proses yang berbelit.</p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Desain responsif</h3>
-            <p>Tampilan tetap optimal di mobile, tablet, maupun desktop.</p>
+            <h3>Dokumentasi jelas</h3>
+            <p>Petunjuk penggunaan disusun sederhana supaya mudah diikuti bahkan untuk pengguna non-teknis.</p>
           </article>
           <article className={homeStyles.promoCard}>
-            <h3>Dukungan purna jual</h3>
-            <p>Anda tetap mendapat bantuan setelah pembelian agar deploy lebih lancar.</p>
+            <h3>Fokus pada hasil</h3>
+            <p>Setiap produk dirancang untuk membantu Anda segera menghasilkan, bukan hanya sekadar punya tools.</p>
           </article>
         </div>
       </section>
