@@ -143,7 +143,12 @@
 .form {
   margin-top: var(--space-16);
   display: grid;
-  gap: var(--space-20);
+  gap: var(--space-16);
+}
+
+.formFields {
+  display: grid;
+  gap: var(--space-16);
 }
 
 .field {
