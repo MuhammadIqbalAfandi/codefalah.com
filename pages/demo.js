@@ -14,9 +14,8 @@ export default function DemoPage() {
         <span className={styles.badge}>Demo</span>
         <h1 className={styles.title}>Jadwalkan sesi demo untuk evaluasi produk bersama tim Anda</h1>
         <p className={styles.description}>
-          Isi form berikut agar kami bisa menyiapkan walkthrough yang relevan dengan proses bisnis,
-          peran user, dan target implementasi Anda. Tim kami akan menghubungi Anda untuk mengatur sesi
-          evaluasi produk, termasuk skenario use case dan alur operasional yang ingin diuji.
+          Tim kami akan menghubungi Anda untuk mengatur sesi evaluasi produk, termasuk skenario use
+          case dan alur operasional yang ingin diuji.
         </p>
       </section>
 
