@@ -53,10 +53,9 @@ export default function DemoPage() {
                   <option value="" disabled>
                     Pilih aplikasi
                   </option>
-                  <option value="crm">CRM & Sales Tracking</option>
-                  <option value="project-management">Project Management</option>
-                  <option value="hris">HRIS & Employee Management</option>
-                  <option value="service-desk">Service Desk / Ticketing</option>
+                  <option value="landing-page">Landing page kampanye</option>
+                  <option value="boilerplate">Boilerplate situs web</option>
+                  <option value="ui-kit">Paket komponen UI</option>
                 </select>
               </div>
               <div className={styles.field}>
