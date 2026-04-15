@@ -30,6 +30,10 @@ export default function TanyaHargaPage() {
             <input id="email" name="email" type="email" placeholder="email@domain.com" />
           </div>
           <div className={styles.field}>
+            <label htmlFor="whatsapp">WhatsApp (opsional)</label>
+            <input id="whatsapp" name="whatsapp" type="tel" placeholder="08xxxxxxxxxx atau +62xxxxxxxxxx" />
+          </div>
+          <div className={styles.field}>
             <label htmlFor="service">Kebutuhan utama</label>
             <select id="service" name="service" defaultValue="">
               <option value="" disabled>
