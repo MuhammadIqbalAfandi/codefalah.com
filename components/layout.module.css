@@ -301,27 +301,76 @@
 .footerContent {
   position: relative;
   z-index: 1;
-  padding: 1.45rem 0;
+  padding: 2.2rem 0 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.footerColumn {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.9rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footerHeading {
+  margin: 0;
+  color: var(--title-color);
+  font-size: var(--type-18);
+  font-weight: var(--font-weight-bold);
 }
 
 .footerText {
   margin: 0;
   color: var(--body-color);
   font-size: var(--type-14);
-  text-align: center;
+  line-height: 1.75;
+}
+
+.footerLinks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.footerLink {
+  color: var(--body-color);
+  font-size: var(--type-15);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--title-color);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.footerBottom {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
 }
 
 .footerCopyright {
   margin: 0;
   color: var(--body-color);
   font-size: var(--type-14);
-  padding-left: 0.9rem;
-  border-left: 1px solid var(--border-color);
+}
+
+.footerTagline {
+  margin: 0;
+  color: var(--body-color);
+  font-size: var(--type-14);
 }
 
 @media (max-width: 740px) {
@@ -412,32 +461,40 @@
   }
 
   .footerWatermark {
-    font-size: clamp(2.1rem, 12vw, 3.6rem);
+    font-size: clamp(2rem, 11vw, 3.4rem);
     letter-spacing: 0.04rem;
     padding-inline: 0.35rem;
     text-align: center;
   }
 
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding-top: 1.8rem;
+  }
+
+  .footerHeading {
+    font-size: var(--type-16);
+  }
+
   .footerText,
-  .footerCopyright {
+  .footerCopyright,
+  .footerTagline,
+  .footerLink {
     font-size: var(--type-12);
   }
 
-  .footerCopyright {
-    position: relative;
-    border-left: none;
-    border-top: none;
-    padding-left: 0;
-    padding-top: 0.6rem;
+  .footerLinks {
+    gap: 0.4rem;
   }
 
-  .footerCopyright::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 84px;
-    border-top: 1px solid var(--border-color);
+  .footerBottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.9rem 0 1.2rem;
+  }
+
+  .footerCopyright {
+    padding-top: 0;
   }
 }
