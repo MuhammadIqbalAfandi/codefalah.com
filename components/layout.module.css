@@ -6,7 +6,7 @@
 .header {
   width: 100%;
   margin: 0 0 1.6rem;
-  background: var(--header-surface-color);
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
   border-bottom: 1px solid var(--border-color);
   position: relative;
   z-index: 40;
@@ -32,41 +32,74 @@
   align-items: center;
   gap: 1.1rem;
   width: 100%;
-  padding: 0.8rem 1.5rem;
+  padding: 0.85rem 1.15rem;
   position: relative;
   overflow: visible;
-  border-radius: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--overlay-surface-color) 94%, transparent);
+  box-shadow: 0 16px 32px var(--shadow-color);
+  isolation: isolate;
+}
+
+.navbar::before {
+  content: 'CODEFALAH';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.2rem;
+  font-size: clamp(2.2rem, 8vw, 4.4rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--title-color);
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   text-decoration: none;
+  padding: 0.3rem 0.55rem 0.3rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
 }
 
 .brandLogo {
-  width: 2.55rem;
-  height: 2.55rem;
-  border-radius: 0;
-  box-shadow: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-muted-color);
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .brandName {
   color: var(--title-color);
   font-weight: var(--font-weight-bold);
-  font-size: var(--type-20);
-  letter-spacing: 0.01em;
+  font-size: var(--type-18);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brand:hover {
+  border-color: var(--surface-hover-border-color);
+  background: var(--surface-hover-color);
 }
 
 .navActions {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.38rem;
   justify-self: center;
+  padding: 0.22rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--surface-color) 90%, transparent);
 }
 
 .productMenu {
@@ -174,15 +207,18 @@
 .navLink {
   color: var(--body-color);
   text-decoration: none;
-  padding: 0.45rem 0.72rem;
-  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
   font-size: var(--type-14);
   font-weight: var(--font-weight-semibold);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .navLink:hover {
   color: var(--title-color);
   background: var(--surface-hover-color);
+  border-color: var(--surface-hover-border-color);
 }
 
 .themeToggle {
@@ -225,9 +261,9 @@
   display: none;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  background: var(--surface-muted-color);
+  border: 1px solid var(--control-border-color);
+  border-radius: 999px;
+  background: var(--control-surface-color);
   color: var(--text-color);
   font-size: var(--type-14);
   font-weight: var(--font-weight-semibold);
@@ -384,7 +420,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.95rem;
   }
 
   .brand {
@@ -406,6 +443,8 @@
     background: var(--surface-muted-color);
     border: 1px solid var(--border-color);
     border-radius: 0.9rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   .menuOpen {
@@ -418,6 +457,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.45rem;
+    border-radius: 0.8rem;
   }
 
   .productDropdown {
@@ -450,14 +490,15 @@
   .themeToggle {
     width: 2.75rem;
     height: 2.75rem;
-    border-radius: 0.9rem;
+    border-radius: 999px;
     justify-self: end;
   }
 
   .navLink {
     display: block;
     width: 100%;
-    padding: 0.6rem 0.75rem;
+    padding: 0.62rem 0.78rem;
+    border-radius: 0.7rem;
   }
 
   .footerWatermark {
