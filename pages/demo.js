@@ -3,21 +3,6 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import styles from '../styles/marketing-pages.module.css';
 
-const demoBenefits = [
-  {
-    title: 'Tur langsung produk',
-    description: 'Kami tampilkan alur produk dari penyiapan sampai siap terbit untuk bisnis Anda.',
-  },
-  {
-    title: 'Skenario penggunaan bisnis',
-    description: 'Demo menyesuaikan skenario nyata agar Anda langsung melihat potensi hasilnya.',
-  },
-  {
-    title: 'Roadmap implementasi',
-    description: 'Setelah demo, Anda mendapat gambaran langkah implementasi yang terstruktur.',
-  },
-];
-
 export default function DemoPage() {
   return (
     <Layout>
@@ -27,32 +12,92 @@ export default function DemoPage() {
 
       <section className={styles.hero}>
         <span className={styles.badge}>Demo</span>
-        <h1 className={styles.title}>Lihat demo produk sebelum memutuskan pembelian</h1>
+        <h1 className={styles.title}>Jadwalkan sesi demo untuk evaluasi produk bersama tim Anda</h1>
         <p className={styles.description}>
-          Jadwalkan sesi demo singkat agar tim Anda bisa mengevaluasi fitur, alur kerja, dan nilai
-          produk secara langsung.
+          Isi form berikut agar kami bisa menyiapkan walkthrough yang relevan dengan proses bisnis,
+          peran user, dan target implementasi Anda.
         </p>
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Yang Anda dapatkan saat demo</h2>
-        <div className={styles.grid}>
-          {demoBenefits.map((item) => (
-            <article className={styles.card} key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
+        <div className={styles.demoSectionHeader}>
+          <h2 className={styles.sectionTitle}>Form permintaan demo</h2>
+          <p className={styles.demoHint}>
+            Tim kami akan menghubungi Anda untuk mengatur sesi evaluasi produk, termasuk skenario
+            use case dan alur operasional yang ingin diuji.
+          </p>
         </div>
 
-        <div className={styles.ctaRow}>
-          <Link className={styles.primaryCta} href="/tanya-harga">
-            Jadwalkan demo
-          </Link>
-          <Link className={styles.secondaryCta} href="/promo">
-            Cek promo aktif
-          </Link>
-        </div>
+        <form className={styles.form}>
+          <div className={styles.fieldGrid}>
+            <div className={styles.field}>
+              <label htmlFor="picName">Nama PIC</label>
+              <input id="picName" name="picName" type="text" placeholder="Contoh: Andi Pratama" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="workEmail">Email kerja</label>
+              <input id="workEmail" name="workEmail" type="email" placeholder="nama@perusahaan.com" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="Contoh: +62 812 3456 7890" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="company">Nama perusahaan</label>
+              <input id="company" name="company" type="text" placeholder="Nama perusahaan Anda" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="role">Role/Jabatan</label>
+              <input id="role" name="role" type="text" placeholder="Contoh: Product Manager" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="teamSize">Ukuran tim/jumlah user estimasi</label>
+              <input id="teamSize" name="teamSize" type="text" placeholder="Contoh: 25 user aktif" />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="useCase">Use case utama</label>
+              <select id="useCase" name="useCase" defaultValue="">
+                <option value="" disabled>
+                  Pilih use case
+                </option>
+                <option value="operations">Operasional & workflow harian</option>
+                <option value="sales">Sales pipeline & reporting</option>
+                <option value="customer-support">Customer support & SLA tracking</option>
+                <option value="collaboration">Kolaborasi lintas tim</option>
+              </select>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="timeline">Target waktu implementasi</label>
+              <select id="timeline" name="timeline" defaultValue="">
+                <option value="" disabled>
+                  Pilih target waktu
+                </option>
+                <option value="asap">Secepatnya (0-1 bulan)</option>
+                <option value="short-term">Jangka pendek (1-3 bulan)</option>
+                <option value="mid-term">Jangka menengah (3-6 bulan)</option>
+                <option value="exploring">Masih tahap eksplorasi</option>
+              </select>
+            </div>
+          </div>
+
+          <div className={styles.field}>
+            <label htmlFor="demoNotes">Catatan kebutuhan demo</label>
+            <textarea
+              id="demoNotes"
+              name="demoNotes"
+              placeholder="Jelaskan alur yang ingin dilihat saat walkthrough, tantangan tim saat ini, atau integrasi yang ingin didiskusikan."
+            />
+          </div>
+
+          <div className={styles.ctaRow}>
+            <button type="submit" className={`${styles.primaryCta} ${styles.submitButton}`}>
+              Jadwalkan Demo
+            </button>
+            <Link className={styles.secondaryCta} href="/tanya-harga">
+              Butuh estimasi harga dulu?
+            </Link>
+          </div>
+        </form>
       </section>
     </Layout>
   );

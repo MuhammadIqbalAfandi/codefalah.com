@@ -110,6 +110,8 @@
   color: #fff;
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
   box-shadow: 0 10px 20px color-mix(in srgb, var(--link-color) 30%, transparent);
+  border: none;
+  cursor: pointer;
 }
 
 .secondaryCta {
@@ -118,6 +120,26 @@
   background-color: var(--surface-color);
 }
 
+
+.demoSectionHeader {
+  padding: var(--space-16);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface-muted-color) 88%, transparent);
+}
+
+.demoHint {
+  margin: var(--space-8) 0 0;
+  color: var(--body-color);
+  font-size: var(--type-14);
+  line-height: var(--line-height-body);
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-16);
+}
 .form {
   margin-top: var(--space-16);
   display: grid;
@@ -179,7 +201,8 @@
 
 @media (max-width: 640px) {
   .hero,
-  .section {
+  .section,
+  .demoSectionHeader {
     padding: var(--space-16);
   }
 
