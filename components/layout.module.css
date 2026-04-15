@@ -37,7 +37,7 @@
   overflow: visible;
   border-radius: 0;
   border: none;
-  background: color-mix(in srgb, var(--overlay-surface-color) 94%, transparent);
+  background: transparent;
   box-shadow: 0 16px 32px var(--shadow-color);
 }
 
@@ -56,7 +56,7 @@
   height: 2.35rem;
   border-radius: 0;
   border: none;
-  background: var(--surface-muted-color);
+  background: transparent;
   box-shadow: 0 8px 20px var(--shadow-color);
 }
 
@@ -69,8 +69,8 @@
 }
 
 .brand:hover {
-  border-color: var(--surface-hover-border-color);
-  background: var(--surface-hover-color);
+  border-color: transparent;
+  background: transparent;
 }
 
 .navActions {
