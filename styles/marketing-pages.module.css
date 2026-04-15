@@ -121,14 +121,6 @@
 }
 
 
-.demoInfoCard,
-.demoFormCard {
-  padding: var(--space-16);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--surface-muted-color) 88%, transparent);
-}
-
 .demoFormCard {
   margin-top: var(--space-16);
 }
@@ -168,8 +160,7 @@
 .field textarea {
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
+  background: var(--surface-color);
   color: var(--text-color);
   font-size: var(--type-16);
   line-height: var(--line-height-body);
@@ -207,7 +198,6 @@
 @media (max-width: 640px) {
   .hero,
   .section,
-  .demoInfoCard,
   .demoFormCard {
     padding: var(--space-16);
   }
