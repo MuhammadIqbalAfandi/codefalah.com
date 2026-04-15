@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import Date from '../../components/date';
+import Link from 'next/link';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import utilStyles from '../../styles/utils.module.css';
 
@@ -92,6 +93,23 @@ export default function Post({ postData }) {
             </section>
           </aside>
         </div>
+
+        <section className={utilStyles.postCtaBand} aria-label="Ajakan tindakan setelah membaca artikel">
+          <p className={utilStyles.postCtaEyebrow}>Siap lanjut ke implementasi?</p>
+          <h2 className={utilStyles.postCtaTitle}>Diskusikan use case bisnis Anda bersama tim CodeFalah</h2>
+          <p className={utilStyles.sidebarBody}>
+            Setelah memahami konsep di artikel ini, Anda bisa langsung validasi solusi melalui sesi demo atau minta
+            proposal harga sesuai kebutuhan.
+          </p>
+          <div className={utilStyles.postCtaActions}>
+            <Link href="/demo" className={utilStyles.postCtaPrimary}>
+              Jadwalkan demo
+            </Link>
+            <Link href="/tanya-harga" className={utilStyles.postCtaSecondary}>
+              Minta proposal harga
+            </Link>
+          </div>
+        </section>
       </article>
     </Layout>
   );

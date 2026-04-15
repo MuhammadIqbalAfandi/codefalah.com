@@ -77,7 +77,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Saya menjual produk saya sendiri untuk membantu bisnis Anda berkembang di web."
+          content="CodeFalah adalah platform produk digital dan SaaS untuk membantu bisnis meluncur lebih cepat dan tumbuh berkelanjutan."
         />
         <meta
           property="og:image"
