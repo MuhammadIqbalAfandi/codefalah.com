@@ -121,15 +121,20 @@
 }
 
 
-.demoSectionHeader {
+.demoInfoCard,
+.demoFormCard {
   padding: var(--space-16);
   border: 1px solid var(--border-color);
   border-radius: 14px;
   background: color-mix(in srgb, var(--surface-muted-color) 88%, transparent);
 }
 
+.demoFormCard {
+  margin-top: var(--space-16);
+}
+
 .demoHint {
-  margin: var(--space-8) 0 0;
+  margin: 0;
   color: var(--body-color);
   font-size: var(--type-14);
   line-height: var(--line-height-body);
@@ -202,7 +207,8 @@
 @media (max-width: 640px) {
   .hero,
   .section,
-  .demoSectionHeader {
+  .demoInfoCard,
+  .demoFormCard {
     padding: var(--space-16);
   }
 
