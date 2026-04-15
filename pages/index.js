@@ -212,9 +212,6 @@ export default function Home({ allPostsData }) {
           <Link className={homeStyles.sellGhostCta} href="/demo">
             Lihat demo
           </Link>
-          <Link className={homeStyles.sellGhostCta} href="/promo">
-            Cek promo bulan ini
-          </Link>
         </div>
       </section>
 
@@ -252,34 +249,6 @@ export default function Home({ allPostsData }) {
               Saat ini kami fokus menyempurnakan layanan undangan online.
               Layanan SaaS lainnya sedang disiapkan untuk mendukung kebutuhan
               bisnis yang lebih luas.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="promo" className={homeStyles.promoSection}>
-        <span className={homeStyles.badge}>Promo & Nilai</span>
-        <h2 className={homeStyles.promoTitle}>
-          Alasan pengunjung tertarik membeli
-        </h2>
-        <div className={homeStyles.promoGrid}>
-          <article className={homeStyles.promoCard}>
-            <h3 className={homeStyles.cardTitle}>Bonus penyiapan awal</h3>
-            <p className={homeStyles.cardDescription}>
-              Dapatkan panduan implementasi agar produk langsung bisa digunakan.
-            </p>
-          </article>
-          <article className={homeStyles.promoCard}>
-            <h3 className={homeStyles.cardTitle}>Desain responsif</h3>
-            <p className={homeStyles.cardDescription}>
-              Tampilan tetap optimal di mobile, tablet, maupun desktop.
-            </p>
-          </article>
-          <article className={homeStyles.promoCard}>
-            <h3 className={homeStyles.cardTitle}>Dukungan purna jual</h3>
-            <p className={homeStyles.cardDescription}>
-              Anda tetap mendapat bantuan setelah pembelian agar deploy lebih
-              lancar.
             </p>
           </article>
         </div>

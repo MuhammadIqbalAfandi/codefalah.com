@@ -125,13 +125,6 @@
   margin-top: var(--space-16);
 }
 
-.demoHint {
-  margin: var(--space-8) 0 0;
-  color: var(--body-color);
-  font-size: var(--type-14);
-  line-height: var(--line-height-body);
-}
-
 .form {
   margin-top: var(--space-16);
   display: grid;
