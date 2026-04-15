@@ -110,30 +110,6 @@
   backdrop-filter: blur(12px);
 }
 
-.businessModelGuide {
-  margin-top: var(--space-16);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-16);
-}
-
-.businessModelCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.8rem 0.9rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.businessModelCard h3 {
-  font-size: var(--type-scale-16);
-}
-
-.businessModelCard p {
-  font-size: var(--type-scale-14);
-}
-
 .blogSection {
   margin-top: var(--space-32);
 }
