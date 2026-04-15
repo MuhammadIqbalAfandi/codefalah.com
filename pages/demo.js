@@ -21,10 +21,8 @@ export default function DemoPage() {
 
       <section className={styles.section}>
         <div className={styles.demoFormCard}>
-          <h2 className={styles.sectionTitle}>Form permintaan demo</h2>
           <p className={styles.demoHint}>
-            Tim kami akan menghubungi Anda untuk mengatur sesi evaluasi produk, termasuk skenario
-            use case dan alur operasional yang ingin diuji.
+            Tim kami akan menghubungi Anda melalui email dengan penawaran yang relevan.
           </p>
 
           <form className={styles.form}>

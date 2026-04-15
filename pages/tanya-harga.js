@@ -19,7 +19,6 @@ export default function TanyaHargaPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Form konsultasi singkat</h2>
         <form className={styles.form}>
           <div className={styles.field}>
             <label htmlFor="name">Nama</label>
