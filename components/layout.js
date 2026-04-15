@@ -10,7 +10,6 @@ export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('light');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productMenuOpen, setProductMenuOpen] = useState(false);
-  const currentYear = new Date().getFullYear();
   const productMenuRef = useRef(null);
   const dropdownCloseTimeoutRef = useRef(null);
 
@@ -220,10 +219,83 @@ export default function Layout({ children, home }) {
         </div>
         <div className={styles.footerInner}>
           <div className={styles.footerContent}>
-            <p className={styles.footerText}>
-              Dimiliki oleh Muhammad Iqbal Afandi, didesain dengan kode
-            </p>
-            <p className={styles.footerCopyright}>© {currentYear} CodeFalah. Seluruh hak cipta dilindungi.</p>
+            <section className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Brand Identity</h3>
+              <p className={styles.footerText}>
+                CodeFalah adalah platform digital yang membantu siapa pun membuat, menggunakan, dan menjual produk
+                digital dengan mudah.
+              </p>
+              <p className={styles.footerText}>
+                Dari software SaaS hingga produk siap pakai, kami hadir untuk menyederhanakan teknologi agar lebih
+                banyak orang bisa meraih falah — kesuksesan yang bermakna.
+              </p>
+            </section>
+
+            <section className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Produk &amp; Platform</h3>
+              <nav aria-label="Produk dan platform">
+                <ul className={styles.footerLinks}>
+                  <li>
+                    <Link href="/#product" className={styles.footerLink}>
+                      SaaS Tools
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#product" className={styles.footerLink}>
+                      Undangan Digital
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#product" className={styles.footerLink}>
+                      Semua Produk
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/promo" className={styles.footerLink}>
+                      Promo
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </section>
+
+            <section className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Eksplorasi</h3>
+              <nav aria-label="Eksplorasi situs">
+                <ul className={styles.footerLinks}>
+                  <li>
+                    <Link href="/#about" className={styles.footerLink}>
+                      Tentang Kami
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#article" className={styles.footerLink}>
+                      Artikel
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#testimonial" className={styles.footerLink}>
+                      Testimoni
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#roadmap" className={styles.footerLink}>
+                      Roadmap
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/tanya-harga" className={styles.footerLink}>
+                      Hubungi Kami
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </section>
+          </div>
+
+          <div className={styles.footerBottom}>
+            <p className={styles.footerCopyright}>© 2026 CodeFalah. All rights reserved.</p>
+            <p className={styles.footerTagline}>Build with purpose. Grow with impact.</p>
           </div>
         </div>
       </footer>
