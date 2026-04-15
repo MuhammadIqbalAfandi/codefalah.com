@@ -143,9 +143,9 @@ export default function Home({ allPostsData }) {
 
       <section className={homeStyles.hero}>
         <span className={homeStyles.badge}>Selamat Datang</span>
-        <h2 className={homeStyles.heroTitle}>
+        <h1 className={homeStyles.heroTitle}>
           Solusi produk digital untuk bantu bisnis Anda tumbuh
-        </h2>
+        </h1>
         <p className={homeStyles.heroDescription}>
           Produk digital siap pakai untuk membantu bisnis Anda tumbuh lebih
           cepat dan bermakna. Wujudkan ide, bangun brand, dan capai dengan cara
