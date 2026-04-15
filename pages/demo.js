@@ -32,19 +32,19 @@ export default function DemoPage() {
                 <input id="workEmail" name="workEmail" type="email" placeholder="nama@perusahaan.com" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="whatsapp">WhatsApp</label>
+                <label htmlFor="whatsapp">WhatsApp (opsional)</label>
                 <input id="whatsapp" name="whatsapp" type="tel" placeholder="Contoh: +62 812 3456 7890" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="company">Nama perusahaan</label>
+                <label htmlFor="company">Nama perusahaan (opsional)</label>
                 <input id="company" name="company" type="text" placeholder="Nama perusahaan Anda" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="role">Role/Jabatan</label>
+                <label htmlFor="role">Role/Jabatan (opsional)</label>
                 <input id="role" name="role" type="text" placeholder="Contoh: Product Manager" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="teamSize">Ukuran tim/jumlah user estimasi</label>
+                <label htmlFor="teamSize">Ukuran tim/jumlah user estimasi (opsional)</label>
                 <input id="teamSize" name="teamSize" type="text" placeholder="Contoh: 25 user aktif" />
               </div>
               <div className={styles.field}>
