@@ -10,6 +10,23 @@
   box-shadow: 0 18px 40px var(--shadow-color);
 }
 
+.priceInquiryLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: var(--space-20);
+  align-items: start;
+}
+
+.heroPanel {
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: var(--space-24);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 18%, transparent), transparent 50%),
+    var(--surface-color);
+  box-shadow: 0 16px 36px var(--shadow-color);
+}
+
 .badge {
   display: inline-block;
   background-color: var(--badge-bg);
@@ -38,6 +55,15 @@
   line-height: var(--line-height-body);
 }
 
+.benefitList {
+  margin: var(--space-16) 0 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: var(--space-8);
+  color: var(--body-color);
+  font-size: var(--type-14);
+}
+
 .section {
   margin-top: var(--space-32);
   border: 1px solid var(--border-color);
@@ -49,12 +75,22 @@
   box-shadow: 0 12px 28px var(--shadow-color);
 }
 
+.formPanel {
+  margin-top: 0;
+}
+
 .sectionTitle {
   margin: 0;
   color: var(--title-color);
   font-size: var(--type-24);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
+}
+
+.formHint {
+  margin: var(--space-8) 0 0;
+  color: var(--caption-color);
+  font-size: var(--type-14);
 }
 
 .grid {
@@ -124,6 +160,12 @@
   gap: var(--space-16);
 }
 
+.twoColumnFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
+}
+
 .field {
   display: grid;
   gap: var(--space-4);
@@ -148,6 +190,15 @@
   line-height: var(--line-height-body);
   padding: 0.75rem;
   width: 100%;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--link-color) 65%, #ffffff 5%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--link-color) 22%, transparent);
 }
 
 .field input::placeholder,
@@ -178,9 +229,19 @@
 }
 
 @media (max-width: 640px) {
+  .priceInquiryLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .heroPanel,
   .hero,
   .section {
     padding: var(--space-16);
+  }
+
+  .twoColumnFields {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
   }
 
   .ctaRow {
