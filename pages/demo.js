@@ -55,6 +55,18 @@ export default function DemoPage() {
               <input id="teamSize" name="teamSize" type="text" placeholder="Contoh: 25 user aktif" />
             </div>
             <div className={styles.field}>
+              <label htmlFor="demoProduct">Aplikasi yang akan didemo</label>
+              <select id="demoProduct" name="demoProduct" defaultValue="">
+                <option value="" disabled>
+                  Pilih aplikasi
+                </option>
+                <option value="crm">CRM & Sales Tracking</option>
+                <option value="project-management">Project Management</option>
+                <option value="hris">HRIS & Employee Management</option>
+                <option value="service-desk">Service Desk / Ticketing</option>
+              </select>
+            </div>
+            <div className={styles.field}>
               <label htmlFor="useCase">Use case utama</label>
               <select id="useCase" name="useCase" defaultValue="">
                 <option value="" disabled>
