@@ -110,6 +110,8 @@
   color: #fff;
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
   box-shadow: 0 10px 20px color-mix(in srgb, var(--link-color) 30%, transparent);
+  border: none;
+  cursor: pointer;
 }
 
 .secondaryCta {
@@ -118,15 +120,32 @@
   background-color: var(--surface-color);
 }
 
+
+.demoFormCard {
+  margin-top: var(--space-16);
+}
+
+.demoHint {
+  margin: var(--space-8) 0 0;
+  color: var(--body-color);
+  font-size: var(--type-14);
+  line-height: var(--line-height-body);
+}
+
 .form {
   margin-top: var(--space-16);
   display: grid;
   gap: var(--space-16);
 }
 
+.formFields {
+  display: grid;
+  gap: var(--space-16);
+}
+
 .field {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-8);
 }
 
 .field label {
@@ -141,8 +160,7 @@
 .field textarea {
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
+  background: var(--surface-color);
   color: var(--text-color);
   font-size: var(--type-16);
   line-height: var(--line-height-body);
@@ -179,7 +197,8 @@
 
 @media (max-width: 640px) {
   .hero,
-  .section {
+  .section,
+  .demoFormCard {
     padding: var(--space-16);
   }
 
