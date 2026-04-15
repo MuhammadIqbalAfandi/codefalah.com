@@ -169,9 +169,6 @@ export default function Layout({ children, home }) {
                     ))}
                   </div>
                 </div>
-                <Link href="/promo" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-                  Promo
-                </Link>
                 <Link href="/demo" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
                   Demo
                 </Link>
@@ -251,11 +248,6 @@ export default function Layout({ children, home }) {
                   <li>
                     <Link href="/#product" className={styles.footerLink}>
                       Semua Produk
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/promo" className={styles.footerLink}>
-                      Promo
                     </Link>
                   </li>
                 </ul>

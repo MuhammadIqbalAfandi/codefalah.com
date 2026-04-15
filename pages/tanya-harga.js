@@ -13,13 +13,11 @@ export default function TanyaHargaPage() {
         <span className={styles.badge}>Tanya Harga</span>
         <h1 className={styles.title}>Diskusikan kebutuhan dan dapatkan estimasi harga terbaik</h1>
         <p className={styles.description}>
-          Isi form singkat berikut untuk membantu kami memahami kebutuhan bisnis Anda. Tim kami akan
-          menghubungi Anda melalui email dengan penawaran yang relevan.
+          Tim kami akan menghubungi Anda melalui email dengan penawaran yang relevan.
         </p>
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Form konsultasi singkat</h2>
         <form className={styles.form}>
           <div className={styles.field}>
             <label htmlFor="name">Nama</label>

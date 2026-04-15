@@ -14,19 +14,13 @@ export default function DemoPage() {
         <span className={styles.badge}>Demo</span>
         <h1 className={styles.title}>Jadwalkan sesi demo untuk evaluasi produk bersama tim Anda</h1>
         <p className={styles.description}>
-          Isi form berikut agar kami bisa menyiapkan walkthrough yang relevan dengan proses bisnis,
-          peran user, dan target implementasi Anda.
+          Tim kami akan menghubungi Anda untuk mengatur sesi evaluasi produk, termasuk skenario use
+          case dan alur operasional yang ingin diuji.
         </p>
       </section>
 
       <section className={styles.section}>
         <div className={styles.demoFormCard}>
-          <h2 className={styles.sectionTitle}>Form permintaan demo</h2>
-          <p className={styles.demoHint}>
-            Tim kami akan menghubungi Anda untuk mengatur sesi evaluasi produk, termasuk skenario
-            use case dan alur operasional yang ingin diuji.
-          </p>
-
           <form className={styles.form}>
             <div className={styles.formFields}>
               <div className={styles.field}>
@@ -38,19 +32,19 @@ export default function DemoPage() {
                 <input id="workEmail" name="workEmail" type="email" placeholder="nama@perusahaan.com" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="whatsapp">WhatsApp</label>
+                <label htmlFor="whatsapp">WhatsApp (opsional)</label>
                 <input id="whatsapp" name="whatsapp" type="tel" placeholder="Contoh: +62 812 3456 7890" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="company">Nama perusahaan</label>
+                <label htmlFor="company">Nama perusahaan (opsional)</label>
                 <input id="company" name="company" type="text" placeholder="Nama perusahaan Anda" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="role">Role/Jabatan</label>
+                <label htmlFor="role">Role/Jabatan (opsional)</label>
                 <input id="role" name="role" type="text" placeholder="Contoh: Product Manager" />
               </div>
               <div className={styles.field}>
-                <label htmlFor="teamSize">Ukuran tim/jumlah user estimasi</label>
+                <label htmlFor="teamSize">Ukuran tim/jumlah user estimasi (opsional)</label>
                 <input id="teamSize" name="teamSize" type="text" placeholder="Contoh: 25 user aktif" />
               </div>
               <div className={styles.field}>
@@ -59,10 +53,9 @@ export default function DemoPage() {
                   <option value="" disabled>
                     Pilih aplikasi
                   </option>
-                  <option value="crm">CRM & Sales Tracking</option>
-                  <option value="project-management">Project Management</option>
-                  <option value="hris">HRIS & Employee Management</option>
-                  <option value="service-desk">Service Desk / Ticketing</option>
+                  <option value="landing-page">Landing page kampanye</option>
+                  <option value="boilerplate">Boilerplate situs web</option>
+                  <option value="ui-kit">Paket komponen UI</option>
                 </select>
               </div>
               <div className={styles.field}>

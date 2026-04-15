@@ -110,30 +110,6 @@
   backdrop-filter: blur(12px);
 }
 
-.businessModelGuide {
-  margin-top: var(--space-16);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-16);
-}
-
-.businessModelCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.8rem 0.9rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.businessModelCard h3 {
-  font-size: var(--type-scale-16);
-}
-
-.businessModelCard p {
-  font-size: var(--type-scale-14);
-}
-
 .blogSection {
   margin-top: var(--space-32);
 }
@@ -223,46 +199,6 @@
   border-radius: 14px;
   padding: 0.5rem 0.95rem;
   font-weight: var(--font-weight-semibold);
-}
-
-.promoSection {
-  margin-top: var(--space-32);
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.2rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.promoTitle {
-  margin: var(--space-8) 0 0;
-  color: var(--title-color);
-  font-size: var(--type-scale-24);
-  font-weight: var(--font-weight-semibold);
-}
-
-.promoGrid {
-  margin-top: var(--space-16);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-16);
-}
-
-.promoCard {
-  border: 1px dashed var(--surface-hover-border-color);
-  border-radius: 14px;
-  padding: 0.75rem 0.85rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-}
-
-.promoCard h3 {
-  font-size: var(--type-scale-16);
-}
-
-.promoCard p {
-  font-size: var(--type-scale-14);
 }
 
 .reviewSection {
@@ -475,7 +411,6 @@
 
 .sellSection,
 .saasSection,
-.promoSection,
 .reviewSection,
 .postCard {
   box-shadow: 0 14px 28px var(--shadow-color);
