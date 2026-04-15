@@ -161,6 +161,9 @@ export default function Layout({ children, home }) {
                         <div className={styles.productItemContent}>
                           <strong className={styles.productItemTitle}>{product.name}</strong>
                           <p className={styles.productItemDescription}>{product.description}</p>
+                          <span className={styles.productItemArrow} aria-hidden="true">
+                            →
+                          </span>
                         </div>
                       </Link>
                     ))}
