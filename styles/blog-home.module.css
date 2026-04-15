@@ -1,42 +1,43 @@
 .blogSection {
-  --type-scale-12: 0.75rem;
-  --type-scale-14: 0.875rem;
-  --type-scale-16: 1rem;
-  --type-scale-20: 1.25rem;
-  --type-scale-24: 1.5rem;
+  --type-scale-12: var(--type-12);
+  --type-scale-14: var(--type-14);
+  --type-scale-16: var(--type-16);
+  --type-scale-20: var(--type-20);
+  --type-scale-24: var(--type-24);
+  --type-scale-32: var(--type-32);
 }
 
 .cardTitle {
   margin: 0;
-  color: var(--strong-text-color);
+  color: var(--title-color);
   font-size: var(--type-scale-20);
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
 }
 
 .cardSubtitle {
   margin: 0;
-  color: var(--strong-text-color);
+  color: var(--title-color);
   font-size: var(--type-scale-16);
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.45;
 }
 
 .cardDescription {
-  margin: 0.5rem 0 0;
-  color: var(--muted-color);
-  font-size: var(--type-scale-16);
-  font-weight: 400;
-  line-height: 1.5;
+  margin: var(--space-8) 0 0;
+  color: var(--body-color);
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
 }
 
 .cardMeta {
   display: inline-block;
   margin: 0;
-  color: color-mix(in srgb, var(--muted-color) 90%, transparent);
+  color: var(--caption-color);
   font-size: var(--type-scale-12);
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.45;
 }
 
 .hero {
@@ -58,36 +59,37 @@
   color: var(--badge-text);
   padding: 0.3rem 0.65rem;
   border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.8rem;
 }
 
 .heroTitle {
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  line-height: 1.25;
+  font-size: var(--type-scale-32);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-bold);
   margin: 0;
-  color: var(--strong-text-color);
+  color: var(--title-color);
 }
 
 .heroDescription {
   margin: 0.75rem 0 0;
-  color: var(--muted-color);
-  font-size: 1rem;
+  color: var(--body-color);
+  font-size: var(--type-scale-16);
 }
 
 .heroActions {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: var(--space-8);
 }
 
 .heroPrimaryCta {
   display: inline-block;
   text-decoration: none;
   border-radius: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
   padding: 0.5rem 0.95rem;
 }
 
@@ -100,19 +102,19 @@
   display: inline-block;
   text-decoration: none;
   border-radius: 14px;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
   padding: 0.5rem 0.95rem;
-  color: var(--strong-text-color);
+  color: var(--title-color);
   border: 1px solid var(--border-color);
   background-color: var(--surface-color);
   backdrop-filter: blur(12px);
 }
 
 .businessModelGuide {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.7rem;
+  gap: var(--space-16);
 }
 
 .businessModelCard {
@@ -133,11 +135,11 @@
 }
 
 .blogSection {
-  margin-top: 1.5rem;
+  margin-top: var(--space-32);
 }
 
 .sellSection {
-  margin-top: 1.5rem;
+  margin-top: var(--space-32);
   border: 1px solid var(--border-color);
   border-radius: 22px;
   padding: 1.4rem;
@@ -147,21 +149,22 @@
 }
 
 .sellTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
+  margin: var(--space-8) 0 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  font-weight: var(--font-weight-semibold);
 }
 
 .sellDescription {
   margin: 0.7rem 0 0;
-  color: var(--muted-color);
+  color: var(--body-color);
 }
 
 .offerGrid {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 0.75rem;
+  gap: var(--space-16);
 }
 
 .offerCard {
@@ -195,7 +198,7 @@
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
   border-radius: 14px;
   padding: 0.5rem 0.95rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
 }
 
 .sellCta:hover {
@@ -203,27 +206,27 @@
 }
 
 .ctaRow {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: var(--space-8);
 }
 
 .sellGhostCta {
   display: inline-block;
   text-decoration: none;
-  color: var(--strong-text-color);
+  color: var(--title-color);
   border: 1px solid var(--border-color);
   background-color: var(--surface-color);
   backdrop-filter: blur(12px);
   border-radius: 14px;
   padding: 0.5rem 0.95rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
 }
 
 .promoSection {
-  margin-top: 1.2rem;
+  margin-top: var(--space-32);
   border: 1px solid var(--border-color);
   border-radius: 22px;
   padding: 1.2rem;
@@ -233,16 +236,17 @@
 }
 
 .promoTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.35rem;
+  margin: var(--space-8) 0 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  font-weight: var(--font-weight-semibold);
 }
 
 .promoGrid {
-  margin-top: 0.9rem;
+  margin-top: var(--space-16);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.7rem;
+  gap: var(--space-16);
 }
 
 .promoCard {
@@ -262,7 +266,7 @@
 }
 
 .reviewSection {
-  margin-top: 1.2rem;
+  margin-top: var(--space-32);
   border: 1px solid var(--border-color);
   border-radius: 22px;
   padding: 1.2rem;
@@ -272,17 +276,18 @@
 }
 
 .reviewTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.35rem;
+  margin: var(--space-8) 0 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  font-weight: var(--font-weight-semibold);
 }
 
 .reviewCarousel {
-  margin-top: 0.9rem;
+  margin-top: var(--space-16);
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: calc((100% - 1.4rem) / 3);
-  gap: 0.7rem;
+  gap: var(--space-16);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -305,7 +310,7 @@
 }
 
 .reviewIndicators {
-  margin-top: 0.7rem;
+  margin-top: var(--space-8);
   display: flex;
   justify-content: center;
   gap: 0.35rem;
@@ -328,10 +333,10 @@
 }
 
 .reviewNav {
-  margin-top: 0.7rem;
+  margin-top: var(--space-8);
   display: flex;
   justify-content: center;
-  gap: 0.55rem;
+  gap: var(--space-8);
 }
 
 .reviewNavButton {
@@ -339,10 +344,10 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
+  color: var(--title-color);
   border-radius: 14px;
   padding: 0.4rem 0.8rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
 }
 
@@ -364,7 +369,7 @@
 }
 
 .saasSection {
-  margin-top: 1.2rem;
+  margin-top: var(--space-32);
   border: 1px solid var(--border-color);
   border-radius: 22px;
   padding: 1.4rem;
@@ -374,14 +379,15 @@
 }
 
 .saasTitle {
-  margin: 0.65rem 0 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
+  margin: var(--space-8) 0 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  font-weight: var(--font-weight-semibold);
 }
 
 .saasDescription {
   margin: 0.7rem 0 0;
-  color: var(--muted-color);
+  color: var(--body-color);
 }
 
 .saasCard,
@@ -403,8 +409,8 @@
   margin-bottom: 0.45rem;
   padding: 0.2rem 0.55rem;
   border-radius: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
   color: #fff;
 }
@@ -419,8 +425,8 @@
 .saasFlag,
 .saasFutureFlag {
   display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   border-radius: 8px;
   padding: 0.2rem 0.5rem;
 }
@@ -505,10 +511,10 @@
 }
 
 .sortLabel {
-  font-size: 0.78rem;
-  color: var(--muted-color);
+  font-size: var(--type-scale-12);
+  color: var(--body-color);
   margin: 0 0.2rem 0 0.35rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .sortSelect {
@@ -517,18 +523,18 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.8rem;
-  font-weight: 600;
+  color: var(--title-color);
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   padding: 0.32rem 0.6rem;
 }
 
 .layoutButton {
   border: 1px solid transparent;
   background: transparent;
-  color: var(--muted-color);
-  font-size: 0.85rem;
-  font-weight: 600;
+  color: var(--body-color);
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-semibold);
   padding: 0.35rem 0.75rem;
   border-radius: 8px;
   cursor: pointer;
@@ -537,20 +543,21 @@
 .layoutButtonActive {
   background-color: var(--surface-color);
   backdrop-filter: blur(12px);
-  color: var(--strong-text-color);
+  color: var(--title-color);
   border-color: var(--border-color);
 }
 
 .blogTitle {
   margin: 0;
-  color: var(--strong-text-color);
-  font-size: 1.5rem;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  font-weight: var(--font-weight-semibold);
 }
 
 .blogSubTitle {
   margin: 0.4rem 0 0;
-  color: var(--muted-color);
-  font-size: 0.95rem;
+  color: var(--body-color);
+  font-size: var(--type-scale-16);
 }
 
 .categoryBreadcrumb {
@@ -566,9 +573,9 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--muted-color);
-  font-size: 0.82rem;
-  font-weight: 600;
+  color: var(--body-color);
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   border-radius: 8px;
   padding: 0.34rem 0.72rem;
   cursor: pointer;
@@ -581,7 +588,7 @@
 .categoryCrumbActive {
   background: var(--surface-muted-color);
   backdrop-filter: blur(12px);
-  color: var(--strong-text-color);
+  color: var(--title-color);
   border-color: var(--surface-hover-border-color);
 }
 
@@ -590,9 +597,9 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.86rem;
-  font-weight: 700;
+  color: var(--title-color);
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-semibold);
   border-radius: 8px;
   padding: 0.34rem 0.68rem;
   cursor: pointer;
@@ -636,8 +643,8 @@
   margin-top: 0.25rem;
   color: var(--link-color);
   font-size: var(--type-scale-14);
-  font-weight: 700;
-  line-height: 1.4;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
 }
 
 .postCard .cardTitle {
@@ -645,7 +652,7 @@
 }
 
 .postCard .cardTitle a {
-  color: var(--strong-text-color);
+  color: var(--title-color);
   text-decoration: none;
 }
 
@@ -655,8 +662,8 @@
 
 .readMore {
   color: var(--link-color);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-semibold);
 }
 
 .tagList {
@@ -671,19 +678,19 @@
 .tagItem {
   border: 1px solid var(--border-color);
   background-color: var(--surface-muted-color);
-  color: var(--muted-color);
+  color: var(--body-color);
   border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
   padding: 0.2rem 0.5rem;
 }
 
 .pagination {
-  margin-top: 1rem;
+  margin-top: var(--space-16);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: var(--space-16);
   flex-wrap: wrap;
 }
 
@@ -692,9 +699,9 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--strong-text-color);
-  font-size: 0.88rem;
-  font-weight: 600;
+  color: var(--title-color);
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-semibold);
   border-radius: 8px;
   padding: 0.4rem 0.75rem;
   cursor: pointer;
@@ -729,8 +736,8 @@
   background: var(--surface-color);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  color: var(--muted-color);
-  font-weight: 700;
+  color: var(--body-color);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
 }
 
@@ -742,8 +749,9 @@
 
 @media (max-width: 640px) {
   .blogSection {
-    --type-scale-20: 1.125rem;
-    --type-scale-24: 1.25rem;
+    --type-scale-20: var(--type-20);
+    --type-scale-24: var(--type-24);
+    --type-scale-32: var(--type-32);
   }
 
   .hero {

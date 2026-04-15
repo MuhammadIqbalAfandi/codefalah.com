@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
   --text-color: #10223a;
   --bg-color: #edf3ff;
   --link-color: #0071e3;
-  --muted-color: #4f647e;
-  --strong-text-color: #09111f;
+  --title-color: #09111f;
+  --body-color: #666666;
+  --caption-color: #888888;
+  --muted-color: #666666;
+  --strong-text-color: var(--title-color);
   --surface-color: rgba(255, 255, 255, 0.56);
   --surface-muted-color: rgba(255, 255, 255, 0.4);
   --surface-hover-color: rgba(255, 255, 255, 0.7);
@@ -20,14 +23,38 @@
   --badge-bg: rgba(0, 113, 227, 0.12);
   --badge-text: #005ab5;
   --shadow-color: rgba(8, 35, 72, 0.16);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --type-12: 0.75rem;
+  --type-14: 0.875rem;
+  --type-16: 1rem;
+  --type-20: 1.25rem;
+  --type-24: 1.5rem;
+  --type-32: 2rem;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.55;
+
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
 }
 
 html[data-theme='dark'] {
   --text-color: #dbe7ff;
   --bg-color: #08111f;
   --link-color: #6fb7ff;
-  --muted-color: #9fb2ca;
-  --strong-text-color: #f5f8ff;
+  --title-color: #f5f8ff;
+  --body-color: #b5c2d6;
+  --caption-color: #91a2bb;
+  --muted-color: var(--body-color);
+  --strong-text-color: var(--title-color);
   --surface-color: rgba(18, 27, 45, 0.76);
   --surface-muted-color: rgba(22, 33, 53, 0.84);
   --surface-hover-color: rgba(31, 46, 71, 0.96);
@@ -48,10 +75,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
-  font-size: 17px;
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+  font-size: var(--type-16);
   color: var(--text-color);
   background:
     radial-gradient(circle at 10% 10%, rgba(0, 113, 227, 0.16), transparent 46%),
@@ -85,4 +111,12 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --type-20: 1.125rem;
+    --type-24: 1.375rem;
+    --type-32: 1.75rem;
+  }
 }
