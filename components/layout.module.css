@@ -36,7 +36,7 @@
   position: relative;
   overflow: visible;
   border-radius: 0;
-  border: 1px solid var(--border-color);
+  border: none;
   background: color-mix(in srgb, var(--overlay-surface-color) 94%, transparent);
   box-shadow: 0 16px 32px var(--shadow-color);
 }
@@ -55,7 +55,7 @@
   width: 2.35rem;
   height: 2.35rem;
   border-radius: 0;
-  border: 1px solid var(--border-color);
+  border: none;
   background: var(--surface-muted-color);
   box-shadow: 0 8px 20px var(--shadow-color);
 }
