@@ -291,11 +291,12 @@ export default function Layout({ children, home }) {
                 </ul>
               </nav>
             </section>
-          </div>
 
-          <div className={styles.footerBottom}>
-            <p className={styles.footerCopyright}>© 2026 CodeFalah. All rights reserved.</p>
-            <p className={styles.footerTagline}>Build with purpose. Grow with impact.</p>
+            <section className={styles.footerColumn}>
+              <h3 className={styles.footerHeading}>Legal &amp; Value</h3>
+              <p className={styles.footerMeta}>© 2026 CodeFalah. All rights reserved.</p>
+              <p className={styles.footerMeta}>Build with purpose. Grow with impact.</p>
+            </section>
           </div>
         </div>
       </footer>
