@@ -144,50 +144,90 @@ export default function Home({ allPostsData }) {
       <section className={homeStyles.hero}>
         <span className={homeStyles.badge}>Selamat Datang</span>
         <h1 className={homeStyles.heroTitle}>
-          Solusi produk digital untuk bantu bisnis Anda tumbuh
+          Platform produk digital untuk tim yang ingin scale lebih cepat
         </h1>
         <p className={homeStyles.heroDescription}>
-          Produk digital siap pakai untuk membantu bisnis Anda tumbuh lebih
-          cepat dan bermakna. Wujudkan ide, bangun brand, dan capai dengan cara
-          yang lebih sederhana.
+          Kami membantu bisnis meluncurkan website, aset UI, dan layanan SaaS
+          dengan alur yang jelas: mulai dari setup cepat, aktivasi pengguna,
+          hingga optimasi konversi berkelanjutan.
         </p>
 
         <div className={homeStyles.heroActions}>
           <a className={homeStyles.heroPrimaryCta} href="#product">
-            Lihat katalog produk
+            Mulai dengan produk utama
           </a>
           <a className={homeStyles.heroSecondaryCta} href="#saas">
-            Lihat layanan SaaS
+            Jadwalkan demo SaaS
           </a>
+        </div>
+
+        <div className={homeStyles.heroStats}>
+          <div className={homeStyles.heroStat}>
+            <strong>50+</strong>
+            <span>Bisnis aktif</span>
+          </div>
+          <div className={homeStyles.heroStat}>
+            <strong>3x</strong>
+            <span>Peluncuran lebih cepat</span>
+          </div>
+          <div className={homeStyles.heroStat}>
+            <strong>24/7</strong>
+            <span>Dukungan platform</span>
+          </div>
         </div>
       </section>
 
       <section id="product" className={homeStyles.sellSection}>
-        <span className={homeStyles.badge}>Katalog Utama</span>
+        <span className={homeStyles.badge}>Produk Utama</span>
         <h2 className={homeStyles.sellTitle}>
-          Katalog produk digital siap jual & siap pakai
+          Mulai dari satu produk flagship, lalu scale dengan aset pendukung
         </h2>
         <p className={homeStyles.sellDescription}>
-          Katalog produk digital siap jual dan siap pakai. Pilih solusi yang
-          paling sesuai dengan kebutuhan bisnis Anda — dirancang untuk
-          implementasi cepat, tampilan modern, dan mudah dikembangkan.
+          Alih-alih banyak kartu dengan bobot setara, kami susun alur pembelian
+          yang fokus: pilih produk inti untuk go-live cepat, lalu tambahkan
+          toolkit sesuai fase pertumbuhan tim Anda.
         </p>
 
-        <div className={homeStyles.offerGrid}>
-          {featuredProducts.map((product) => (
-            <article key={product.id} className={homeStyles.offerCard}>
-              <h3 className={homeStyles.cardTitle}>{product.name}</h3>
-              <p className={homeStyles.cardDescription}>{product.description}</p>
-            </article>
-          ))}
+        <div className={homeStyles.productShowcase}>
+          <article className={homeStyles.primaryProduct}>
+            <span className={homeStyles.productLabel}>Recommended Start</span>
+            <h3 className={homeStyles.primaryProductTitle}>
+              {featuredProducts[0].name}
+            </h3>
+            <p className={homeStyles.cardDescription}>
+              {featuredProducts[0].description}
+            </p>
+            <ul className={homeStyles.featureList}>
+              <li>Struktur halaman siap konversi</li>
+              <li>Setup cepat untuk campaign baru</li>
+              <li>Mudah diintegrasikan ke stack existing</li>
+            </ul>
+            <Link className={homeStyles.sellCta} href="/demo">
+              Lihat live demo flagship →
+            </Link>
+          </article>
+
+          <div className={homeStyles.secondaryProducts}>
+            <h3 className={homeStyles.secondaryTitle}>Toolkit pelengkap</h3>
+            <div className={homeStyles.productList}>
+              {featuredProducts.slice(1).map((product) => (
+                <article key={product.id} className={homeStyles.offerCard}>
+                  <h4 className={homeStyles.cardTitle}>{product.name}</h4>
+                  <p className={homeStyles.cardDescription}>
+                    {product.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className={homeStyles.ctaRow}>
           <Link className={homeStyles.sellCta} href="/tanya-harga">
-            Tanya harga →
+            Konsultasi paket →
           </Link>
           <Link className={homeStyles.sellGhostCta} href="/demo">
-            Lihat demo
+            Bandingkan use case
           </Link>
         </div>
       </section>
@@ -195,39 +235,46 @@ export default function Home({ allPostsData }) {
       <section id="saas" className={homeStyles.saasSection}>
         <span className={homeStyles.badge}>Layanan SaaS</span>
         <h2 className={homeStyles.saasTitle}>
-          Perkenalan produk SaaS untuk kebutuhan bisnis
+          Satu platform untuk operasional harian dan pertumbuhan bisnis
         </h2>
         <p className={homeStyles.saasDescription}>
-          Platform SaaS yang dirancang untuk tumbuh bersama bisnis Anda. Diawali
-          dari layanan undangan online, dengan visi menghadirkan berbagai solusi
-          digital yang relevan di masa depan.
+          SaaS kami bukan sekadar fitur, tetapi sistem kerja. Anda dapat
+          mengelola aktivitas inti, memonitor hasil, dan mengembangkan produk
+          digital tanpa membangun ulang dari nol.
         </p>
 
-        <div className={homeStyles.offerGrid}>
+        <div className={homeStyles.saasLayout}>
           {featuredSaasServices.map((service) => (
             <Link
               key={service.id}
               href={`/products/${service.id}`}
               className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured} ${homeStyles.saasCardLink}`}
             >
-              <span className={homeStyles.saasSpotlight}>SaaS Unggulan</span>
-              <div className={homeStyles.saasBadgeRow}></div>
+              <span className={homeStyles.saasSpotlight}>Produk SaaS Utama</span>
               <h3 className={homeStyles.cardTitle}>{service.name}</h3>
               <p className={homeStyles.cardDescription}>{service.description}</p>
+              <ul className={homeStyles.featureList}>
+                <li>Alur onboarding cepat untuk tim non-teknis</li>
+                <li>Dashboard performa dan aktivitas real-time</li>
+                <li>Model langganan fleksibel untuk scale bertahap</li>
+              </ul>
               <small className={homeStyles.cardMeta}>{service.billing}</small>
+              <span className={homeStyles.inlineCta}>Lihat detail produk →</span>
             </Link>
           ))}
 
-          <article className={homeStyles.saasRoadmapCard}>
-            <span className={homeStyles.saasFutureFlag}>
-              {saasFutureFlagLabel}
-            </span>
+          <aside className={homeStyles.saasRoadmapCard}>
+            <span className={homeStyles.saasFutureFlag}>{saasFutureFlagLabel}</span>
+            <h3 className={homeStyles.cardTitle}>Roadmap ekspansi platform</h3>
             <p className={homeStyles.cardDescription}>
-              Saat ini kami fokus menyempurnakan layanan undangan online.
-              Layanan SaaS lainnya sedang disiapkan untuk mendukung kebutuhan
-              bisnis yang lebih luas.
+              Setelah fondasi undangan online stabil, kami meluncurkan modul
+              baru untuk automasi marketing, CRM ringan, dan insight performa
+              lintas kanal.
             </p>
-          </article>
+            <Link className={homeStyles.sellGhostCta} href="/tanya-harga">
+              Join early access
+            </Link>
+          </aside>
         </div>
       </section>
 
