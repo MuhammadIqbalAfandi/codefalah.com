@@ -142,92 +142,128 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={homeStyles.hero}>
-        <span className={homeStyles.badge}>Selamat Datang</span>
-        <h1 className={homeStyles.heroTitle}>
-          Solusi produk digital untuk bantu bisnis Anda tumbuh
-        </h1>
-        <p className={homeStyles.heroDescription}>
-          Produk digital siap pakai untuk membantu bisnis Anda tumbuh lebih
-          cepat dan bermakna. Wujudkan ide, bangun brand, dan capai dengan cara
-          yang lebih sederhana.
-        </p>
-
-        <div className={homeStyles.heroActions}>
-          <a className={homeStyles.heroPrimaryCta} href="#product">
-            Lihat katalog produk
-          </a>
-          <a className={homeStyles.heroSecondaryCta} href="#saas">
-            Lihat layanan SaaS
-          </a>
+        <div>
+          <span className={homeStyles.badge}>Platform Produk Digital</span>
+          <h1 className={homeStyles.heroTitle}>
+            Bangun funnel penjualan lebih cepat dengan stack produk siap jalan
+          </h1>
+          <p className={homeStyles.heroDescription}>
+            Kami membantu tim bisnis meluncurkan aset digital, validasi ide, dan
+            mengoptimalkan konversi tanpa harus memulai dari nol.
+          </p>
+          <div className={homeStyles.heroActions}>
+            <a className={homeStyles.heroPrimaryCta} href="#saas">
+              Mulai dari produk utama
+            </a>
+            <a className={homeStyles.heroSecondaryCta} href="#product">
+              Jelajahi solusi pendukung
+            </a>
+          </div>
         </div>
+        <aside className={homeStyles.heroPanel} aria-label="Keunggulan utama">
+          <h2 className={homeStyles.heroPanelTitle}>Kenapa brand memilih kami</h2>
+          <ul className={homeStyles.heroChecklist}>
+            <li>Time-to-launch lebih cepat dengan fondasi yang siap produksi.</li>
+            <li>Fokus pada pengalaman pengguna dan CTA berorientasi konversi.</li>
+            <li>Arsitektur modular untuk skala produk jangka panjang.</li>
+          </ul>
+          <div className={homeStyles.heroMetrics}>
+            <article>
+              <strong>7 hari</strong>
+              <span>rata-rata implementasi awal</span>
+            </article>
+            <article>
+              <strong>3x</strong>
+              <span>lebih cepat dari setup manual</span>
+            </article>
+          </div>
+        </aside>
       </section>
 
-      <section id="product" className={homeStyles.sellSection}>
-        <span className={homeStyles.badge}>Katalog Utama</span>
-        <h2 className={homeStyles.sellTitle}>
-          Katalog produk digital siap jual & siap pakai
-        </h2>
-        <p className={homeStyles.sellDescription}>
-          Katalog produk digital siap jual dan siap pakai. Pilih solusi yang
-          paling sesuai dengan kebutuhan bisnis Anda — dirancang untuk
-          implementasi cepat, tampilan modern, dan mudah dikembangkan.
-        </p>
-
-        <div className={homeStyles.offerGrid}>
-          {featuredProducts.map((product) => (
-            <article key={product.id} className={homeStyles.offerCard}>
-              <h3 className={homeStyles.cardTitle}>{product.name}</h3>
-              <p className={homeStyles.cardDescription}>{product.description}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className={homeStyles.ctaRow}>
-          <Link className={homeStyles.sellCta} href="/tanya-harga">
-            Tanya harga →
-          </Link>
-          <Link className={homeStyles.sellGhostCta} href="/demo">
-            Lihat demo
-          </Link>
-        </div>
+      <section className={homeStyles.trustSection} aria-label="Pilar solusi">
+        <article className={homeStyles.trustItem}>
+          <h3>Strategi akuisisi</h3>
+          <p>Template dan struktur halaman siap mengarahkan pengunjung ke aksi.</p>
+        </article>
+        <article className={homeStyles.trustItem}>
+          <h3>Eksekusi produk</h3>
+          <p>Boilerplate dan komponen UI mengurangi waktu build & revisi.</p>
+        </article>
+        <article className={homeStyles.trustItem}>
+          <h3>Retensi pelanggan</h3>
+          <p>
+            Produk SaaS kami dirancang untuk menciptakan recurring value bagi
+            bisnis Anda.
+          </p>
+        </article>
       </section>
 
       <section id="saas" className={homeStyles.saasSection}>
-        <span className={homeStyles.badge}>Layanan SaaS</span>
-        <h2 className={homeStyles.saasTitle}>
-          Perkenalan produk SaaS untuk kebutuhan bisnis
-        </h2>
-        <p className={homeStyles.saasDescription}>
-          Platform SaaS yang dirancang untuk tumbuh bersama bisnis Anda. Diawali
-          dari layanan undangan online, dengan visi menghadirkan berbagai solusi
-          digital yang relevan di masa depan.
-        </p>
-
-        <div className={homeStyles.offerGrid}>
+        <div className={homeStyles.sectionHeader}>
+          <span className={homeStyles.badge}>Produk Utama</span>
+          <h2 className={homeStyles.saasTitle}>
+            Satu platform SaaS untuk mendorong aktivasi dan engagement pelanggan
+          </h2>
+          <p className={homeStyles.saasDescription}>
+            Fokus kami saat ini adalah produk SaaS utama yang membantu proses
+            distribusi undangan digital secara modern, cepat, dan terukur.
+          </p>
+        </div>
+        <div className={homeStyles.saasShowcase}>
           {featuredSaasServices.map((service) => (
             <Link
               key={service.id}
               href={`/products/${service.id}`}
               className={`${homeStyles.saasCard} ${homeStyles.saasCardFeatured} ${homeStyles.saasCardLink}`}
             >
-              <span className={homeStyles.saasSpotlight}>SaaS Unggulan</span>
-              <div className={homeStyles.saasBadgeRow}></div>
+              <span className={homeStyles.saasSpotlight}>Flagship Product</span>
               <h3 className={homeStyles.cardTitle}>{service.name}</h3>
               <p className={homeStyles.cardDescription}>{service.description}</p>
               <small className={homeStyles.cardMeta}>{service.billing}</small>
+              <span className={homeStyles.cardCta}>Lihat detail produk →</span>
             </Link>
           ))}
-
           <article className={homeStyles.saasRoadmapCard}>
             <span className={homeStyles.saasFutureFlag}>
               {saasFutureFlagLabel}
             </span>
             <p className={homeStyles.cardDescription}>
-              Saat ini kami fokus menyempurnakan layanan undangan online.
-              Layanan SaaS lainnya sedang disiapkan untuk mendukung kebutuhan
-              bisnis yang lebih luas.
+              Modul automasi pemasaran, CRM ringan, dan analytics funnel sedang
+              dipersiapkan sebagai ekspansi platform berikutnya.
             </p>
           </article>
+        </div>
+      </section>
+
+      <section id="product" className={homeStyles.sellSection}>
+        <div className={homeStyles.sectionHeader}>
+          <span className={homeStyles.badge}>Solusi Pendukung</span>
+          <h2 className={homeStyles.sellTitle}>
+            Toolkit implementasi untuk mempercepat tim dari ide ke launching
+          </h2>
+          <p className={homeStyles.sellDescription}>
+            Bukan daftar produk setara. Ini adalah rangkaian solusi komplementer
+            untuk melengkapi produk utama Anda, dari landing page hingga UI
+            system.
+          </p>
+        </div>
+
+        <ul className={homeStyles.offerList}>
+          {featuredProducts.map((product) => (
+            <li key={product.id} className={homeStyles.offerListItem}>
+              <h3 className={homeStyles.cardTitle}>{product.name}</h3>
+              <p className={homeStyles.cardDescription}>{product.description}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className={homeStyles.ctaRow}>
+          <Link className={homeStyles.sellCta} href="/tanya-harga">
+            Konsultasi kebutuhan →
+          </Link>
+          <Link className={homeStyles.sellGhostCta} href="/demo">
+            Lihat demo produk
+          </Link>
         </div>
       </section>
 

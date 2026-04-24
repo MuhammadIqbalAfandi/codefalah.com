@@ -40,165 +40,272 @@
   line-height: 1.45;
 }
 
+
 .hero {
   border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  border-radius: 28px;
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+  margin-bottom: var(--space-24);
   background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 22%, transparent), transparent 48%),
-    var(--surface-color);
-  backdrop-filter: blur(22px) saturate(150%);
-  -webkit-backdrop-filter: blur(22px) saturate(150%);
-  box-shadow: 0 18px 38px var(--shadow-color);
+    radial-gradient(circle at 85% 0%, color-mix(in srgb, var(--link-color) 28%, transparent), transparent 44%),
+    linear-gradient(140deg, color-mix(in srgb, var(--surface-color) 90%, #fff 10%), var(--surface-color));
+  box-shadow: 0 20px 44px var(--shadow-color);
+  display: grid;
+  gap: var(--space-24);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
 }
 
 .badge {
   display: inline-block;
   background-color: var(--badge-bg);
   color: var(--badge-text);
-  padding: 0.3rem 0.65rem;
-  border-radius: 8px;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
   font-size: var(--type-scale-12);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.8rem;
+  margin-bottom: var(--space-8);
 }
 
 .heroTitle {
-  font-size: var(--type-scale-32);
-  line-height: var(--line-height-heading);
+  font-size: clamp(var(--type-scale-32), 5vw, 2.8rem);
+  line-height: 1.1;
   font-weight: var(--font-weight-bold);
   margin: 0;
   color: var(--title-color);
+  letter-spacing: -0.01em;
+  max-width: 18ch;
 }
 
 .heroDescription {
-  margin: 0.75rem 0 0;
+  margin: var(--space-12) 0 0;
   color: var(--body-color);
   font-size: var(--type-scale-16);
+  max-width: 60ch;
 }
 
 .heroActions {
-  margin-top: var(--space-16);
+  margin-top: var(--space-20);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-8);
+  gap: var(--space-10);
 }
 
-.heroPrimaryCta {
-  display: inline-block;
+.heroPrimaryCta,
+.heroSecondaryCta,
+.sellCta,
+.sellGhostCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  border-radius: 14px;
+  border-radius: 12px;
   font-weight: var(--font-weight-semibold);
-  padding: 0.5rem 0.95rem;
+  padding: 0.7rem 1rem;
 }
 
-.heroPrimaryCta {
+.heroPrimaryCta,
+.sellCta {
   color: #fff;
   background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
 }
 
-.heroSecondaryCta {
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 14px;
-  font-weight: var(--font-weight-semibold);
-  padding: 0.5rem 0.95rem;
+.heroSecondaryCta,
+.sellGhostCta {
   color: var(--title-color);
   border: 1px solid var(--border-color);
   background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
+}
+
+.heroPanel {
+  border: 1px solid color-mix(in srgb, var(--link-color) 22%, var(--border-color));
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface-muted-color) 80%, var(--surface-color));
+  padding: 1rem;
+}
+
+.heroPanelTitle {
+  margin: 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-16);
+}
+
+.heroChecklist {
+  margin: var(--space-12) 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--body-color);
+}
+
+.heroMetrics {
+  margin-top: var(--space-16);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-10);
+}
+
+.heroMetrics article {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.65rem;
+  background: var(--surface-color);
+}
+
+.heroMetrics strong {
+  display: block;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  line-height: 1;
+}
+
+.heroMetrics span {
+  color: var(--body-color);
+  font-size: var(--type-scale-12);
+}
+
+.trustSection {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-32);
+}
+
+.trustItem {
+  border-top: 3px solid color-mix(in srgb, var(--link-color) 38%, transparent);
+  padding-top: var(--space-12);
+}
+
+.trustItem h3 {
+  margin: 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-16);
+}
+
+.trustItem p {
+  margin: 0.45rem 0 0;
+  color: var(--body-color);
+  font-size: var(--type-scale-14);
+}
+
+.sectionHeader {
+  max-width: 70ch;
 }
 
 .blogSection {
-  margin-top: var(--space-32);
+  margin-top: var(--space-40);
 }
 
-.sellSection {
+.sellSection,
+.saasSection,
+.reviewSection {
   margin-top: var(--space-32);
   border: 1px solid var(--border-color);
   border-radius: 22px;
-  padding: 1.4rem;
+  padding: clamp(1.1rem, 2.2vw, 1.6rem);
   background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
-.sellTitle {
+.sellTitle,
+.saasTitle,
+.reviewTitle,
+.blogTitle {
   margin: var(--space-8) 0 0;
   color: var(--title-color);
   font-size: var(--type-scale-24);
   font-weight: var(--font-weight-semibold);
 }
 
-.sellDescription {
-  margin: 0.7rem 0 0;
+.sellDescription,
+.saasDescription,
+.blogSubTitle {
+  margin: 0.75rem 0 0;
   color: var(--body-color);
 }
 
-.offerGrid {
-  margin-top: var(--space-16);
+.saasShowcase {
+  margin-top: var(--space-20);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: var(--space-16);
 }
 
-.offerCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.85rem 0.9rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+.offerList {
+  list-style: none;
+  margin: var(--space-20) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
 }
 
-.offerCard:hover {
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border-color: var(--surface-hover-border-color);
+.offerListItem {
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.offerCard h3 {
-  font-size: var(--type-scale-16);
+.offerListItem:last-child {
+  border-bottom: none;
 }
 
-.offerCard p {
-  font-size: var(--type-scale-14);
-}
-
-.sellCta {
+.cardCta {
   display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
-  border-radius: 14px;
-  padding: 0.5rem 0.95rem;
+  margin-top: var(--space-12);
+  color: var(--link-color);
+  font-size: var(--type-scale-14);
   font-weight: var(--font-weight-semibold);
-}
-
-.sellCta:hover {
-  opacity: 0.92;
 }
 
 .ctaRow {
-  margin-top: var(--space-16);
+  margin-top: var(--space-20);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--space-8);
+  gap: var(--space-10);
 }
 
-.sellGhostCta {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--title-color);
+.saasCard,
+.saasRoadmapCard {
   border: 1px solid var(--border-color);
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
   border-radius: 14px;
-  padding: 0.5rem 0.95rem;
+  padding: 1rem;
+  background: var(--surface-muted-color);
+}
+
+.saasCardFeatured {
+  border-color: color-mix(in srgb, var(--link-color) 45%, var(--border-color));
+  background: color-mix(in srgb, var(--surface-muted-color) 55%, var(--surface-color));
+}
+
+.saasSpotlight {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 8px;
+  font-size: var(--type-scale-12);
   font-weight: var(--font-weight-semibold);
+  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
+  color: #fff;
+}
+
+.saasFutureFlag {
+  display: inline-block;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+  background: color-mix(in srgb, #f59e0b 20%, transparent);
+  color: #b45309;
+}
+
+.saasCardLink {
+  display: block;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.saasCardLink:hover {
+  border-color: color-mix(in srgb, var(--link-color) 68%, var(--border-color));
+  background: var(--surface-color);
+  text-decoration: none;
 }
 
 .reviewSection {
@@ -293,120 +400,32 @@
 }
 
 @media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .trustSection {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .saasShowcase {
+    grid-template-columns: 1fr;
+  }
+
   .reviewCarousel {
     grid-auto-columns: calc((100% - 0.7rem) / 2);
   }
 }
 
 @media (max-width: 640px) {
+  .trustSection {
+    grid-template-columns: 1fr;
+    margin-bottom: var(--space-24);
+  }
+
   .reviewCarousel {
     grid-auto-columns: 100%;
   }
-}
-
-.saasSection {
-  margin-top: var(--space-32);
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 1.4rem;
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-}
-
-.saasTitle {
-  margin: var(--space-8) 0 0;
-  color: var(--title-color);
-  font-size: var(--type-scale-24);
-  font-weight: var(--font-weight-semibold);
-}
-
-.saasDescription {
-  margin: 0.7rem 0 0;
-  color: var(--body-color);
-}
-
-.saasCard,
-.saasRoadmapCard {
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.85rem 0.9rem;
-  background: var(--surface-muted-color);
-  backdrop-filter: blur(12px);
-}
-
-.saasCardFeatured {
-  border-color: color-mix(in srgb, var(--link-color) 45%, var(--border-color));
-  background: color-mix(in srgb, var(--surface-muted-color) 60%, var(--surface-color));
-}
-
-.saasSpotlight {
-  display: inline-block;
-  margin-bottom: 0.45rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 8px;
-  font-size: var(--type-scale-12);
-  font-weight: var(--font-weight-semibold);
-  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
-  color: #fff;
-}
-
-.saasBadgeRow {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-
-.saasFlag,
-.saasFutureFlag {
-  display: inline-block;
-  font-size: var(--type-scale-12);
-  font-weight: var(--font-weight-semibold);
-  border-radius: 8px;
-  padding: 0.2rem 0.5rem;
-}
-
-.saasFlag {
-  background: color-mix(in srgb, var(--link-color) 14%, transparent);
-  color: var(--link-color);
-}
-
-.saasFutureFlag {
-  background: color-mix(in srgb, #f59e0b 20%, transparent);
-  color: #b45309;
-}
-
-.saasCard h3,
-.saasRoadmapCard h3 {
-  margin-top: 0.5rem;
-  font-size: var(--type-scale-20);
-}
-
-.saasCard p,
-.saasRoadmapCard p {
-  font-size: var(--type-scale-16);
-}
-
-.saasCard small {
-  display: inline-block;
-  margin-top: 0.55rem;
-  font-size: var(--type-scale-12);
-}
-
-.saasCardLink {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.saasCardLink:hover {
-  border-color: color-mix(in srgb, var(--link-color) 68%, var(--border-color));
-  background: var(--surface-color);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  text-decoration: none;
 }
 
 .sellSection,
@@ -695,6 +714,10 @@
 
   .heroActions {
     flex-direction: column;
+  }
+
+  .heroMetrics {
+    grid-template-columns: 1fr;
   }
 
   .heroPrimaryCta,
