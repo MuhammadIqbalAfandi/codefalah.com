@@ -682,6 +682,176 @@
   border-color: var(--link-color);
 }
 
+/* SaaS layout refresh */
+.hero {
+  border-radius: 28px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: 2.5rem;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--link-color) 35%, transparent), transparent 50%),
+    radial-gradient(circle at 10% 15%, color-mix(in srgb, #5ac8fa 15%, transparent), transparent 45%),
+    var(--surface-color);
+  box-shadow: 0 24px 48px var(--shadow-color);
+}
+
+.heroTitle {
+  font-size: clamp(var(--type-scale-32), 5vw, 3rem);
+  max-width: 18ch;
+}
+
+.heroDescription {
+  margin-top: 1rem;
+  font-size: var(--type-scale-20);
+  max-width: 56ch;
+}
+
+.heroActions {
+  margin-top: var(--space-20);
+  gap: var(--space-12);
+}
+
+.heroPrimaryCta,
+.heroSecondaryCta {
+  padding: 0.7rem 1.2rem;
+}
+
+.heroStats {
+  margin-top: var(--space-20);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+}
+
+.heroStat {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--surface-muted-color);
+  padding: 0.9rem;
+}
+
+.heroStat strong {
+  display: block;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+  line-height: 1.2;
+}
+
+.heroStat span {
+  font-size: var(--type-scale-14);
+  color: var(--body-color);
+}
+
+.sellSection,
+.saasSection {
+  border-radius: 24px;
+  padding: clamp(1.25rem, 2vw, 2rem);
+}
+
+.sellTitle {
+  font-size: clamp(var(--type-scale-24), 4vw, 2rem);
+}
+
+.productShowcase {
+  margin-top: var(--space-20);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-16);
+}
+
+.primaryProduct {
+  border: 1px solid color-mix(in srgb, var(--link-color) 45%, var(--border-color));
+  border-radius: 18px;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--surface-color) 86%, #5ac8fa 14%),
+    var(--surface-muted-color)
+  );
+  padding: 1.2rem;
+}
+
+.productLabel {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: var(--type-scale-12);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+  background: linear-gradient(120deg, #0071e3 0%, #5ac8fa 120%);
+}
+
+.primaryProductTitle {
+  margin: 0.6rem 0 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-24);
+}
+
+.secondaryProducts {
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--surface-muted-color);
+  padding: 1rem;
+}
+
+.secondaryTitle {
+  margin: 0;
+  color: var(--title-color);
+  font-size: var(--type-scale-16);
+}
+
+.productList {
+  margin-top: var(--space-8);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.ctaRow {
+  margin-top: var(--space-20);
+}
+
+.saasLayout {
+  margin-top: var(--space-16);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-16);
+}
+
+.saasCard h3,
+.saasRoadmapCard h3 {
+  font-size: var(--type-scale-24);
+}
+
+.inlineCta {
+  display: inline-block;
+  margin-top: var(--space-8);
+  color: var(--link-color);
+  font-size: var(--type-scale-14);
+  font-weight: var(--font-weight-semibold);
+}
+
+.featureList {
+  margin: var(--space-8) 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  color: var(--body-color);
+  font-size: var(--type-scale-14);
+}
+
+.blogTitle {
+  font-size: var(--type-scale-32);
+}
+
+.blogSubTitle {
+  margin-top: 0.65rem;
+}
+
+@media (max-width: 1024px) {
+  .productShowcase,
+  .saasLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .blogSection {
     --type-scale-20: var(--type-20);
@@ -695,6 +865,12 @@
 
   .heroActions {
     flex-direction: column;
+  }
+
+  .heroStats,
+  .productShowcase,
+  .saasLayout {
+    grid-template-columns: 1fr;
   }
 
   .heroPrimaryCta,
